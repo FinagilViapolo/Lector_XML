@@ -77,7 +77,12 @@ Public Class frmIngreso
 
                 Dim nodos_conceptos As Integer = CInt(res.LeeXML(archivo, "NoCon"))
                 Dim conceptos As XmlNode = res.LeeXML_Conceptos(archivo, "Concepto")
+
+
                 Dim contador As Integer = 0
+
+
+
                 For Each detalle_conceptos As XmlNode In conceptos.ChildNodes
                     Dim ClaveProdServ As String = ""
                     Dim Cantidad As String = ""
@@ -86,6 +91,8 @@ Public Class frmIngreso
                     Dim Descripcion As String = ""
                     Dim ValorUnitario As String = ""
                     Dim Importe As String = ""
+
+
 
                     If version_valida = "3.2" Then
                         For Each concepto_atributos As XmlNode In detalle_conceptos.Attributes
@@ -129,8 +136,47 @@ Public Class frmIngreso
                         contador += 1
                     Next
 
-                    If detalle_conceptos.ChildNodes.Count = 0 Then
+                    If detalle_conceptos.ChildNodes.Count = 0 And res.LeeXML(archivo, "TipoDeComprobante") <> "P" Then
                         Me.dgvIngresos.Rows.Add(serie, folio, res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "NombreE"), res.LeeXML(archivo, "RegimenFiscal"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "NombreR"), res.LeeXML(archivo, "UsoCFDI"), res.LeeXML(archivo, "TipoDeComprobante"), res.LeeXML(archivo, "Fecha"), res.LeeXML(archivo, "FormaPago"), res.LeeXML(archivo, "CondicionesDePago"), res.LeeXML(archivo, "Moneda"), res.LeeXML(archivo, "MetodoPago"), TipoRelacion, TipoRelacionUUID, ClaveProdServ, Cantidad, ClaveUnidad, Unidad, Descripcion, ValorUnitario, Importe, "", "", "", "", "", res.LeeXML(archivo, "ImpuestosT"), "", "", "", "", "", "", res.LeeXML(archivo, "SubTotal"), res.LeeXML(archivo, "Descuento"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"), FechaTimbrado, resValidSAT, res.LeeXML(archivo, "Version"), contrato, tcredito)
+                    End If
+
+                    If res.LeeXML(archivo, "TipoDeComprobante") = "P" Then
+                        Dim pagos_detalle As XmlNode = res.LeeXML_Pagos(archivo, "PagosDetalle")
+                        For Each pagos_detalle_pagos As XmlNode In pagos_detalle.ChildNodes
+                            If pagos_detalle_pagos.Name = "pago10:DoctoRelacionado" Then
+                                Dim IdDocumento As String = ""
+                                Dim SerieCP As String = ""
+                                Dim FolioCP As String = ""
+                                Dim MonedaDR As String = ""
+                                Dim MetodoDePagoDR As String = ""
+                                Dim NumParcialidad As String = ""
+                                Dim ImpSaldoAnt As String = ""
+                                Dim ImpPagado As String = ""
+                                Dim ImpSaldoInsoluto As String = ""
+                                For Each pago_detalle_atributos As XmlNode In pagos_detalle_pagos.Attributes
+                                    If pago_detalle_atributos.Name = "IdDocumento" Then
+                                        IdDocumento = pago_detalle_atributos.Value
+                                    ElseIf pago_detalle_atributos.Name = "Serie" Then
+                                        SerieCP = pago_detalle_atributos.Value
+                                    ElseIf pago_detalle_atributos.Name = "Folio" Then
+                                        FolioCP = pago_detalle_atributos.Value
+                                    ElseIf pago_detalle_atributos.Name = "MonedaDR" Then
+                                        MonedaDR = pago_detalle_atributos.Value
+                                    ElseIf pago_detalle_atributos.Name = "MetodoDePagoDR" Then
+                                        MetodoDePagoDR = pago_detalle_atributos.Value
+                                    ElseIf pago_detalle_atributos.Name = "NumParcialidad" Then
+                                        NumParcialidad = pago_detalle_atributos.Value
+                                    ElseIf pago_detalle_atributos.Name = "ImpSaldoAnt" Then
+                                        ImpSaldoAnt = pago_detalle_atributos.Value
+                                    ElseIf pago_detalle_atributos.Name = "ImpPagado" Then
+                                        ImpPagado = pago_detalle_atributos.Value
+                                    ElseIf pago_detalle_atributos.Name = "ImpSaldoInsoluto" Then
+                                        ImpSaldoInsoluto = pago_detalle_atributos.Value
+                                    End If
+                                Next
+                                Me.dgvIngresos.Rows.Add(serie, folio, res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "NombreE"), res.LeeXML(archivo, "RegimenFiscal"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "NombreR"), res.LeeXML(archivo, "UsoCFDI"), res.LeeXML(archivo, "TipoDeComprobante"), res.LeeXML(archivo, "Fecha"), res.LeeXML(archivo, "FormaPago"), res.LeeXML(archivo, "CondicionesDePago"), res.LeeXML(archivo, "Moneda"), res.LeeXML(archivo, "MetodoPago"), TipoRelacion, TipoRelacionUUID, ClaveProdServ, Cantidad, ClaveUnidad, Unidad, Descripcion, ValorUnitario, Importe, "", "", "", "", "", res.LeeXML(archivo, "ImpuestosT"), "", "", "", "", "", "", res.LeeXML(archivo, "SubTotal"), res.LeeXML(archivo, "Descuento"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"), FechaTimbrado, resValidSAT, res.LeeXML(archivo, "Version"), contrato, tcredito, res.LeeXML_Pagos(archivo, "VersionCP"), res.LeeXML_Pagos(archivo, "FechaPago"), res.LeeXML_Pagos(archivo, "FormaDePagoP"), res.LeeXML_Pagos(archivo, "MonedaP"), res.LeeXML_Pagos(archivo, "Monto"), res.LeeXML_Pagos(archivo, "NumOperacion"), res.LeeXML_Pagos(archivo, "RfcEmisorCtaBen"), res.LeeXML_Pagos(archivo, "CtaBeneficiario"), IdDocumento, SerieCP, FolioCP, MonedaDR, MetodoDePagoDR, NumParcialidad, ImpSaldoAnt, ImpPagado, ImpSaldoInsoluto)
+                            End If
+                        Next
                     End If
 
                     For Each concepto_hijos As XmlNode In detalle_conceptos.ChildNodes
@@ -387,6 +433,58 @@ Public Class frmIngreso
         objCelda = HojaExcel.Range("AS5", Type.Missing)
         objCelda.Value = "Tipo de Crédito"
 
+        '-----
+        objCelda = HojaExcel.Range("AT5", Type.Missing)
+        objCelda.Value = "Version CP"
+
+        objCelda = HojaExcel.Range("AU5", Type.Missing)
+        objCelda.Value = "FechaPago"
+
+        objCelda = HojaExcel.Range("AV5", Type.Missing)
+        objCelda.Value = "FormaDePagoP"
+
+        objCelda = HojaExcel.Range("AW5", Type.Missing)
+        objCelda.Value = "MonedaP"
+
+        objCelda = HojaExcel.Range("AX5", Type.Missing)
+        objCelda.Value = "Monto"
+
+        objCelda = HojaExcel.Range("AY5", Type.Missing)
+        objCelda.Value = "NumOperacion"
+
+        objCelda = HojaExcel.Range("AZ5", Type.Missing)
+        objCelda.Value = "RfcEmisorCtaBen"
+
+        objCelda = HojaExcel.Range("BA5", Type.Missing)
+        objCelda.Value = "CtaBeneficiario"
+
+        objCelda = HojaExcel.Range("BB5", Type.Missing)
+        objCelda.Value = "IdDocumento"
+
+        objCelda = HojaExcel.Range("BC5", Type.Missing)
+        objCelda.Value = "Serie CP"
+
+        objCelda = HojaExcel.Range("BD5", Type.Missing)
+        objCelda.Value = "Folio CP"
+
+        objCelda = HojaExcel.Range("BE5", Type.Missing)
+        objCelda.Value = "MonedaDR"
+
+        objCelda = HojaExcel.Range("BF5", Type.Missing)
+        objCelda.Value = "MetodoDePagoDR"
+
+        objCelda = HojaExcel.Range("BG5", Type.Missing)
+        objCelda.Value = "NumParcialidad"
+
+        objCelda = HojaExcel.Range("BH5", Type.Missing)
+        objCelda.Value = "ImpSaldoAnt"
+
+        objCelda = HojaExcel.Range("BI5", Type.Missing)
+        objCelda.Value = "ImpPagado"
+
+        objCelda = HojaExcel.Range("BJ5", Type.Missing)
+        objCelda.Value = "ImpSaldoInsoluto"
+
         Dim i As Integer = 6
         ToolStripProgressBar1.Maximum = dgvIngresos.Rows.Count
         For Each filas As DataGridViewRow In dgvIngresos.Rows
@@ -435,6 +533,23 @@ Public Class frmIngreso
             HojaExcel.Cells(i, "AQ") = filas.Cells(41).Value
             HojaExcel.Cells(i, "AR") = filas.Cells(42).Value
             HojaExcel.Cells(i, "AS") = filas.Cells(43).Value
+            HojaExcel.Cells(i, "AT") = filas.Cells(44).Value
+            HojaExcel.Cells(i, "AU") = filas.Cells(45).Value
+            HojaExcel.Cells(i, "AV") = filas.Cells(46).Value
+            HojaExcel.Cells(i, "AW") = filas.Cells(47).Value
+            HojaExcel.Cells(i, "AX") = filas.Cells(48).Value
+            HojaExcel.Cells(i, "AY") = filas.Cells(49).Value
+            HojaExcel.Cells(i, "AZ") = filas.Cells(50).Value
+            HojaExcel.Cells(i, "BA") = filas.Cells(51).Value
+            HojaExcel.Cells(i, "BB") = filas.Cells(52).Value
+            HojaExcel.Cells(i, "BC") = filas.Cells(53).Value
+            HojaExcel.Cells(i, "BD") = filas.Cells(54).Value
+            HojaExcel.Cells(i, "BE") = filas.Cells(55).Value
+            HojaExcel.Cells(i, "BF") = filas.Cells(56).Value
+            HojaExcel.Cells(i, "BG") = filas.Cells(57).Value
+            HojaExcel.Cells(i, "BH") = filas.Cells(58).Value
+            HojaExcel.Cells(i, "BI") = filas.Cells(59).Value
+            HojaExcel.Cells(i, "BJ") = filas.Cells(60).Value
 
             ToolStripProgressBar1.Value = filas.Index
             ToolStripStatusLabel1.Text = CLng((ToolStripProgressBar1.Value * 100) / ToolStripProgressBar1.Maximum) & " %"

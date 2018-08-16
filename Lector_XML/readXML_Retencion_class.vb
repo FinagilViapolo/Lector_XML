@@ -105,5 +105,196 @@ Public Class readXML_Retencion_class
             Next
         End If
 
+        If nodo = "MesIni" Or nodo = "MesFin" Or nodo = "Ejerc" Then
+            For Each periodo As XmlNode In retenciones.ChildNodes
+                If periodo.Name = "retenciones:Periodo" Then
+                    For Each periodo_atributos As XmlNode In periodo.Attributes
+                        If periodo_atributos.Name = "MesIni" And nodo = "MesIni" Then
+                            resultado = periodo_atributos.Value
+                            Return resultado
+                            Exit For
+                        ElseIf periodo_atributos.Name = "MesFin" And nodo = "MesFin" Then
+                            resultado = periodo_atributos.Value
+                            Return resultado
+                            Exit For
+                        ElseIf periodo_atributos.Name = "Ejerc" And nodo = "Ejerc" Then
+                            resultado = periodo_atributos.Value
+                            Return resultado
+                            Exit For
+                        End If
+                    Next
+                End If
+            Next
+        End If
+
+        If nodo = "montoTotOperacion" Or nodo = "montoTotGrav" Or nodo = "montoTotExent" Or nodo = "montoTotRet" Then
+            For Each totales As XmlNode In retenciones.ChildNodes
+                If totales.Name = "retenciones:Totales" Then
+                    For Each totales_atributos As XmlNode In totales.Attributes
+                        If totales_atributos.Name = "montoTotOperacion" And nodo = "montoTotOperacion" Then
+                            resultado = totales_atributos.Value
+                            Return resultado
+                            Exit For
+                        ElseIf totales_atributos.Name = "montoTotGrav" And nodo = "montoTotGrav" Then
+                            resultado = totales_atributos.Value
+                            Return resultado
+                            Exit For
+                        ElseIf totales_atributos.Name = "montoTotExent" And nodo = "montoTotExent" Then
+                            resultado = totales_atributos.Value
+                            Return resultado
+                            Exit For
+                        ElseIf totales_atributos.Name = "montoTotRet" And nodo = "montoTotRet" Then
+                            resultado = totales_atributos.Value
+                            Return resultado
+                            Exit For
+                        End If
+                    Next
+                End If
+            Next
+        End If
+
+        If nodo = "BaseRet" Or nodo = "Impuesto" Or nodo = "montoRet" Or nodo = "TipoPagoRet" Then
+            For Each impretenidos As XmlNode In retenciones.ChildNodes
+                If impretenidos.Name = "retenciones:Totales" Then
+                    For Each impretenidos_childs As XmlNode In impretenidos.ChildNodes
+                        If impretenidos_childs.Name = "retenciones:ImpRetenidos" Then
+                            For Each impretenidos_childs_atributos As XmlNode In impretenidos_childs.Attributes
+                                If impretenidos_childs_atributos.Name = "BaseRet" And nodo = "BaseRet" Then
+                                    resultado = impretenidos_childs_atributos.Value
+                                    Return resultado
+                                    Exit For
+                                ElseIf impretenidos_childs_atributos.Name = "Impuesto" And nodo = "Impuesto" Then
+                                    resultado = impretenidos_childs_atributos.Value
+                                    Return resultado
+                                    Exit For
+                                ElseIf impretenidos_childs_atributos.Name = "montoRet" And nodo = "montoRet" Then
+                                    resultado = impretenidos_childs_atributos.Value
+                                    Return resultado
+                                    Exit For
+                                ElseIf impretenidos_childs_atributos.Name = "TipoPagoRet" And nodo = "TipoPagoRet" Then
+                                    resultado = impretenidos_childs_atributos.Value
+                                    Return resultado
+                                    Exit For
+                                End If
+                            Next
+                        End If
+                    Next
+                End If
+            Next
+        End If
+        'Complemento Intereses
+        If nodo = "Version" Or nodo = "SistFinanciero" Or nodo = "RetiroAORESRetInt" Or nodo = "OperFinancDerivad" Or nodo = "MontIntNominal" Or nodo = "MontIntReal" Or nodo = "Perdida" Then
+            For Each intereses As XmlNode In retenciones.ChildNodes
+                If intereses.Name = "retenciones:Complemento" Then
+                    For Each intereses_childs As XmlNode In intereses.ChildNodes
+                        If intereses_childs.Name = "intereses:Intereses" Then
+                            For Each intereses_childs_atributos As XmlNode In intereses_childs.Attributes
+                                If intereses_childs_atributos.Name = "Version" And nodo = "Version" Then
+                                    resultado = intereses_childs_atributos.Value
+                                    Return resultado
+                                    Exit For
+                                ElseIf intereses_childs_atributos.Name = "SistFinanciero" And nodo = "SistFinanciero" Then
+                                    resultado = intereses_childs_atributos.Value
+                                    Return resultado
+                                    Exit For
+                                ElseIf intereses_childs_atributos.Name = "RetiroAORESRetInt" And nodo = "RetiroAORESRetInt" Then
+                                    resultado = intereses_childs_atributos.Value
+                                    Return resultado
+                                    Exit For
+                                ElseIf intereses_childs_atributos.Name = "OperFinancDerivad" And nodo = "OperFinancDerivad" Then
+                                    resultado = intereses_childs_atributos.Value
+                                    Return resultado
+                                    Exit For
+                                ElseIf intereses_childs_atributos.Name = "MontIntNominal" And nodo = "MontIntNominal" Then
+                                    resultado = intereses_childs_atributos.Value
+                                    Return resultado
+                                    Exit For
+                                ElseIf intereses_childs_atributos.Name = "MontIntReal" And nodo = "MontIntReal" Then
+                                    resultado = intereses_childs_atributos.Value
+                                    Return resultado
+                                    Exit For
+                                ElseIf intereses_childs_atributos.Name = "Perdida" And nodo = "Perdida" Then
+                                    resultado = intereses_childs_atributos.Value
+                                    Return resultado
+                                    Exit For
+                                End If
+                            Next
+                        End If
+                    Next
+                End If
+            Next
+        End If
+        'Complemento dividendos
+        If nodo = "VersionD" Or nodo = "CveTipDivOUtil" Or nodo = "MontISRAcredRetMexico" Or nodo = "MontISRAcredRetExtranjero" Or nodo = "TipoSocDistrDiv" Or nodo = "MontDivAcumNal" Then
+            For Each dividendos As XmlNode In retenciones.ChildNodes
+                If dividendos.Name = "retenciones:Complemento" Then
+                    For Each dividendos_childs As XmlNode In dividendos.ChildNodes
+                        If dividendos_childs.Name = "dividendos:Dividendos" Then
+                            For Each dividendos_childs_atributos As XmlNode In dividendos_childs.Attributes
+                                If dividendos_childs_atributos.Name = "Version" And nodo = "VersionD" Then
+                                    resultado = dividendos_childs_atributos.Value
+                                    Return resultado
+                                    Exit For
+                                End If
+                            Next
+                            For Each dividendos_childs_childs As XmlNode In dividendos_childs.ChildNodes
+                                If dividendos_childs_childs.Name = "dividendos:DividOUtil" Then
+                                    For Each dividendos_childs_childs_atributos As XmlNode In dividendos_childs_childs.Attributes
+                                        If dividendos_childs_childs_atributos.Name = "CveTipDivOUtil" And nodo = "CveTipDivOUtil" Then
+                                            resultado = dividendos_childs_childs_atributos.Value
+                                            Return resultado
+                                            Exit For
+                                        ElseIf dividendos_childs_childs_atributos.Name = "MontISRAcredRetMexico" And nodo = "MontISRAcredRetMexico" Then
+                                            resultado = dividendos_childs_childs_atributos.Value
+                                            Return resultado
+                                            Exit For
+                                        ElseIf dividendos_childs_childs_atributos.Name = "MontISRAcredRetExtranjero" And nodo = "MontISRAcredRetExtranjero" Then
+                                            resultado = dividendos_childs_childs_atributos.Value
+                                            Return resultado
+                                            Exit For
+                                        ElseIf dividendos_childs_childs_atributos.Name = "MontRetExtDivExt" And nodo = "MontRetExtDivExt" Then
+                                            resultado = dividendos_childs_childs_atributos.Value
+                                            Return resultado
+                                            Exit For
+                                        ElseIf dividendos_childs_childs_atributos.Name = "TipoSocDistrDiv" And nodo = "TipoSocDistrDiv" Then
+                                            resultado = dividendos_childs_childs_atributos.Value
+                                            Return resultado
+                                            Exit For
+                                        ElseIf dividendos_childs_childs_atributos.Name = "MontISRAcredNal" And nodo = "MontISRAcredNal" Then
+                                            resultado = dividendos_childs_childs_atributos.Value
+                                            Return resultado
+                                            Exit For
+                                        ElseIf dividendos_childs_childs_atributos.Name = "MontDivAcumNal" And nodo = "MontDivAcumNal" Then
+                                            resultado = dividendos_childs_childs_atributos.Value
+                                            Return resultado
+                                            Exit For
+                                        ElseIf dividendos_childs_childs_atributos.Name = "MontDivAcumExt" And nodo = "MontDivAcumExt" Then
+                                            resultado = dividendos_childs_childs_atributos.Value
+                                            Return resultado
+                                            Exit For
+                                        End If
+                                    Next
+                                End If
+                            Next
+                        End If
+                    Next
+                End If
+            Next
+        End If
+
+        If nodo = "UUID" Then
+            Dim nsmgr As XmlNamespaceManager = New XmlNamespaceManager(doc.NameTable)
+            nsmgr.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/3")
+            nsmgr.AddNamespace("tfd", "http://www.sat.gob.mx/TimbreFiscalDigital")
+            Dim nodeList As XmlNodeList
+            Dim root As XmlElement = doc.DocumentElement
+
+            nodeList = root.SelectNodes("//tfd:TimbreFiscalDigital/@UUID", nsmgr)
+            Dim uuid As XmlNode
+            For Each uuid In nodeList
+                resultado = uuid.Value.ToString
+                Return resultado
+            Next
+        End If
     End Function
 End Class

@@ -1,4 +1,5 @@
-﻿Public Class frmInicio
+﻿Imports System.Diagnostics
+Public Class frmInicio
     Private Sub frmInicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
@@ -15,5 +16,11 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim f As New frmRetenciones
         f.Show()
+    End Sub
+
+    Private Sub btnNomina_Click(sender As Object, e As EventArgs) Handles btnNomina.Click
+        Dim proces As New Process
+        proces.StartInfo.FileName = "\\server-raid\Executables\XML_Report.exe"
+        proces.Start()
     End Sub
 End Class

@@ -2,6 +2,108 @@
 Imports System.IO
 
 Public Class readXML_CFDI_class
+
+    Public Function LeeXML_Pagos_detalle(ByVal archivo As String, ByVal nodo As String)
+        Dim doc As XmlDocument
+        doc = New XmlDocument
+        doc.Load(archivo)
+        Dim resultado As XmlNode
+        Dim comprobante As XmlNode
+
+        comprobante = doc.DocumentElement
+
+        If nodo = "PagosDetalle" Then
+            For Each pagos As XmlNode In comprobante.ChildNodes
+                If pagos.Name = "cfdi:Complemento" Then
+                    For Each pagos_childs As XmlNode In pagos.ChildNodes
+                        If pagos_childs.Name = "pago10:Pagos" Then
+                            For Each pagos_childs_childs As XmlNode In pagos_childs.ChildNodes
+                                If pagos_childs_childs.Name = "pago10:DoctoRelacionado" Then
+                                    For Each pagos_childs_childs_atributos As XmlNode In pagos_childs_childs.Attributes
+                                        resultado = pagos_childs_childs_atributos
+                                        Return resultado
+                                        Exit For
+                                    Next
+                                End If
+                            Next
+
+                        End If
+                    Next
+                End If
+            Next
+        End If
+
+    End Function
+    Public Function LeeXML_Pagos(ByVal archivo As String, ByVal nodo As String)
+        Dim doc As XmlDocument
+        doc = New XmlDocument
+        doc.Load(archivo)
+        Dim resultado As String
+        Dim resultado_detalle As XmlNode
+        Dim comprobante As XmlNode
+
+        comprobante = doc.DocumentElement
+
+        If nodo = "VersionCP" Or nodo = "FechaPago" Or nodo = "FormaDePagoP" Or nodo = "MonedaP" Or nodo = "Monto" Or nodo = "NumOperacion" Or nodo = "RfcEmisorCtaBen" Or nodo = "CtaBeneficiario" Or nodo = "IdDocumento" Or nodo = "SerieCP" Or nodo = "FolioCP" Or nodo = "MonedaDR" Or nodo = "MetodoDePagoDR" Or nodo = "NumParcialidad" Or nodo = "ImpSaldoAnt" Or nodo = "ImpPagado" Or nodo = "ImpSaldoInsoluto" Or nodo = "PagosDetalle" Then
+            For Each pagos As XmlNode In comprobante.ChildNodes
+                If pagos.Name = "cfdi:Complemento" Then
+                    For Each pagos_childs As XmlNode In pagos.ChildNodes
+                        If pagos_childs.Name = "pago10:Pagos" Then
+                            For Each pagos_childs_atributos As XmlNode In pagos_childs.Attributes
+                                If pagos_childs_atributos.Name = "Version" And nodo = "VersionCP" Then
+                                    resultado = pagos_childs_atributos.Value.ToString
+                                    Return resultado
+                                    Exit For
+                                End If
+                            Next
+                            For Each pagos_childs_2_childs As XmlNode In pagos_childs.ChildNodes
+                                If pagos_childs_2_childs.Name = "pago10:Pago" And nodo = "PagosDetalle" Then
+                                    resultado_detalle = pagos_childs_2_childs
+                                    Return resultado_detalle
+                                    Exit For
+                                End If
+                            Next
+                            For Each pagos_childs_2 As XmlNode In pagos_childs.ChildNodes
+                                If pagos_childs_2.Name = "pago10:Pago" Then
+                                    For Each pagos_chile_2_atributos As XmlNode In pagos_childs_2.Attributes
+                                        If pagos_chile_2_atributos.Name = "FechaPago" And nodo = "FechaPago" Then
+                                            resultado = pagos_chile_2_atributos.Value.ToString
+                                            Return resultado
+                                            Exit For
+                                        ElseIf pagos_chile_2_atributos.Name = "FormaDePagoP" And nodo = "FormaDePagoP" Then
+                                            resultado = pagos_chile_2_atributos.Value.ToString
+                                            Return resultado
+                                            Exit For
+                                        ElseIf pagos_chile_2_atributos.Name = "MonedaP" And nodo = "MonedaP" Then
+                                            resultado = pagos_chile_2_atributos.Value.ToString
+                                            Return resultado
+                                            Exit For
+                                        ElseIf pagos_chile_2_atributos.Name = "Monto" And nodo = "Monto" Then
+                                            resultado = pagos_chile_2_atributos.Value.ToString
+                                            Return resultado
+                                            Exit For
+                                        ElseIf pagos_chile_2_atributos.Name = "NumOperacion" And nodo = "NumOperacion" Then
+                                            resultado = pagos_chile_2_atributos.Value.ToString
+                                            Return resultado
+                                            Exit For
+                                        ElseIf pagos_chile_2_atributos.Name = "RfcEmisorCtaBen" And nodo = "RfcEmisorCtaBen" Then
+                                            resultado = pagos_chile_2_atributos.Value.ToString
+                                            Return resultado
+                                            Exit For
+                                        ElseIf pagos_chile_2_atributos.Name = "CtaBeneficiario" And nodo = "CtaBeneficiario" Then
+                                            resultado = pagos_chile_2_atributos.Value.ToString
+                                            Return resultado
+                                            Exit For
+                                        End If
+                                    Next
+                                End If
+                            Next
+                        End If
+                    Next
+                End If
+            Next
+        End If
+    End Function
     Public Function LeeXML_Conceptos(ByVal archivo As String, ByVal nodo As String)
         Dim doc As XmlDocument
         doc = New XmlDocument
