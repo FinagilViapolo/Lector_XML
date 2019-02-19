@@ -119,14 +119,14 @@ Partial Class frmIngreso
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.btnBDEkomercio = New System.Windows.Forms.Button()
         Me.chkContTCred = New System.Windows.Forms.CheckBox()
-        Me.CFDIClientesCOFIDIBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ATEBCOFIDIDataSet = New Lector_XML.ATEBCOFIDIDataSet()
-        Me.CFDI_Clientes_COFIDITableAdapter = New Lector_XML.ATEBCOFIDIDataSetTableAdapters.CFDI_Clientes_COFIDITableAdapter()
-        Me.TableAdapterManager = New Lector_XML.ATEBCOFIDIDataSetTableAdapters.TableAdapterManager()
         Me.btnSepArchivos = New System.Windows.Forms.Button()
         Me.fbdSeparar_Origen = New System.Windows.Forms.FolderBrowserDialog()
         Me.fbdSeparar_Destino = New System.Windows.Forms.FolderBrowserDialog()
         Me.btnSalir = New System.Windows.Forms.Button()
+        Me.CFDIClientesCOFIDIBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ATEBCOFIDIDataSet = New Lector_XML.ATEBCOFIDIDataSet()
+        Me.CFDI_Clientes_COFIDITableAdapter = New Lector_XML.ATEBCOFIDIDataSetTableAdapters.CFDI_Clientes_COFIDITableAdapter()
+        Me.TableAdapterManager = New Lector_XML.ATEBCOFIDIDataSetTableAdapters.TableAdapterManager()
         CType(Me.dgvIngresos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.CFDIClientesCOFIDIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -793,6 +793,24 @@ Partial Class frmIngreso
         Me.chkContTCred.Text = "?Obtine Cont/TCred"
         Me.chkContTCred.UseVisualStyleBackColor = True
         '
+        'btnSepArchivos
+        '
+        Me.btnSepArchivos.Location = New System.Drawing.Point(1005, 647)
+        Me.btnSepArchivos.Name = "btnSepArchivos"
+        Me.btnSepArchivos.Size = New System.Drawing.Size(134, 23)
+        Me.btnSepArchivos.TabIndex = 8
+        Me.btnSepArchivos.Text = "Separar Archivos (A/M)"
+        Me.btnSepArchivos.UseVisualStyleBackColor = True
+        '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(1173, 647)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 9
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
         'CFDIClientesCOFIDIBindingSource
         '
         Me.CFDIClientesCOFIDIBindingSource.DataMember = "CFDI_Clientes_COFIDI"
@@ -812,24 +830,6 @@ Partial Class frmIngreso
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.Connection = Nothing
         Me.TableAdapterManager.UpdateOrder = Lector_XML.ATEBCOFIDIDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'btnSepArchivos
-        '
-        Me.btnSepArchivos.Location = New System.Drawing.Point(1005, 647)
-        Me.btnSepArchivos.Name = "btnSepArchivos"
-        Me.btnSepArchivos.Size = New System.Drawing.Size(134, 23)
-        Me.btnSepArchivos.TabIndex = 8
-        Me.btnSepArchivos.Text = "Separar Archivos (A/M)"
-        Me.btnSepArchivos.UseVisualStyleBackColor = True
-        '
-        'btnSalir
-        '
-        Me.btnSalir.Location = New System.Drawing.Point(1173, 647)
-        Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
-        Me.btnSalir.TabIndex = 9
-        Me.btnSalir.Text = "Salir"
-        Me.btnSalir.UseVisualStyleBackColor = True
         '
         'frmIngreso
         '

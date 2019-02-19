@@ -65,6 +65,13 @@ Public Class frmIngreso
                     Else
                         contrato = "NOT FOUND"
                     End If
+                    If serie.Trim = "AV" Or serie.Trim = "AAV" Then
+                        Try
+                            contrato = Me.taContraro.ObtContrato_CFDI_ScalarQuery(serie, folio).ToString
+                        Catch ex As Exception
+                            contrato = "NOT FOUND"
+                        End Try
+                    End If
                 Else
                     contrato = ""
                 End If
@@ -246,6 +253,7 @@ Public Class frmIngreso
         Catch ex As Exception
             MsgBox(ex.ToString + "---" + archivo_02)
         End Try
+        MsgBox("Proceso terminado", MsgBoxStyle.Information)
         Me.Cursor = System.Windows.Forms.Cursors.Default
     End Sub
 
@@ -325,6 +333,7 @@ Public Class frmIngreso
         objCelda.Value = "Tipo Comprobante"
 
         objCelda = HojaExcel.Range("K5", Type.Missing)
+        objCelda.EntireColumn.NumberFormat = "dd/mm/yyyy;@"
         objCelda.Value = "Fecha Emisión"
 
         objCelda = HojaExcel.Range("L5", Type.Missing)
@@ -419,6 +428,7 @@ Public Class frmIngreso
         objCelda.Value = "UUID"
 
         objCelda = HojaExcel.Range("AO5", Type.Missing)
+        objCelda.EntireColumn.NumberFormat = "dd/mm/yyyy;@"
         objCelda.Value = "FechaTimbrado"
 
         objCelda = HojaExcel.Range("AP5", Type.Missing)
@@ -438,6 +448,7 @@ Public Class frmIngreso
         objCelda.Value = "Version CP"
 
         objCelda = HojaExcel.Range("AU5", Type.Missing)
+        objCelda.EntireColumn.NumberFormat = "dd/mm/yyyy;@"
         objCelda.Value = "FechaPago"
 
         objCelda = HojaExcel.Range("AV5", Type.Missing)
@@ -569,7 +580,7 @@ Public Class frmIngreso
         appXL.Workbooks.Close()
         ' Eliminamos el objeto excel
         appXL.Quit()
-
+        MsgBox("Proceso terminado", MsgBoxStyle.Information)
     End Sub
 
     Private Sub btnBDEkomercio_Click(sender As Object, e As EventArgs) Handles btnBDEkomercio.Click

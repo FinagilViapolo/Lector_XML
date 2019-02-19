@@ -84,6 +84,7 @@ Public Class frmRetenciones
         objCelda.EntireColumn.NumberFormat = "###"
 
         objCelda = HojaExcel.Range("D5", Type.Missing)
+        objCelda.EntireColumn.NumberFormat = "dd/mm/yyyy;@"
         objCelda.Value = "FechaExp"
 
         objCelda = HojaExcel.Range("E5", Type.Missing)
