@@ -99,101 +99,101 @@ Partial Class frmDetalleCFDI
         '_1_FolioLabel
         '
         _1_FolioLabel.AutoSize = True
-        _1_FolioLabel.Location = New System.Drawing.Point(795, 15)
+        _1_FolioLabel.Location = New System.Drawing.Point(804, 15)
         _1_FolioLabel.Name = "_1_FolioLabel"
-        _1_FolioLabel.Size = New System.Drawing.Size(41, 13)
+        _1_FolioLabel.Size = New System.Drawing.Size(32, 13)
         _1_FolioLabel.TabIndex = 1
-        _1_FolioLabel.Text = "1 Folio:"
+        _1_FolioLabel.Text = "Folio:"
         '
         '_2_Nombre_EmisorLabel
         '
         _2_Nombre_EmisorLabel.AutoSize = True
-        _2_Nombre_EmisorLabel.Location = New System.Drawing.Point(37, 41)
+        _2_Nombre_EmisorLabel.Location = New System.Drawing.Point(49, 41)
         _2_Nombre_EmisorLabel.Name = "_2_Nombre_EmisorLabel"
-        _2_Nombre_EmisorLabel.Size = New System.Drawing.Size(90, 13)
+        _2_Nombre_EmisorLabel.Size = New System.Drawing.Size(81, 13)
         _2_Nombre_EmisorLabel.TabIndex = 2
-        _2_Nombre_EmisorLabel.Text = "2 Nombre Emisor:"
+        _2_Nombre_EmisorLabel.Text = "Nombre Emisor:"
         '
         '_27_Serie_ComprobanteLabel
         '
         _27_Serie_ComprobanteLabel.AutoSize = True
-        _27_Serie_ComprobanteLabel.Location = New System.Drawing.Point(450, 15)
+        _27_Serie_ComprobanteLabel.Location = New System.Drawing.Point(470, 15)
         _27_Serie_ComprobanteLabel.Name = "_27_Serie_ComprobanteLabel"
-        _27_Serie_ComprobanteLabel.Size = New System.Drawing.Size(115, 13)
+        _27_Serie_ComprobanteLabel.Size = New System.Drawing.Size(100, 13)
         _27_Serie_ComprobanteLabel.TabIndex = 4
-        _27_Serie_ComprobanteLabel.Text = "27 Serie Comprobante:"
+        _27_Serie_ComprobanteLabel.Text = "Serie Comprobante:"
         '
         '_26_VersionLabel
         '
         _26_VersionLabel.AutoSize = True
-        _26_VersionLabel.Location = New System.Drawing.Point(505, 41)
+        _26_VersionLabel.Location = New System.Drawing.Point(525, 41)
         _26_VersionLabel.Name = "_26_VersionLabel"
-        _26_VersionLabel.Size = New System.Drawing.Size(60, 13)
+        _26_VersionLabel.Size = New System.Drawing.Size(45, 13)
         _26_VersionLabel.TabIndex = 6
-        _26_VersionLabel.Text = "26 Version:"
+        _26_VersionLabel.Text = "Version:"
         '
         '_29_FormaPagoLabel
         '
         _29_FormaPagoLabel.AutoSize = True
-        _29_FormaPagoLabel.Location = New System.Drawing.Point(754, 41)
+        _29_FormaPagoLabel.Location = New System.Drawing.Point(769, 41)
         _29_FormaPagoLabel.Name = "_29_FormaPagoLabel"
-        _29_FormaPagoLabel.Size = New System.Drawing.Size(82, 13)
+        _29_FormaPagoLabel.Size = New System.Drawing.Size(67, 13)
         _29_FormaPagoLabel.TabIndex = 8
-        _29_FormaPagoLabel.Text = "29 Forma Pago:"
+        _29_FormaPagoLabel.Text = "Forma Pago:"
         '
         '_30_FechaLabel
         '
         _30_FechaLabel.AutoSize = True
-        _30_FechaLabel.Location = New System.Drawing.Point(72, 15)
+        _30_FechaLabel.Location = New System.Drawing.Point(49, 15)
         _30_FechaLabel.Name = "_30_FechaLabel"
-        _30_FechaLabel.Size = New System.Drawing.Size(55, 13)
+        _30_FechaLabel.Size = New System.Drawing.Size(78, 13)
         _30_FechaLabel.TabIndex = 10
-        _30_FechaLabel.Text = "30 Fecha:"
+        _30_FechaLabel.Text = "Fecha emisión:"
         '
         '_42_Nombre_ReceptorLabel
         '
         _42_Nombre_ReceptorLabel.AutoSize = True
-        _42_Nombre_ReceptorLabel.Location = New System.Drawing.Point(18, 67)
+        _42_Nombre_ReceptorLabel.Location = New System.Drawing.Point(33, 64)
         _42_Nombre_ReceptorLabel.Name = "_42_Nombre_ReceptorLabel"
-        _42_Nombre_ReceptorLabel.Size = New System.Drawing.Size(109, 13)
+        _42_Nombre_ReceptorLabel.Size = New System.Drawing.Size(94, 13)
         _42_Nombre_ReceptorLabel.TabIndex = 12
-        _42_Nombre_ReceptorLabel.Text = "42 Nombre Receptor:"
+        _42_Nombre_ReceptorLabel.Text = "Nombre Receptor:"
         '
         '_43_RFC_ReceptorLabel
         '
         _43_RFC_ReceptorLabel.AutoSize = True
-        _43_RFC_ReceptorLabel.Location = New System.Drawing.Point(472, 67)
+        _43_RFC_ReceptorLabel.Location = New System.Drawing.Point(492, 67)
         _43_RFC_ReceptorLabel.Name = "_43_RFC_ReceptorLabel"
-        _43_RFC_ReceptorLabel.Size = New System.Drawing.Size(93, 13)
+        _43_RFC_ReceptorLabel.Size = New System.Drawing.Size(78, 13)
         _43_RFC_ReceptorLabel.TabIndex = 14
-        _43_RFC_ReceptorLabel.Text = "43 RFC Receptor:"
+        _43_RFC_ReceptorLabel.Text = "RFC Receptor:"
         '
         '_54_Monto_SubTotalLabel
         '
         _54_Monto_SubTotalLabel.AutoSize = True
-        _54_Monto_SubTotalLabel.Location = New System.Drawing.Point(23, 93)
+        _54_Monto_SubTotalLabel.Location = New System.Drawing.Point(71, 90)
         _54_Monto_SubTotalLabel.Name = "_54_Monto_SubTotalLabel"
-        _54_Monto_SubTotalLabel.Size = New System.Drawing.Size(104, 13)
+        _54_Monto_SubTotalLabel.Size = New System.Drawing.Size(56, 13)
         _54_Monto_SubTotalLabel.TabIndex = 16
-        _54_Monto_SubTotalLabel.Text = "54 Monto Sub Total:"
+        _54_Monto_SubTotalLabel.Text = "Sub Total:"
         '
         '_55_Monto_IVALabel
         '
         _55_Monto_IVALabel.AutoSize = True
-        _55_Monto_IVALabel.Location = New System.Drawing.Point(266, 93)
+        _55_Monto_IVALabel.Location = New System.Drawing.Point(314, 93)
         _55_Monto_IVALabel.Name = "_55_Monto_IVALabel"
-        _55_Monto_IVALabel.Size = New System.Drawing.Size(75, 13)
+        _55_Monto_IVALabel.Size = New System.Drawing.Size(27, 13)
         _55_Monto_IVALabel.TabIndex = 18
-        _55_Monto_IVALabel.Text = "55 Monto IVA:"
+        _55_Monto_IVALabel.Text = "IVA:"
         '
         '_56_Monto_TotalLabel
         '
         _56_Monto_TotalLabel.AutoSize = True
-        _56_Monto_TotalLabel.Location = New System.Drawing.Point(488, 93)
+        _56_Monto_TotalLabel.Location = New System.Drawing.Point(503, 93)
         _56_Monto_TotalLabel.Name = "_56_Monto_TotalLabel"
-        _56_Monto_TotalLabel.Size = New System.Drawing.Size(82, 13)
+        _56_Monto_TotalLabel.Size = New System.Drawing.Size(67, 13)
         _56_Monto_TotalLabel.TabIndex = 20
-        _56_Monto_TotalLabel.Text = "56 Monto Total:"
+        _56_Monto_TotalLabel.Text = "Monto Total:"
         '
         '_144_Misc32Label
         '
@@ -234,47 +234,47 @@ Partial Class frmDetalleCFDI
         '_192_Monto_TotalImp_RetenidosLabel
         '
         _192_Monto_TotalImp_RetenidosLabel.AutoSize = True
-        _192_Monto_TotalImp_RetenidosLabel.Location = New System.Drawing.Point(42, 157)
+        _192_Monto_TotalImp_RetenidosLabel.Location = New System.Drawing.Point(96, 157)
         _192_Monto_TotalImp_RetenidosLabel.Name = "_192_Monto_TotalImp_RetenidosLabel"
-        _192_Monto_TotalImp_RetenidosLabel.Size = New System.Drawing.Size(159, 13)
+        _192_Monto_TotalImp_RetenidosLabel.Size = New System.Drawing.Size(105, 13)
         _192_Monto_TotalImp_RetenidosLabel.TabIndex = 30
-        _192_Monto_TotalImp_RetenidosLabel.Text = "192 Monto Total Imp Retenidos:"
+        _192_Monto_TotalImp_RetenidosLabel.Text = "Total Imp Retenidos:"
         '
         '_193_Monto_TotalImp_TrasladadosLabel
         '
         _193_Monto_TotalImp_TrasladadosLabel.AutoSize = True
-        _193_Monto_TotalImp_TrasladadosLabel.Location = New System.Drawing.Point(354, 157)
+        _193_Monto_TotalImp_TrasladadosLabel.Location = New System.Drawing.Point(408, 157)
         _193_Monto_TotalImp_TrasladadosLabel.Name = "_193_Monto_TotalImp_TrasladadosLabel"
-        _193_Monto_TotalImp_TrasladadosLabel.Size = New System.Drawing.Size(169, 13)
+        _193_Monto_TotalImp_TrasladadosLabel.Size = New System.Drawing.Size(115, 13)
         _193_Monto_TotalImp_TrasladadosLabel.TabIndex = 32
-        _193_Monto_TotalImp_TrasladadosLabel.Text = "193 Monto Total Imp Trasladados:"
+        _193_Monto_TotalImp_TrasladadosLabel.Text = "Total Imp Trasladados:"
         '
         '_114_Misc02Label
         '
         _114_Misc02Label.AutoSize = True
-        _114_Misc02Label.Location = New System.Drawing.Point(771, 93)
+        _114_Misc02Label.Location = New System.Drawing.Point(786, 93)
         _114_Misc02Label.Name = "_114_Misc02Label"
-        _114_Misc02Label.Size = New System.Drawing.Size(65, 13)
+        _114_Misc02Label.Size = New System.Drawing.Size(50, 13)
         _114_Misc02Label.TabIndex = 34
-        _114_Misc02Label.Text = "114 Misc02:"
+        _114_Misc02Label.Text = "Contrato:"
         '
         '_190_Metodo_PagoLabel
         '
         _190_Metodo_PagoLabel.AutoSize = True
-        _190_Metodo_PagoLabel.Location = New System.Drawing.Point(741, 67)
+        _190_Metodo_PagoLabel.Location = New System.Drawing.Point(762, 67)
         _190_Metodo_PagoLabel.Name = "_190_Metodo_PagoLabel"
-        _190_Metodo_PagoLabel.Size = New System.Drawing.Size(95, 13)
+        _190_Metodo_PagoLabel.Size = New System.Drawing.Size(74, 13)
         _190_Metodo_PagoLabel.TabIndex = 36
-        _190_Metodo_PagoLabel.Text = "190 Metodo Pago:"
+        _190_Metodo_PagoLabel.Text = "Metodo Pago:"
         '
         '_191_Efecto_ComprobanteLabel
         '
         _191_Efecto_ComprobanteLabel.AutoSize = True
-        _191_Efecto_ComprobanteLabel.Location = New System.Drawing.Point(708, 157)
+        _191_Efecto_ComprobanteLabel.Location = New System.Drawing.Point(729, 157)
         _191_Efecto_ComprobanteLabel.Name = "_191_Efecto_ComprobanteLabel"
-        _191_Efecto_ComprobanteLabel.Size = New System.Drawing.Size(128, 13)
+        _191_Efecto_ComprobanteLabel.Size = New System.Drawing.Size(107, 13)
         _191_Efecto_ComprobanteLabel.TabIndex = 38
-        _191_Efecto_ComprobanteLabel.Text = "191 Efecto Comprobante:"
+        _191_Efecto_ComprobanteLabel.Text = "Efecto Comprobante:"
         '
         'GuidLabel
         '
