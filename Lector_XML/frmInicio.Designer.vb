@@ -26,6 +26,7 @@ Partial Class frmInicio
         Me.btnNomina = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnCancelaciones = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnIngreso
@@ -48,7 +49,7 @@ Partial Class frmInicio
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(165, 208)
+        Me.btnSalir.Location = New System.Drawing.Point(165, 270)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 3
@@ -64,15 +65,26 @@ Partial Class frmInicio
         Me.Button1.Text = "Retención de Pagos"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'btnCancelaciones
+        '
+        Me.btnCancelaciones.Location = New System.Drawing.Point(34, 211)
+        Me.btnCancelaciones.Name = "btnCancelaciones"
+        Me.btnCancelaciones.Size = New System.Drawing.Size(206, 45)
+        Me.btnCancelaciones.TabIndex = 5
+        Me.btnCancelaciones.Text = "Cancelación de CFDI"
+        Me.btnCancelaciones.UseVisualStyleBackColor = True
+        '
         'frmInicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(273, 252)
+        Me.ClientSize = New System.Drawing.Size(273, 305)
+        Me.Controls.Add(Me.btnCancelaciones)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnNomina)
         Me.Controls.Add(Me.btnIngreso)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "frmInicio"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Inicio"
@@ -84,4 +96,5 @@ Partial Class frmInicio
     Friend WithEvents btnNomina As Windows.Forms.Button
     Friend WithEvents btnSalir As Windows.Forms.Button
     Friend WithEvents Button1 As Windows.Forms.Button
+    Friend WithEvents btnCancelaciones As Windows.Forms.Button
 End Class

@@ -23,4 +23,9 @@ Public Class frmInicio
         proces.StartInfo.FileName = "\\server-raid\Executables\XML_Report.exe"
         proces.Start()
     End Sub
+
+    Private Sub btnCancelaciones_Click(sender As Object, e As EventArgs) Handles btnCancelaciones.Click
+        Dim f As New frmCancelacionCFDI
+        f.Show()
+    End Sub
 End Class

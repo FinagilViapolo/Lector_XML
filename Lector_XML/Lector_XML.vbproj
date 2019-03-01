@@ -119,6 +119,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="frmCancelacionCFDI.Designer.vb">
+      <DependentUpon>frmCancelacionCFDI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCancelacionCFDI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetalleCFDI.Designer.vb">
+      <DependentUpon>frmDetalleCFDI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetalleCFDI.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmIngreso.Designer.vb">
       <DependentUpon>frmIngreso.vb</DependentUpon>
     </Compile>
@@ -158,6 +170,12 @@
     <Compile Include="readXML_Retencion_class.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmCancelacionCFDI.resx">
+      <DependentUpon>frmCancelacionCFDI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetalleCFDI.resx">
+      <DependentUpon>frmDetalleCFDI.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIngreso.resx">
       <DependentUpon>frmIngreso.vb</DependentUpon>
     </EmbeddedResource>

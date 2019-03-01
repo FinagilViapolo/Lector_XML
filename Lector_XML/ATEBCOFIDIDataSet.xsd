@@ -10,7 +10,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CFDI_Clientes_COFIDITableAdapter" GeneratorDataComponentClassName="CFDI_Clientes_COFIDITableAdapter" Name="CFDI_Clientes_COFIDI" UserDataComponentName="CFDI_Clientes_COFIDITableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ATEBCOFIDIConnectionStringClientes (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ATEBCOFIDIConnectionStringClientes (Settings)" DbObjectName="ATEBCOFIDI.dbo.FacturaDtl" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Factura.Empresa, Factura.RFC, Factura.RazonSocial, Factura.Serie, Factura.Referencia, Factura.FechaEmision, FacturaDtl.Descripcion, FacturaDtl.Cantidad, FacturaDtl.Precio, FacturaDtl.UnidadMedida, FacturaDtl.Monto, 
@@ -126,7 +126,7 @@ ORDER BY Fecha DESC</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ObtContrato_CFDI_ScalarQuery" Modifier="Public" Name="ObtContrato_CFDI_ScalarQuery" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="ObtContrato_CFDI_ScalarQuery">
+              <DbSource ConnectionRef="ProductionConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ObtContrato_CFDI_ScalarQuery" Modifier="Public" Name="ObtContrato_CFDI_ScalarQuery" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="ObtContrato_CFDI_ScalarQuery">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ISNULL(MAX([114_Misc02]), 'NOT FOUND ') AS Anexo_02
@@ -139,7 +139,7 @@ WHERE        ([27_Serie_Comprobante] = @Serie) AND ([1_Folio] = @Folio)</Command
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ProductionConnectionString (Settings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" GenerateShortCommands="true" GeneratorSourceName="ObtTCredito" Modifier="Public" Name="ObtTCredito" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="ObtTCredito">
+              <DbSource ConnectionRef="ProductionConnectionString (Settings)" DbObjectName="Production.dbo.Vw_Anexos" DbObjectType="View" GenerateShortCommands="true" GeneratorSourceName="ObtTCredito" Modifier="Public" Name="ObtTCredito" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="ObtTCredito">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        TipoCredito, Anexo
@@ -153,6 +153,321 @@ WHERE        (Anexo = @Anexo)</CommandText>
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CFDI_EncabezadoTableAdapter" GeneratorDataComponentClassName="CFDI_EncabezadoTableAdapter" Name="CFDI_Encabezado" UserDataComponentName="CFDI_EncabezadoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProductionConnectionString (Settings)" DbObjectName="Production.dbo.CFDI_Encabezado" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [CFDI_Encabezado] WHERE (([1_Folio] = @p2) AND ((@p5 = 1 AND [2_Nombre_Emisor] IS NULL) OR ([2_Nombre_Emisor] = @p4)) AND ((@p8 = 1 AND [3_RFC_Emisor] IS NULL) OR ([3_RFC_Emisor] = @p7)) AND ((@p11 = 1 AND [5_Dom_Emisor_noExterior] IS NULL) OR ([5_Dom_Emisor_noExterior] = @p10)) AND ((@p14 = 1 AND [13_Dom_Emisor_codigoPostal] IS NULL) OR ([13_Dom_Emisor_codigoPostal] = @p13)) AND ((@p17 = 1 AND [26_Version] IS NULL) OR ([26_Version] = @p16)) AND ([27_Serie_Comprobante] = @p19) AND ((@p22 = 1 AND [29_FormaPago] IS NULL) OR ([29_FormaPago] = @p21)) AND ((@p25 = 1 AND [30_Fecha] IS NULL) OR ([30_Fecha] = @p24)) AND ((@p28 = 1 AND [31_Hora] IS NULL) OR ([31_Hora] = @p27)) AND ((@p31 = 1 AND [41_Dom_LugarExpide_codigoPostal] IS NULL) OR ([41_Dom_LugarExpide_codigoPostal] = @p30)) AND ((@p34 = 1 AND [42_Nombre_Receptor] IS NULL) OR ([42_Nombre_Receptor] = @p33)) AND ((@p37 = 1 AND [43_RFC_Receptor] IS NULL) OR ([43_RFC_Receptor] = @p36)) AND ((@p40 = 1 AND [53_Dom_Receptor_codigoPostal] IS NULL) OR ([53_Dom_Receptor_codigoPostal] = @p39)) AND ((@p43 = 1 AND [54_Monto_SubTotal] IS NULL) OR ([54_Monto_SubTotal] = @p42)) AND ((@p46 = 1 AND [55_Monto_IVA] IS NULL) OR ([55_Monto_IVA] = @p45)) AND ((@p49 = 1 AND [56_Monto_Total] IS NULL) OR ([56_Monto_Total] = @p48)) AND ((@p52 = 1 AND [58_TipoCFD] IS NULL) OR ([58_TipoCFD] = @p51)) AND ((@p55 = 1 AND [144_Misc32] IS NULL) OR ([144_Misc32] = @p54)) AND ((@p58 = 1 AND [157_Misc45] IS NULL) OR ([157_Misc45] = @p57)) AND ((@p61 = 1 AND [158_Misc46] IS NULL) OR ([158_Misc46] = @p60)) AND ((@p64 = 1 AND [159_Misc47] IS NULL) OR ([159_Misc47] = @p63)) AND ((@p67 = 1 AND [192_Monto_TotalImp_Retenidos] IS NULL) OR ([192_Monto_TotalImp_Retenidos] = @p66)) AND ((@p70 = 1 AND [193_Monto_TotalImp_Trasladados] IS NULL) OR ([193_Monto_TotalImp_Trasladados] = @p69)) AND ((@IsNull_Guid = 1 AND [Guid] IS NULL) OR ([Guid] = @Original_Guid)) AND ((@p73 = 1 AND [100_Letras_Monto_Total] IS NULL) OR ([100_Letras_Monto_Total] = @p72)) AND ((@p76 = 1 AND [114_Misc02] IS NULL) OR ([114_Misc02] = @p75)) AND ((@p79 = 1 AND [180_LugarExpedicion] IS NULL) OR ([180_LugarExpedicion] = @p78)) AND ((@p82 = 1 AND [190_Metodo_Pago] IS NULL) OR ([190_Metodo_Pago] = @p81)) AND ((@p85 = 1 AND [191_Efecto_Comprobante] IS NULL) OR ([191_Efecto_Comprobante] = @p84)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="1_Folio" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="2_Nombre_Emisor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="2_Nombre_Emisor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="3_RFC_Emisor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="3_RFC_Emisor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="5_Dom_Emisor_noExterior" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="5_Dom_Emisor_noExterior" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="13_Dom_Emisor_codigoPostal" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="13_Dom_Emisor_codigoPostal" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="26_Version" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="26_Version" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p19" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="27_Serie_Comprobante" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p22" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="29_FormaPago" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p21" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="29_FormaPago" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p25" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="30_Fecha" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p24" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="30_Fecha" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p28" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="31_Hora" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p27" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="31_Hora" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p31" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="41_Dom_LugarExpide_codigoPostal" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p30" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="41_Dom_LugarExpide_codigoPostal" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p34" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="42_Nombre_Receptor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p33" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="42_Nombre_Receptor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p37" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="43_RFC_Receptor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p36" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="43_RFC_Receptor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p40" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="53_Dom_Receptor_codigoPostal" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p39" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="53_Dom_Receptor_codigoPostal" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p43" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="54_Monto_SubTotal" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p42" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="54_Monto_SubTotal" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p46" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="55_Monto_IVA" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p45" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="55_Monto_IVA" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p49" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="56_Monto_Total" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p48" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="56_Monto_Total" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p52" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="58_TipoCFD" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@p51" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="58_TipoCFD" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p55" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="144_Misc32" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p54" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="144_Misc32" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p58" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="157_Misc45" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p57" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="157_Misc45" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p61" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="158_Misc46" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p60" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="158_Misc46" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p64" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="159_Misc47" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p63" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="159_Misc47" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p67" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="192_Monto_TotalImp_Retenidos" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p66" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="192_Monto_TotalImp_Retenidos" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p70" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="193_Monto_TotalImp_Trasladados" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p69" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="193_Monto_TotalImp_Trasladados" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Guid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Guid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Guid" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Guid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p73" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="100_Letras_Monto_Total" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p72" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="100_Letras_Monto_Total" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p76" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="114_Misc02" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p75" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="114_Misc02" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p79" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="180_LugarExpedicion" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p78" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="180_LugarExpedicion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p82" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="190_Metodo_Pago" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p81" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="190_Metodo_Pago" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p85" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="191_Efecto_Comprobante" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p84" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="191_Efecto_Comprobante" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [CFDI_Encabezado] ([1_Folio], [2_Nombre_Emisor], [3_RFC_Emisor], [5_Dom_Emisor_noExterior], [13_Dom_Emisor_codigoPostal], [26_Version], [27_Serie_Comprobante], [29_FormaPago], [30_Fecha], [31_Hora], [41_Dom_LugarExpide_codigoPostal], [42_Nombre_Receptor], [43_RFC_Receptor], [53_Dom_Receptor_codigoPostal], [54_Monto_SubTotal], [55_Monto_IVA], [56_Monto_Total], [58_TipoCFD], [144_Misc32], [157_Misc45], [158_Misc46], [159_Misc47], [192_Monto_TotalImp_Retenidos], [193_Monto_TotalImp_Trasladados], [Guid], [100_Letras_Monto_Total], [114_Misc02], [180_LugarExpedicion], [190_Metodo_Pago], [191_Efecto_Comprobante]) VALUES (@p1, @p3, @p6, @p9, @p12, @p15, @p18, @p20, @p23, @p26, @p29, @p32, @p35, @p38, @p41, @p44, @p47, @p50, @p53, @p56, @p59, @p62, @p65, @p68, @Guid, @p71, @p74, @p77, @p80, @p83);
+SELECT [1_Folio], [2_Nombre_Emisor], [3_RFC_Emisor], [5_Dom_Emisor_noExterior], [13_Dom_Emisor_codigoPostal], [26_Version], [27_Serie_Comprobante], [29_FormaPago], [30_Fecha], [31_Hora], [41_Dom_LugarExpide_codigoPostal], [42_Nombre_Receptor], [43_RFC_Receptor], [53_Dom_Receptor_codigoPostal], [54_Monto_SubTotal], [55_Monto_IVA], [56_Monto_Total], [58_TipoCFD], [144_Misc32], [157_Misc45], [158_Misc46], [159_Misc47], [192_Monto_TotalImp_Retenidos], [193_Monto_TotalImp_Trasladados], Guid, [100_Letras_Monto_Total], [114_Misc02], [180_LugarExpedicion], [190_Metodo_Pago], [191_Efecto_Comprobante] FROM CFDI_Encabezado WHERE ([1_Folio] = @__Folio) AND ([27_Serie_Comprobante] = @_7_Serie_Comprobante)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="1_Folio" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="2_Nombre_Emisor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="3_RFC_Emisor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="5_Dom_Emisor_noExterior" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="13_Dom_Emisor_codigoPostal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="26_Version" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p18" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="27_Serie_Comprobante" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p20" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="29_FormaPago" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p23" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="30_Fecha" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p26" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="31_Hora" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p29" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="41_Dom_LugarExpide_codigoPostal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p32" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="42_Nombre_Receptor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p35" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="43_RFC_Receptor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p38" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="53_Dom_Receptor_codigoPostal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p41" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="54_Monto_SubTotal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p44" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="55_Monto_IVA" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p47" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="56_Monto_Total" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@p50" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="58_TipoCFD" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p53" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="144_Misc32" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p56" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="157_Misc45" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p59" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="158_Misc46" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p62" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="159_Misc47" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p65" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="192_Monto_TotalImp_Retenidos" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p68" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="193_Monto_TotalImp_Trasladados" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Guid" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Guid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p71" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="100_Letras_Monto_Total" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p74" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="114_Misc02" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p77" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="180_LugarExpedicion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p80" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="190_Metodo_Pago" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p83" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="191_Efecto_Comprobante" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="__Folio" ColumnName="1_Folio" DataSourceName="Production.dbo.CFDI_Encabezado" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@__Folio" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="1_Folio" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="_7_Serie_Comprobante" ColumnName="27_Serie_Comprobante" DataSourceName="Production.dbo.CFDI_Encabezado" DataTypeServer="varchar(55)" DbType="AnsiString" Direction="Input" ParameterName="@_7_Serie_Comprobante" Precision="0" ProviderType="VarChar" Scale="0" Size="55" SourceColumn="27_Serie_Comprobante" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        [1_Folio], [2_Nombre_Emisor], [3_RFC_Emisor], [5_Dom_Emisor_noExterior], [13_Dom_Emisor_codigoPostal], [26_Version], [27_Serie_Comprobante], [29_FormaPago], [30_Fecha], [31_Hora], 
+                         [41_Dom_LugarExpide_codigoPostal], [42_Nombre_Receptor], [43_RFC_Receptor], [53_Dom_Receptor_codigoPostal], [54_Monto_SubTotal], [55_Monto_IVA], [56_Monto_Total], [58_TipoCFD], [144_Misc32], [157_Misc45], 
+                         [158_Misc46], [159_Misc47], [192_Monto_TotalImp_Retenidos], [193_Monto_TotalImp_Trasladados], Guid, [100_Letras_Monto_Total], [114_Misc02], [180_LugarExpedicion], [190_Metodo_Pago], 
+                         [191_Efecto_Comprobante]
+FROM            CFDI_Encabezado</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [CFDI_Encabezado] SET [1_Folio] = @p1, [2_Nombre_Emisor] = @p3, [3_RFC_Emisor] = @p6, [5_Dom_Emisor_noExterior] = @p9, [13_Dom_Emisor_codigoPostal] = @p12, [26_Version] = @p15, [27_Serie_Comprobante] = @p18, [29_FormaPago] = @p20, [30_Fecha] = @p23, [31_Hora] = @p26, [41_Dom_LugarExpide_codigoPostal] = @p29, [42_Nombre_Receptor] = @p32, [43_RFC_Receptor] = @p35, [53_Dom_Receptor_codigoPostal] = @p38, [54_Monto_SubTotal] = @p41, [55_Monto_IVA] = @p44, [56_Monto_Total] = @p47, [58_TipoCFD] = @p50, [144_Misc32] = @p53, [157_Misc45] = @p56, [158_Misc46] = @p59, [159_Misc47] = @p62, [192_Monto_TotalImp_Retenidos] = @p65, [193_Monto_TotalImp_Trasladados] = @p68, [Guid] = @Guid, [100_Letras_Monto_Total] = @p71, [114_Misc02] = @p74, [180_LugarExpedicion] = @p77, [190_Metodo_Pago] = @p80, [191_Efecto_Comprobante] = @p83 WHERE (([1_Folio] = @p2) AND ((@p5 = 1 AND [2_Nombre_Emisor] IS NULL) OR ([2_Nombre_Emisor] = @p4)) AND ((@p8 = 1 AND [3_RFC_Emisor] IS NULL) OR ([3_RFC_Emisor] = @p7)) AND ((@p11 = 1 AND [5_Dom_Emisor_noExterior] IS NULL) OR ([5_Dom_Emisor_noExterior] = @p10)) AND ((@p14 = 1 AND [13_Dom_Emisor_codigoPostal] IS NULL) OR ([13_Dom_Emisor_codigoPostal] = @p13)) AND ((@p17 = 1 AND [26_Version] IS NULL) OR ([26_Version] = @p16)) AND ([27_Serie_Comprobante] = @p19) AND ((@p22 = 1 AND [29_FormaPago] IS NULL) OR ([29_FormaPago] = @p21)) AND ((@p25 = 1 AND [30_Fecha] IS NULL) OR ([30_Fecha] = @p24)) AND ((@p28 = 1 AND [31_Hora] IS NULL) OR ([31_Hora] = @p27)) AND ((@p31 = 1 AND [41_Dom_LugarExpide_codigoPostal] IS NULL) OR ([41_Dom_LugarExpide_codigoPostal] = @p30)) AND ((@p34 = 1 AND [42_Nombre_Receptor] IS NULL) OR ([42_Nombre_Receptor] = @p33)) AND ((@p37 = 1 AND [43_RFC_Receptor] IS NULL) OR ([43_RFC_Receptor] = @p36)) AND ((@p40 = 1 AND [53_Dom_Receptor_codigoPostal] IS NULL) OR ([53_Dom_Receptor_codigoPostal] = @p39)) AND ((@p43 = 1 AND [54_Monto_SubTotal] IS NULL) OR ([54_Monto_SubTotal] = @p42)) AND ((@p46 = 1 AND [55_Monto_IVA] IS NULL) OR ([55_Monto_IVA] = @p45)) AND ((@p49 = 1 AND [56_Monto_Total] IS NULL) OR ([56_Monto_Total] = @p48)) AND ((@p52 = 1 AND [58_TipoCFD] IS NULL) OR ([58_TipoCFD] = @p51)) AND ((@p55 = 1 AND [144_Misc32] IS NULL) OR ([144_Misc32] = @p54)) AND ((@p58 = 1 AND [157_Misc45] IS NULL) OR ([157_Misc45] = @p57)) AND ((@p61 = 1 AND [158_Misc46] IS NULL) OR ([158_Misc46] = @p60)) AND ((@p64 = 1 AND [159_Misc47] IS NULL) OR ([159_Misc47] = @p63)) AND ((@p67 = 1 AND [192_Monto_TotalImp_Retenidos] IS NULL) OR ([192_Monto_TotalImp_Retenidos] = @p66)) AND ((@p70 = 1 AND [193_Monto_TotalImp_Trasladados] IS NULL) OR ([193_Monto_TotalImp_Trasladados] = @p69)) AND ((@IsNull_Guid = 1 AND [Guid] IS NULL) OR ([Guid] = @Original_Guid)) AND ((@p73 = 1 AND [100_Letras_Monto_Total] IS NULL) OR ([100_Letras_Monto_Total] = @p72)) AND ((@p76 = 1 AND [114_Misc02] IS NULL) OR ([114_Misc02] = @p75)) AND ((@p79 = 1 AND [180_LugarExpedicion] IS NULL) OR ([180_LugarExpedicion] = @p78)) AND ((@p82 = 1 AND [190_Metodo_Pago] IS NULL) OR ([190_Metodo_Pago] = @p81)) AND ((@p85 = 1 AND [191_Efecto_Comprobante] IS NULL) OR ([191_Efecto_Comprobante] = @p84)));
+SELECT [1_Folio], [2_Nombre_Emisor], [3_RFC_Emisor], [5_Dom_Emisor_noExterior], [13_Dom_Emisor_codigoPostal], [26_Version], [27_Serie_Comprobante], [29_FormaPago], [30_Fecha], [31_Hora], [41_Dom_LugarExpide_codigoPostal], [42_Nombre_Receptor], [43_RFC_Receptor], [53_Dom_Receptor_codigoPostal], [54_Monto_SubTotal], [55_Monto_IVA], [56_Monto_Total], [58_TipoCFD], [144_Misc32], [157_Misc45], [158_Misc46], [159_Misc47], [192_Monto_TotalImp_Retenidos], [193_Monto_TotalImp_Trasladados], Guid, [100_Letras_Monto_Total], [114_Misc02], [180_LugarExpedicion], [190_Metodo_Pago], [191_Efecto_Comprobante] FROM CFDI_Encabezado WHERE ([1_Folio] = @__Folio) AND ([27_Serie_Comprobante] = @_7_Serie_Comprobante)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="1_Folio" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="2_Nombre_Emisor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="3_RFC_Emisor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="5_Dom_Emisor_noExterior" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="13_Dom_Emisor_codigoPostal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="26_Version" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p18" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="27_Serie_Comprobante" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p20" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="29_FormaPago" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p23" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="30_Fecha" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p26" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="31_Hora" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p29" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="41_Dom_LugarExpide_codigoPostal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p32" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="42_Nombre_Receptor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p35" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="43_RFC_Receptor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p38" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="53_Dom_Receptor_codigoPostal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p41" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="54_Monto_SubTotal" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p44" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="55_Monto_IVA" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p47" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="56_Monto_Total" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@p50" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="58_TipoCFD" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p53" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="144_Misc32" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p56" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="157_Misc45" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p59" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="158_Misc46" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p62" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="159_Misc47" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p65" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="192_Monto_TotalImp_Retenidos" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p68" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="193_Monto_TotalImp_Trasladados" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Guid" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Guid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p71" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="100_Letras_Monto_Total" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p74" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="114_Misc02" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p77" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="180_LugarExpedicion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p80" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="190_Metodo_Pago" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p83" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="191_Efecto_Comprobante" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="1_Folio" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="2_Nombre_Emisor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="2_Nombre_Emisor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="3_RFC_Emisor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="3_RFC_Emisor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="5_Dom_Emisor_noExterior" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="5_Dom_Emisor_noExterior" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="13_Dom_Emisor_codigoPostal" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="13_Dom_Emisor_codigoPostal" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="26_Version" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="26_Version" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p19" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="27_Serie_Comprobante" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p22" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="29_FormaPago" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p21" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="29_FormaPago" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p25" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="30_Fecha" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p24" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="30_Fecha" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p28" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="31_Hora" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p27" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="31_Hora" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p31" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="41_Dom_LugarExpide_codigoPostal" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p30" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="41_Dom_LugarExpide_codigoPostal" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p34" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="42_Nombre_Receptor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p33" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="42_Nombre_Receptor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p37" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="43_RFC_Receptor" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p36" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="43_RFC_Receptor" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p40" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="53_Dom_Receptor_codigoPostal" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p39" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="53_Dom_Receptor_codigoPostal" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p43" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="54_Monto_SubTotal" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p42" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="54_Monto_SubTotal" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p46" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="55_Monto_IVA" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p45" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="55_Monto_IVA" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p49" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="56_Monto_Total" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p48" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="56_Monto_Total" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p52" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="58_TipoCFD" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@p51" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="58_TipoCFD" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p55" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="144_Misc32" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p54" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="144_Misc32" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p58" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="157_Misc45" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p57" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="157_Misc45" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p61" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="158_Misc46" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p60" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="158_Misc46" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p64" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="159_Misc47" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p63" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="159_Misc47" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p67" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="192_Monto_TotalImp_Retenidos" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p66" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="192_Monto_TotalImp_Retenidos" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p70" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="193_Monto_TotalImp_Trasladados" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p69" Precision="18" ProviderType="Decimal" Scale="4" Size="0" SourceColumn="193_Monto_TotalImp_Trasladados" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Guid" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Guid" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Guid" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Guid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p73" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="100_Letras_Monto_Total" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p72" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="100_Letras_Monto_Total" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p76" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="114_Misc02" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p75" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="114_Misc02" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p79" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="180_LugarExpedicion" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p78" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="180_LugarExpedicion" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p82" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="190_Metodo_Pago" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p81" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="190_Metodo_Pago" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p85" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="191_Efecto_Comprobante" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p84" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="191_Efecto_Comprobante" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="__Folio" ColumnName="1_Folio" DataSourceName="Production.dbo.CFDI_Encabezado" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@__Folio" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="1_Folio" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="_7_Serie_Comprobante" ColumnName="27_Serie_Comprobante" DataSourceName="Production.dbo.CFDI_Encabezado" DataTypeServer="varchar(55)" DbType="AnsiString" Direction="Input" ParameterName="@_7_Serie_Comprobante" Precision="0" ProviderType="VarChar" Scale="0" Size="55" SourceColumn="27_Serie_Comprobante" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="1_Folio" DataSetColumn="1_Folio" />
+              <Mapping SourceColumn="2_Nombre_Emisor" DataSetColumn="2_Nombre_Emisor" />
+              <Mapping SourceColumn="3_RFC_Emisor" DataSetColumn="3_RFC_Emisor" />
+              <Mapping SourceColumn="5_Dom_Emisor_noExterior" DataSetColumn="5_Dom_Emisor_noExterior" />
+              <Mapping SourceColumn="13_Dom_Emisor_codigoPostal" DataSetColumn="13_Dom_Emisor_codigoPostal" />
+              <Mapping SourceColumn="26_Version" DataSetColumn="26_Version" />
+              <Mapping SourceColumn="27_Serie_Comprobante" DataSetColumn="27_Serie_Comprobante" />
+              <Mapping SourceColumn="29_FormaPago" DataSetColumn="29_FormaPago" />
+              <Mapping SourceColumn="30_Fecha" DataSetColumn="30_Fecha" />
+              <Mapping SourceColumn="31_Hora" DataSetColumn="31_Hora" />
+              <Mapping SourceColumn="41_Dom_LugarExpide_codigoPostal" DataSetColumn="41_Dom_LugarExpide_codigoPostal" />
+              <Mapping SourceColumn="42_Nombre_Receptor" DataSetColumn="42_Nombre_Receptor" />
+              <Mapping SourceColumn="43_RFC_Receptor" DataSetColumn="43_RFC_Receptor" />
+              <Mapping SourceColumn="53_Dom_Receptor_codigoPostal" DataSetColumn="53_Dom_Receptor_codigoPostal" />
+              <Mapping SourceColumn="54_Monto_SubTotal" DataSetColumn="54_Monto_SubTotal" />
+              <Mapping SourceColumn="55_Monto_IVA" DataSetColumn="55_Monto_IVA" />
+              <Mapping SourceColumn="56_Monto_Total" DataSetColumn="56_Monto_Total" />
+              <Mapping SourceColumn="58_TipoCFD" DataSetColumn="58_TipoCFD" />
+              <Mapping SourceColumn="144_Misc32" DataSetColumn="144_Misc32" />
+              <Mapping SourceColumn="157_Misc45" DataSetColumn="157_Misc45" />
+              <Mapping SourceColumn="158_Misc46" DataSetColumn="158_Misc46" />
+              <Mapping SourceColumn="159_Misc47" DataSetColumn="159_Misc47" />
+              <Mapping SourceColumn="192_Monto_TotalImp_Retenidos" DataSetColumn="192_Monto_TotalImp_Retenidos" />
+              <Mapping SourceColumn="193_Monto_TotalImp_Trasladados" DataSetColumn="193_Monto_TotalImp_Trasladados" />
+              <Mapping SourceColumn="Guid" DataSetColumn="Guid" />
+              <Mapping SourceColumn="100_Letras_Monto_Total" DataSetColumn="100_Letras_Monto_Total" />
+              <Mapping SourceColumn="114_Misc02" DataSetColumn="114_Misc02" />
+              <Mapping SourceColumn="180_LugarExpedicion" DataSetColumn="180_LugarExpedicion" />
+              <Mapping SourceColumn="190_Metodo_Pago" DataSetColumn="190_Metodo_Pago" />
+              <Mapping SourceColumn="191_Efecto_Comprobante" DataSetColumn="191_Efecto_Comprobante" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="ProductionConnectionString (Settings)" DbObjectName="Production.dbo.CFDI_Encabezado" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Buscar_FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="Buscar_GetDataBy" GeneratorSourceName="Buscar_FillBy" GetMethodModifier="Public" GetMethodName="Buscar_GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="Buscar_GetDataBy" UserSourceName="Buscar_FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        [1_Folio], [2_Nombre_Emisor], [3_RFC_Emisor], [5_Dom_Emisor_noExterior], [13_Dom_Emisor_codigoPostal], [26_Version], [27_Serie_Comprobante], [29_FormaPago], [30_Fecha], [31_Hora], 
+                         [41_Dom_LugarExpide_codigoPostal], [42_Nombre_Receptor], [43_RFC_Receptor], [53_Dom_Receptor_codigoPostal], [54_Monto_SubTotal], [55_Monto_IVA], [56_Monto_Total], [58_TipoCFD], [144_Misc32], [157_Misc45], 
+                         [158_Misc46], [159_Misc47], [192_Monto_TotalImp_Retenidos], [193_Monto_TotalImp_Trasladados], Guid, [100_Letras_Monto_Total], [114_Misc02], [180_LugarExpedicion], [190_Metodo_Pago], 
+                         [191_Efecto_Comprobante]
+FROM            CFDI_Encabezado
+WHERE        ([1_Folio] = @Folio) AND ([27_Serie_Comprobante] = @Serie) OR
+                         (Guid = @UUID)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Folio" ColumnName="1_Folio" DataSourceName="Production.dbo.CFDI_Encabezado" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Folio" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="1_Folio" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Serie" ColumnName="27_Serie_Comprobante" DataSourceName="Production.dbo.CFDI_Encabezado" DataTypeServer="varchar(55)" DbType="AnsiString" Direction="Input" ParameterName="@Serie" Precision="0" ProviderType="VarChar" Scale="0" Size="55" SourceColumn="27_Serie_Comprobante" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="UUID" ColumnName="Guid" DataSourceName="Production.dbo.CFDI_Encabezado" DataTypeServer="varchar(36)" DbType="AnsiString" Direction="Input" ParameterName="@UUID" Precision="0" ProviderType="VarChar" Scale="0" Size="36" SourceColumn="Guid" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ProductionConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CancelaCFDI_UpdateQuery" Modifier="Public" Name="CancelaCFDI_UpdateQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="CancelaCFDI_UpdateQuery">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       CFDI_Encabezado
+SET                Guid = 'CANCELADA'
+WHERE        ([1_Folio] = @Folio) AND ([27_Serie_Comprobante] = @Serie) AND (Guid = @UUID);  
+</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Folio" ColumnName="1_Folio" DataSourceName="Production.dbo.CFDI_Encabezado" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Folio" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="1_Folio" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Serie" ColumnName="27_Serie_Comprobante" DataSourceName="Production.dbo.CFDI_Encabezado" DataTypeServer="varchar(55)" DbType="AnsiString" Direction="Input" ParameterName="@Serie" Precision="0" ProviderType="VarChar" Scale="0" Size="55" SourceColumn="27_Serie_Comprobante" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="UUID" ColumnName="Guid" DataSourceName="Production.dbo.CFDI_Encabezado" DataTypeServer="varchar(36)" DbType="AnsiString" Direction="Input" ParameterName="@UUID" Precision="0" ProviderType="VarChar" Scale="0" Size="36" SourceColumn="Guid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ProductionConnectionString (Settings)" DbObjectName="Production.dbo.CFDI_Encabezado" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="RangoFolios_FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="RangoFolios_GetDataBy1" GeneratorSourceName="RangoFolios_FillBy" GetMethodModifier="Public" GetMethodName="RangoFolios_GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="RangoFolios_GetDataBy1" UserSourceName="RangoFolios_FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        [1_Folio], [2_Nombre_Emisor], [3_RFC_Emisor], [5_Dom_Emisor_noExterior], [13_Dom_Emisor_codigoPostal], [26_Version], [27_Serie_Comprobante], [29_FormaPago], [30_Fecha], [31_Hora], 
+                         [41_Dom_LugarExpide_codigoPostal], [42_Nombre_Receptor], [43_RFC_Receptor], [53_Dom_Receptor_codigoPostal], [54_Monto_SubTotal], [55_Monto_IVA], [56_Monto_Total], [58_TipoCFD], [144_Misc32], [157_Misc45], 
+                         [158_Misc46], [159_Misc47], [192_Monto_TotalImp_Retenidos], [193_Monto_TotalImp_Trasladados], Guid, [100_Letras_Monto_Total], [114_Misc02], [180_LugarExpedicion], [190_Metodo_Pago], 
+                         [191_Efecto_Comprobante]
+FROM            CFDI_Encabezado
+WHERE        ([1_Folio] BETWEEN @Folio1 AND @Folio2) AND ([27_Serie_Comprobante] = @Serie)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Folio1" ColumnName="1_Folio" DataSourceName="Production.dbo.CFDI_Encabezado" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Folio1" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="1_Folio" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Folio2" ColumnName="1_Folio" DataSourceName="Production.dbo.CFDI_Encabezado" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Folio2" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="1_Folio" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Serie" ColumnName="27_Serie_Comprobante" DataSourceName="Production.dbo.CFDI_Encabezado" DataTypeServer="varchar(55)" DbType="AnsiString" Direction="Input" ParameterName="@Serie" Precision="0" ProviderType="VarChar" Scale="0" Size="55" SourceColumn="27_Serie_Comprobante" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ProductionConnectionString (Settings)" DbObjectName="Production.dbo.CFDI_Encabezado" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Top100_FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="Top100_GetDataBy1" GeneratorSourceName="Top100_FillBy" GetMethodModifier="Public" GetMethodName="Top100_GetDataBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="Top100_GetDataBy1" UserSourceName="Top100_FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT      Top(100)  [1_Folio], [2_Nombre_Emisor], [3_RFC_Emisor], [5_Dom_Emisor_noExterior], [13_Dom_Emisor_codigoPostal], [26_Version], [27_Serie_Comprobante], [29_FormaPago], [30_Fecha], [31_Hora], 
+                         [41_Dom_LugarExpide_codigoPostal], [42_Nombre_Receptor], [43_RFC_Receptor], [53_Dom_Receptor_codigoPostal], [54_Monto_SubTotal], [55_Monto_IVA], [56_Monto_Total], [58_TipoCFD], [144_Misc32], [157_Misc45], 
+                         [158_Misc46], [159_Misc47], [192_Monto_TotalImp_Retenidos], [193_Monto_TotalImp_Trasladados], Guid, [100_Letras_Monto_Total], [114_Misc02], [180_LugarExpedicion], [190_Metodo_Pago], 
+                         [191_Efecto_Comprobante]
+FROM            CFDI_Encabezado</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -161,7 +476,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
   <xs:element name="ATEBCOFIDIDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ATEBCOFIDIDataSet" msprop:Generator_UserDSName="ATEBCOFIDIDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="CFDI_Clientes_COFIDI" msprop:Generator_TableClassName="CFDI_Clientes_COFIDIDataTable" msprop:Generator_TableVarName="tableCFDI_Clientes_COFIDI" msprop:Generator_RowChangedName="CFDI_Clientes_COFIDIRowChanged" msprop:Generator_TablePropName="CFDI_Clientes_COFIDI" msprop:Generator_RowDeletingName="CFDI_Clientes_COFIDIRowDeleting" msprop:Generator_RowChangingName="CFDI_Clientes_COFIDIRowChanging" msprop:Generator_RowEvHandlerName="CFDI_Clientes_COFIDIRowChangeEventHandler" msprop:Generator_RowDeletedName="CFDI_Clientes_COFIDIRowDeleted" msprop:Generator_RowClassName="CFDI_Clientes_COFIDIRow" msprop:Generator_UserTableName="CFDI_Clientes_COFIDI" msprop:Generator_RowEvArgName="CFDI_Clientes_COFIDIRowChangeEvent">
+        <xs:element name="CFDI_Clientes_COFIDI" msprop:Generator_TableClassName="CFDI_Clientes_COFIDIDataTable" msprop:Generator_TableVarName="tableCFDI_Clientes_COFIDI" msprop:Generator_TablePropName="CFDI_Clientes_COFIDI" msprop:Generator_RowDeletingName="CFDI_Clientes_COFIDIRowDeleting" msprop:Generator_RowChangingName="CFDI_Clientes_COFIDIRowChanging" msprop:Generator_RowEvHandlerName="CFDI_Clientes_COFIDIRowChangeEventHandler" msprop:Generator_RowDeletedName="CFDI_Clientes_COFIDIRowDeleted" msprop:Generator_UserTableName="CFDI_Clientes_COFIDI" msprop:Generator_RowChangedName="CFDI_Clientes_COFIDIRowChanged" msprop:Generator_RowEvArgName="CFDI_Clientes_COFIDIRowChangeEvent" msprop:Generator_RowClassName="CFDI_Clientes_COFIDIRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="RazonSocial" msprop:Generator_ColumnVarNameInTable="columnRazonSocial" msprop:Generator_ColumnPropNameInRow="RazonSocial" msprop:Generator_ColumnPropNameInTable="RazonSocialColumn" msprop:Generator_UserColumnName="RazonSocial" minOccurs="0">
@@ -260,7 +575,7 @@ WHERE        (Anexo = @Anexo)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TimbresEkomercio" msprop:Generator_TableClassName="TimbresEkomercioDataTable" msprop:Generator_TableVarName="tableTimbresEkomercio" msprop:Generator_RowChangedName="TimbresEkomercioRowChanged" msprop:Generator_TablePropName="TimbresEkomercio" msprop:Generator_RowDeletingName="TimbresEkomercioRowDeleting" msprop:Generator_RowChangingName="TimbresEkomercioRowChanging" msprop:Generator_RowEvHandlerName="TimbresEkomercioRowChangeEventHandler" msprop:Generator_RowDeletedName="TimbresEkomercioRowDeleted" msprop:Generator_RowClassName="TimbresEkomercioRow" msprop:Generator_UserTableName="TimbresEkomercio" msprop:Generator_RowEvArgName="TimbresEkomercioRowChangeEvent">
+        <xs:element name="TimbresEkomercio" msprop:Generator_TableClassName="TimbresEkomercioDataTable" msprop:Generator_TableVarName="tableTimbresEkomercio" msprop:Generator_TablePropName="TimbresEkomercio" msprop:Generator_RowDeletingName="TimbresEkomercioRowDeleting" msprop:Generator_RowChangingName="TimbresEkomercioRowChanging" msprop:Generator_RowEvHandlerName="TimbresEkomercioRowChangeEventHandler" msprop:Generator_RowDeletedName="TimbresEkomercioRowDeleted" msprop:Generator_UserTableName="TimbresEkomercio" msprop:Generator_RowChangedName="TimbresEkomercioRowChanged" msprop:Generator_RowEvArgName="TimbresEkomercioRowChangeEvent" msprop:Generator_RowClassName="TimbresEkomercioRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="serie" msprop:Generator_ColumnVarNameInTable="columnserie" msprop:Generator_ColumnPropNameInRow="serie" msprop:Generator_ColumnPropNameInTable="serieColumn" msprop:Generator_UserColumnName="serie" minOccurs="0">
@@ -367,7 +682,192 @@ WHERE        (Anexo = @Anexo)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="CFDI_Encabezado" msprop:Generator_TableClassName="CFDI_EncabezadoDataTable" msprop:Generator_TableVarName="tableCFDI_Encabezado" msprop:Generator_TablePropName="CFDI_Encabezado" msprop:Generator_RowDeletingName="CFDI_EncabezadoRowDeleting" msprop:Generator_RowChangingName="CFDI_EncabezadoRowChanging" msprop:Generator_RowEvHandlerName="CFDI_EncabezadoRowChangeEventHandler" msprop:Generator_RowDeletedName="CFDI_EncabezadoRowDeleted" msprop:Generator_UserTableName="CFDI_Encabezado" msprop:Generator_RowChangedName="CFDI_EncabezadoRowChanged" msprop:Generator_RowEvArgName="CFDI_EncabezadoRowChangeEvent" msprop:Generator_RowClassName="CFDI_EncabezadoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="_x0031__Folio" msprop:Generator_ColumnVarNameInTable="column1_Folio" msprop:Generator_ColumnPropNameInRow="_1_Folio" msprop:Generator_ColumnPropNameInTable="_1_FolioColumn" msprop:Generator_UserColumnName="1_Folio" type="xs:int" />
+              <xs:element name="_x0032__Nombre_Emisor" msprop:Generator_ColumnVarNameInTable="column2_Nombre_Emisor" msprop:Generator_ColumnPropNameInRow="_2_Nombre_Emisor" msprop:Generator_ColumnPropNameInTable="_2_Nombre_EmisorColumn" msprop:Generator_UserColumnName="2_Nombre_Emisor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="99" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0033__RFC_Emisor" msprop:Generator_ColumnVarNameInTable="column3_RFC_Emisor" msprop:Generator_ColumnPropNameInRow="_3_RFC_Emisor" msprop:Generator_ColumnPropNameInTable="_3_RFC_EmisorColumn" msprop:Generator_UserColumnName="3_RFC_Emisor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0035__Dom_Emisor_noExterior" msprop:Generator_ColumnVarNameInTable="column5_Dom_Emisor_noExterior" msprop:Generator_ColumnPropNameInRow="_5_Dom_Emisor_noExterior" msprop:Generator_ColumnPropNameInTable="_5_Dom_Emisor_noExteriorColumn" msprop:Generator_UserColumnName="5_Dom_Emisor_noExterior" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_3_Dom_Emisor_codigoPostal" msprop:Generator_ColumnVarNameInTable="column13_Dom_Emisor_codigoPostal" msprop:Generator_ColumnPropNameInRow="_13_Dom_Emisor_codigoPostal" msprop:Generator_ColumnPropNameInTable="_13_Dom_Emisor_codigoPostalColumn" msprop:Generator_UserColumnName="13_Dom_Emisor_codigoPostal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0032_6_Version" msprop:Generator_ColumnVarNameInTable="column26_Version" msprop:Generator_ColumnPropNameInRow="_26_Version" msprop:Generator_ColumnPropNameInTable="_26_VersionColumn" msprop:Generator_UserColumnName="26_Version" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="55" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0032_7_Serie_Comprobante" msprop:Generator_ColumnVarNameInTable="column27_Serie_Comprobante" msprop:Generator_ColumnPropNameInRow="_27_Serie_Comprobante" msprop:Generator_ColumnPropNameInTable="_27_Serie_ComprobanteColumn" msprop:Generator_UserColumnName="27_Serie_Comprobante">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="55" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0032_9_FormaPago" msprop:Generator_ColumnVarNameInTable="column29_FormaPago" msprop:Generator_ColumnPropNameInRow="_29_FormaPago" msprop:Generator_ColumnPropNameInTable="_29_FormaPagoColumn" msprop:Generator_UserColumnName="29_FormaPago" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="55" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0033_0_Fecha" msprop:Generator_ColumnVarNameInTable="column30_Fecha" msprop:Generator_ColumnPropNameInRow="_30_Fecha" msprop:Generator_ColumnPropNameInTable="_30_FechaColumn" msprop:Generator_UserColumnName="30_Fecha" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="22" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0033_1_Hora" msprop:Generator_ColumnVarNameInTable="column31_Hora" msprop:Generator_ColumnPropNameInRow="_31_Hora" msprop:Generator_ColumnPropNameInTable="_31_HoraColumn" msprop:Generator_UserColumnName="31_Hora" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="22" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0034_1_Dom_LugarExpide_codigoPostal" msprop:Generator_ColumnVarNameInTable="column41_Dom_LugarExpide_codigoPostal" msprop:Generator_ColumnPropNameInRow="_41_Dom_LugarExpide_codigoPostal" msprop:Generator_ColumnPropNameInTable="_41_Dom_LugarExpide_codigoPostalColumn" msprop:Generator_UserColumnName="41_Dom_LugarExpide_codigoPostal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0034_2_Nombre_Receptor" msprop:Generator_ColumnVarNameInTable="column42_Nombre_Receptor" msprop:Generator_ColumnPropNameInRow="_42_Nombre_Receptor" msprop:Generator_ColumnPropNameInTable="_42_Nombre_ReceptorColumn" msprop:Generator_UserColumnName="42_Nombre_Receptor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="99" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0034_3_RFC_Receptor" msprop:Generator_ColumnVarNameInTable="column43_RFC_Receptor" msprop:Generator_ColumnPropNameInRow="_43_RFC_Receptor" msprop:Generator_ColumnPropNameInTable="_43_RFC_ReceptorColumn" msprop:Generator_UserColumnName="43_RFC_Receptor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0035_3_Dom_Receptor_codigoPostal" msprop:Generator_ColumnVarNameInTable="column53_Dom_Receptor_codigoPostal" msprop:Generator_ColumnPropNameInRow="_53_Dom_Receptor_codigoPostal" msprop:Generator_ColumnPropNameInTable="_53_Dom_Receptor_codigoPostalColumn" msprop:Generator_UserColumnName="53_Dom_Receptor_codigoPostal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0035_4_Monto_SubTotal" msprop:Generator_ColumnVarNameInTable="column54_Monto_SubTotal" msprop:Generator_ColumnPropNameInRow="_54_Monto_SubTotal" msprop:Generator_ColumnPropNameInTable="_54_Monto_SubTotalColumn" msprop:Generator_UserColumnName="54_Monto_SubTotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0035_5_Monto_IVA" msprop:Generator_ColumnVarNameInTable="column55_Monto_IVA" msprop:Generator_ColumnPropNameInRow="_55_Monto_IVA" msprop:Generator_ColumnPropNameInTable="_55_Monto_IVAColumn" msprop:Generator_UserColumnName="55_Monto_IVA" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0035_6_Monto_Total" msprop:Generator_ColumnVarNameInTable="column56_Monto_Total" msprop:Generator_ColumnPropNameInRow="_56_Monto_Total" msprop:Generator_ColumnPropNameInTable="_56_Monto_TotalColumn" msprop:Generator_UserColumnName="56_Monto_Total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0035_8_TipoCFD" msprop:Generator_ColumnVarNameInTable="column58_TipoCFD" msprop:Generator_ColumnPropNameInRow="_58_TipoCFD" msprop:Generator_ColumnPropNameInTable="_58_TipoCFDColumn" msprop:Generator_UserColumnName="58_TipoCFD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_44_Misc32" msprop:Generator_ColumnVarNameInTable="column144_Misc32" msprop:Generator_ColumnPropNameInRow="_144_Misc32" msprop:Generator_ColumnPropNameInTable="_144_Misc32Column" msprop:Generator_UserColumnName="144_Misc32" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_57_Misc45" msprop:Generator_ColumnVarNameInTable="column157_Misc45" msprop:Generator_ColumnPropNameInRow="_157_Misc45" msprop:Generator_ColumnPropNameInTable="_157_Misc45Column" msprop:Generator_UserColumnName="157_Misc45" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_58_Misc46" msprop:Generator_ColumnVarNameInTable="column158_Misc46" msprop:Generator_ColumnPropNameInRow="_158_Misc46" msprop:Generator_ColumnPropNameInTable="_158_Misc46Column" msprop:Generator_UserColumnName="158_Misc46" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_59_Misc47" msprop:Generator_ColumnVarNameInTable="column159_Misc47" msprop:Generator_ColumnPropNameInRow="_159_Misc47" msprop:Generator_ColumnPropNameInTable="_159_Misc47Column" msprop:Generator_UserColumnName="159_Misc47" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_92_Monto_TotalImp_Retenidos" msprop:Generator_ColumnVarNameInTable="column192_Monto_TotalImp_Retenidos" msprop:Generator_ColumnPropNameInRow="_192_Monto_TotalImp_Retenidos" msprop:Generator_ColumnPropNameInTable="_192_Monto_TotalImp_RetenidosColumn" msprop:Generator_UserColumnName="192_Monto_TotalImp_Retenidos" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0031_93_Monto_TotalImp_Trasladados" msprop:Generator_ColumnVarNameInTable="column193_Monto_TotalImp_Trasladados" msprop:Generator_ColumnPropNameInRow="_193_Monto_TotalImp_Trasladados" msprop:Generator_ColumnPropNameInTable="_193_Monto_TotalImp_TrasladadosColumn" msprop:Generator_UserColumnName="193_Monto_TotalImp_Trasladados" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Guid" msprop:Generator_ColumnVarNameInTable="columnGuid" msprop:Generator_ColumnPropNameInRow="Guid" msprop:Generator_ColumnPropNameInTable="GuidColumn" msprop:Generator_UserColumnName="Guid" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="36" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_00_Letras_Monto_Total" msprop:Generator_ColumnVarNameInTable="column100_Letras_Monto_Total" msprop:Generator_ColumnPropNameInRow="_100_Letras_Monto_Total" msprop:Generator_ColumnPropNameInTable="_100_Letras_Monto_TotalColumn" msprop:Generator_UserColumnName="100_Letras_Monto_Total" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_14_Misc02" msprop:Generator_ColumnVarNameInTable="column114_Misc02" msprop:Generator_ColumnPropNameInRow="_114_Misc02" msprop:Generator_ColumnPropNameInTable="_114_Misc02Column" msprop:Generator_UserColumnName="114_Misc02" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_80_LugarExpedicion" msprop:Generator_ColumnVarNameInTable="column180_LugarExpedicion" msprop:Generator_ColumnPropNameInRow="_180_LugarExpedicion" msprop:Generator_ColumnPropNameInTable="_180_LugarExpedicionColumn" msprop:Generator_UserColumnName="180_LugarExpedicion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="55" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_90_Metodo_Pago" msprop:Generator_ColumnVarNameInTable="column190_Metodo_Pago" msprop:Generator_ColumnPropNameInRow="_190_Metodo_Pago" msprop:Generator_ColumnPropNameInTable="_190_Metodo_PagoColumn" msprop:Generator_UserColumnName="190_Metodo_Pago" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="55" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_91_Efecto_Comprobante" msprop:Generator_ColumnVarNameInTable="column191_Efecto_Comprobante" msprop:Generator_ColumnPropNameInRow="_191_Efecto_Comprobante" msprop:Generator_ColumnPropNameInTable="_191_Efecto_ComprobanteColumn" msprop:Generator_UserColumnName="191_Efecto_Comprobante" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="55" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CFDI_Encabezado" />
+      <xs:field xpath="mstns:_x0031__Folio" />
+      <xs:field xpath="mstns:_x0032_7_Serie_Comprobante" />
+    </xs:unique>
   </xs:element>
 </xs:schema>
