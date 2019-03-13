@@ -45,6 +45,8 @@ Partial Class frmDetalleCFDI
         Dim _191_Efecto_ComprobanteLabel As System.Windows.Forms.Label
         Dim GuidLabel As System.Windows.Forms.Label
         Me._1_FolioTextBox = New System.Windows.Forms.TextBox()
+        Me.CFDI_EncabezadoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ATEBCOFIDIDataSet = New Lector_XML.ATEBCOFIDIDataSet()
         Me._2_Nombre_EmisorTextBox = New System.Windows.Forms.TextBox()
         Me._27_Serie_ComprobanteTextBox = New System.Windows.Forms.TextBox()
         Me._26_VersionTextBox = New System.Windows.Forms.TextBox()
@@ -67,8 +69,6 @@ Partial Class frmDetalleCFDI
         Me.GuidTextBox = New System.Windows.Forms.TextBox()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
-        Me.CFDI_EncabezadoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ATEBCOFIDIDataSet = New Lector_XML.ATEBCOFIDIDataSet()
         Me.CFDI_EncabezadoTableAdapter = New Lector_XML.ATEBCOFIDIDataSetTableAdapters.CFDI_EncabezadoTableAdapter()
         Me.TableAdapterManager = New Lector_XML.ATEBCOFIDIDataSetTableAdapters.TableAdapterManager()
         _1_FolioLabel = New System.Windows.Forms.Label()
@@ -108,7 +108,7 @@ Partial Class frmDetalleCFDI
         '_2_Nombre_EmisorLabel
         '
         _2_Nombre_EmisorLabel.AutoSize = True
-        _2_Nombre_EmisorLabel.Location = New System.Drawing.Point(49, 41)
+        _2_Nombre_EmisorLabel.Location = New System.Drawing.Point(47, 41)
         _2_Nombre_EmisorLabel.Name = "_2_Nombre_EmisorLabel"
         _2_Nombre_EmisorLabel.Size = New System.Drawing.Size(81, 13)
         _2_Nombre_EmisorLabel.TabIndex = 2
@@ -293,6 +293,16 @@ Partial Class frmDetalleCFDI
         Me._1_FolioTextBox.ReadOnly = True
         Me._1_FolioTextBox.Size = New System.Drawing.Size(100, 20)
         Me._1_FolioTextBox.TabIndex = 2
+        '
+        'CFDI_EncabezadoBindingSource
+        '
+        Me.CFDI_EncabezadoBindingSource.DataMember = "CFDI_Encabezado"
+        Me.CFDI_EncabezadoBindingSource.DataSource = Me.ATEBCOFIDIDataSet
+        '
+        'ATEBCOFIDIDataSet
+        '
+        Me.ATEBCOFIDIDataSet.DataSetName = "ATEBCOFIDIDataSet"
+        Me.ATEBCOFIDIDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         '_2_Nombre_EmisorTextBox
         '
@@ -491,16 +501,6 @@ Partial Class frmDetalleCFDI
         Me.btnSalir.TabIndex = 43
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
-        '
-        'CFDI_EncabezadoBindingSource
-        '
-        Me.CFDI_EncabezadoBindingSource.DataMember = "CFDI_Encabezado"
-        Me.CFDI_EncabezadoBindingSource.DataSource = Me.ATEBCOFIDIDataSet
-        '
-        'ATEBCOFIDIDataSet
-        '
-        Me.ATEBCOFIDIDataSet.DataSetName = "ATEBCOFIDIDataSet"
-        Me.ATEBCOFIDIDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'CFDI_EncabezadoTableAdapter
         '
