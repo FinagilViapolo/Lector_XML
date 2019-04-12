@@ -46,6 +46,8 @@ Public Class frmIngreso
                     resValidSAT = res.Valida_SAT(res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"))
                 End If
 
+
+                Dim complementoXml As String = res.LeeXML(archivo, "ComplementoXML")
                 Dim serie As String = res.LeeXML(archivo, "Serie")
                 Dim folio As String = res.LeeXML(archivo, "Folio")
                 Dim TipoRelacion As String = res.LeeXML(archivo, "TipoRelacion")
@@ -121,7 +123,7 @@ Public Class frmIngreso
                             contador += 1
                         Next
 
-                        Me.dgvIngresos.Rows.Add(serie, folio, res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "NombreE"), res.LeeXML(archivo, "RegimenFiscal"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "NombreR"), res.LeeXML(archivo, "UsoCFDI"), res.LeeXML(archivo, "TipoDeComprobante"), res.LeeXML(archivo, "Fecha"), res.LeeXML(archivo, "FormaPago"), res.LeeXML(archivo, "CondicionesDePago"), res.LeeXML(archivo, "Moneda"), res.LeeXML(archivo, "MetodoPago"), TipoRelacion, TipoRelacionUUID, ClaveProdServ, Cantidad, ClaveUnidad, Unidad, Descripcion, ValorUnitario, Importe, "", "", "", "", "", res.LeeXML(archivo, "ImpuestosT"), "", "", "", "", "", "", res.LeeXML(archivo, "SubTotal"), res.LeeXML(archivo, "Descuento"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"), FechaTimbrado, resValidSAT, res.LeeXML(archivo, "Version"), contrato, tcredito)
+                        Me.dgvIngresos.Rows.Add(serie, folio, res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "NombreE"), res.LeeXML(archivo, "RegimenFiscal"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "NombreR"), res.LeeXML(archivo, "UsoCFDI"), res.LeeXML(archivo, "TipoDeComprobante"), res.LeeXML(archivo, "Fecha"), res.LeeXML(archivo, "FormaPago"), res.LeeXML(archivo, "CondicionesDePago"), res.LeeXML(archivo, "Moneda"), res.LeeXML(archivo, "MetodoPago"), TipoRelacion, TipoRelacionUUID, ClaveProdServ, Cantidad, ClaveUnidad, Unidad, Descripcion, ValorUnitario, Importe, "", "", "", "", "", res.LeeXML(archivo, "ImpuestosT"), "", "", "", "", "", "", res.LeeXML(archivo, "SubTotal"), res.LeeXML(archivo, "Descuento"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"), FechaTimbrado, resValidSAT, res.LeeXML(archivo, "Version"), contrato, tcredito, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", complementoXml, archivo)
                     End If
 
                     For Each concepto_atributos As XmlNode In detalle_conceptos.Attributes
@@ -144,7 +146,7 @@ Public Class frmIngreso
                     Next
 
                     If detalle_conceptos.ChildNodes.Count = 0 And res.LeeXML(archivo, "TipoDeComprobante") <> "P" Then
-                        Me.dgvIngresos.Rows.Add(serie, folio, res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "NombreE"), res.LeeXML(archivo, "RegimenFiscal"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "NombreR"), res.LeeXML(archivo, "UsoCFDI"), res.LeeXML(archivo, "TipoDeComprobante"), res.LeeXML(archivo, "Fecha"), res.LeeXML(archivo, "FormaPago"), res.LeeXML(archivo, "CondicionesDePago"), res.LeeXML(archivo, "Moneda"), res.LeeXML(archivo, "MetodoPago"), TipoRelacion, TipoRelacionUUID, ClaveProdServ, Cantidad, ClaveUnidad, Unidad, Descripcion, ValorUnitario, Importe, "", "", "", "", "", res.LeeXML(archivo, "ImpuestosT"), "", "", "", "", "", "", res.LeeXML(archivo, "SubTotal"), res.LeeXML(archivo, "Descuento"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"), FechaTimbrado, resValidSAT, res.LeeXML(archivo, "Version"), contrato, tcredito)
+                        Me.dgvIngresos.Rows.Add(serie, folio, res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "NombreE"), res.LeeXML(archivo, "RegimenFiscal"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "NombreR"), res.LeeXML(archivo, "UsoCFDI"), res.LeeXML(archivo, "TipoDeComprobante"), res.LeeXML(archivo, "Fecha"), res.LeeXML(archivo, "FormaPago"), res.LeeXML(archivo, "CondicionesDePago"), res.LeeXML(archivo, "Moneda"), res.LeeXML(archivo, "MetodoPago"), TipoRelacion, TipoRelacionUUID, ClaveProdServ, Cantidad, ClaveUnidad, Unidad, Descripcion, ValorUnitario, Importe, "", "", "", "", "", res.LeeXML(archivo, "ImpuestosT"), "", "", "", "", "", "", res.LeeXML(archivo, "SubTotal"), res.LeeXML(archivo, "Descuento"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"), FechaTimbrado, resValidSAT, res.LeeXML(archivo, "Version"), contrato, tcredito, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", complementoXml, archivo)
                     End If
 
                     If res.LeeXML(archivo, "TipoDeComprobante") = "P" Then
@@ -211,7 +213,7 @@ Public Class frmIngreso
                                                     ImporteImpuesto = impuestos_traslado_atributos.Value.ToString
                                                 End If
                                             Next
-                                            Me.dgvIngresos.Rows.Add(serie, folio, res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "NombreE"), res.LeeXML(archivo, "RegimenFiscal"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "NombreR"), res.LeeXML(archivo, "UsoCFDI"), res.LeeXML(archivo, "TipoDeComprobante"), res.LeeXML(archivo, "Fecha"), res.LeeXML(archivo, "FormaPago"), res.LeeXML(archivo, "CondicionesDePago"), res.LeeXML(archivo, "Moneda"), res.LeeXML(archivo, "MetodoPago"), TipoRelacion, TipoRelacionUUID, ClaveProdServ, Cantidad, ClaveUnidad, Unidad, Descripcion, ValorUnitario, Importe, Base, Impuesto, Tipofactor, TasaOCuota, ImporteImpuesto, res.LeeXML(archivo, "ImpuestosT"), "", "", "", "", "", "", res.LeeXML(archivo, "SubTotal"), res.LeeXML(archivo, "Descuento"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"), FechaTimbrado, resValidSAT, res.LeeXML(archivo, "Version"), contrato, tcredito)
+                                            Me.dgvIngresos.Rows.Add(serie, folio, res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "NombreE"), res.LeeXML(archivo, "RegimenFiscal"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "NombreR"), res.LeeXML(archivo, "UsoCFDI"), res.LeeXML(archivo, "TipoDeComprobante"), res.LeeXML(archivo, "Fecha"), res.LeeXML(archivo, "FormaPago"), res.LeeXML(archivo, "CondicionesDePago"), res.LeeXML(archivo, "Moneda"), res.LeeXML(archivo, "MetodoPago"), TipoRelacion, TipoRelacionUUID, ClaveProdServ, Cantidad, ClaveUnidad, Unidad, Descripcion, ValorUnitario, Importe, Base, Impuesto, Tipofactor, TasaOCuota, ImporteImpuesto, res.LeeXML(archivo, "ImpuestosT"), "", "", "", "", "", "", res.LeeXML(archivo, "SubTotal"), res.LeeXML(archivo, "Descuento"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"), FechaTimbrado, resValidSAT, res.LeeXML(archivo, "Version"), contrato, tcredito, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", complementoXml, archivo)
                                         End If
                                     Next
                                 End If
@@ -236,7 +238,7 @@ Public Class frmIngreso
                                                     ImporteImpuesto = impuestos_traslado_atributos.Value.ToString
                                                 End If
                                             Next
-                                            Me.dgvIngresos.Rows.Add(serie, folio, res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "NombreE"), res.LeeXML(archivo, "RegimenFiscal"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "NombreR"), res.LeeXML(archivo, "UsoCFDI"), res.LeeXML(archivo, "TipoDeComprobante"), res.LeeXML(archivo, "Fecha"), res.LeeXML(archivo, "FormaPago"), res.LeeXML(archivo, "CondicionesDePago"), res.LeeXML(archivo, "Moneda"), res.LeeXML(archivo, "MetodoPago"), TipoRelacion, TipoRelacionUUID, ClaveProdServ, Cantidad, ClaveUnidad, Unidad, Descripcion, ValorUnitario, Importe, "", "", "", "", "", "", Base, Impuesto, Tipofactor, TasaOCuota, ImporteImpuesto, res.LeeXML(archivo, "ImpuestosR"), res.LeeXML(archivo, "SubTotal"), res.LeeXML(archivo, "Descuento"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"), FechaTimbrado, resValidSAT, res.LeeXML(archivo, "Version"), contrato, tcredito)
+                                            Me.dgvIngresos.Rows.Add(serie, folio, res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "NombreE"), res.LeeXML(archivo, "RegimenFiscal"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "NombreR"), res.LeeXML(archivo, "UsoCFDI"), res.LeeXML(archivo, "TipoDeComprobante"), res.LeeXML(archivo, "Fecha"), res.LeeXML(archivo, "FormaPago"), res.LeeXML(archivo, "CondicionesDePago"), res.LeeXML(archivo, "Moneda"), res.LeeXML(archivo, "MetodoPago"), TipoRelacion, TipoRelacionUUID, ClaveProdServ, Cantidad, ClaveUnidad, Unidad, Descripcion, ValorUnitario, Importe, "", "", "", "", "", "", Base, Impuesto, Tipofactor, TasaOCuota, ImporteImpuesto, res.LeeXML(archivo, "ImpuestosR"), res.LeeXML(archivo, "SubTotal"), res.LeeXML(archivo, "Descuento"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"), FechaTimbrado, resValidSAT, res.LeeXML(archivo, "Version"), contrato, tcredito, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", complementoXml, archivo)
                                         End If
                                     Next
 
@@ -647,5 +649,13 @@ Public Class frmIngreso
 
     Private Sub frmIngreso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    End Sub
+
+    Private Sub dgvIngresos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvIngresos.CellContentClick
+        If dgvIngresos.Item("Complemento", e.RowIndex).Value = "ecsv:EstadoDeCuentaSiVale" Then
+            Dim f As New frmIngresoCompCombustible
+            f.archivo = dgvIngresos.Item("Archivo", e.RowIndex).Value
+            f.Show()
+        End If
     End Sub
 End Class

@@ -350,5 +350,73 @@ Public Class readXML_CFDI_class
             Next
         End If
 
+        If nodo = "ComplementoXML" Or nodo = "ComplementoXMLCfdi" Then
+            Dim ecc12cA(,) As String
+            For Each Comp As XmlNode In comprobante.ChildNodes
+                If Comp.Name = "cfdi:Addenda" Then
+                    For Each nodos As XmlNode In Comp.ChildNodes
+                        If nodos.Name <> "tfd:TimbreFiscalDigital" Then
+                            If nodo = "ComplementoXML" Then
+                                resultado = nodos.Name
+                                Return resultado
+                                Exit Function
+                            Else
+                                If nodos.Name = "ecsv:EstadoDeCuentaSiVale" Then
+                                    For Each ecc12 As XmlNode In nodos.ChildNodes
+                                        Dim contCon As Integer = 0
+                                        If ecc12.Name = "ecsv:Complemento" Then
+
+                                            For Each ecc12C As XmlNode In ecc12.ChildNodes
+                                                If ecc12C.Name = "ecsv:Conceptos" Then
+                                                    ReDim ecc12cA(13, ecc12C.ChildNodes.Count - 1)
+                                                    For Each ecc12csv As XmlNode In ecc12C.ChildNodes
+                                                        If ecc12csv.Name = "ecsv:Concepto" Then
+                                                            For Each ecc12Cc As XmlNode In ecc12csv.Attributes
+                                                                If ecc12Cc.Name = "ecc12_cantidad" Then
+                                                                    ecc12cA(0, contCon) = ecc12Cc.Value
+                                                                ElseIf ecc12Cc.Name = "ecc12_fecha" Then
+                                                                    ecc12cA(1, contCon) = ecc12Cc.Value
+                                                                ElseIf ecc12Cc.Name = "ecc12_importe" Then
+                                                                    ecc12cA(2, contCon) = ecc12Cc.Value
+                                                                ElseIf ecc12Cc.Name = "ecc12_rfc" Then
+                                                                    ecc12cA(3, contCon) = ecc12Cc.Value
+                                                                ElseIf ecc12Cc.Name = "ecc12_valorUnitario" Then
+                                                                    ecc12cA(4, contCon) = ecc12Cc.Value
+                                                                End If
+                                                            Next
+                                                            For Each ecc12Ct As XmlNode In ecc12csv.ChildNodes
+                                                                If ecc12Ct.Name = "ecsv:Impuestos" Then
+                                                                    Dim cont As Integer = 0
+                                                                    For Each ecc12Ctt As XmlNode In ecc12Ct.ChildNodes
+                                                                        If ecc12Ctt.Name = "ecsv:Impuesto" Then
+                                                                            For Each ecc12CttA As XmlNode In ecc12Ctt.Attributes
+                                                                                If ecc12CttA.Name = "importe" Then
+                                                                                    ecc12cA(5 + cont, contCon) = ecc12CttA.Value
+                                                                                ElseIf ecc12CttA.Name = "impuesto" Then
+                                                                                    ecc12cA(6 + cont, contCon) = ecc12CttA.Value
+                                                                                ElseIf ecc12CttA.Name = "tasaOCuota" Then
+                                                                                    ecc12cA(7 + cont, contCon) = ecc12CttA.Value
+                                                                                End If
+                                                                                cont = cont + 1
+                                                                            Next
+                                                                        End If
+                                                                    Next
+                                                                End If
+                                                            Next
+                                                            contCon = contCon + 1
+                                                        End If
+                                                    Next
+                                                End If
+                                            Next
+                                        End If
+                                    Next
+                                End If
+                            End If
+                        End If
+                    Next
+                End If
+            Next
+            Return ecc12cA
+        End If
     End Function
 End Class
