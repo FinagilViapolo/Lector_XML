@@ -27,8 +27,8 @@ Public Class frmIngreso
 
         Dim archivo_02 As String = ""
 
-        Try
-            cont_file = Directory.GetFiles(directorio_origen, "*.xml", SearchOption.AllDirectories).Length
+
+        cont_file = Directory.GetFiles(directorio_origen, "*.xml", SearchOption.AllDirectories).Length
             ToolStripStatusLabel2.Text = "Archivos en directorio: " & cont_file
             ToolStripProgressBar1.Maximum = cont_file
 
@@ -37,7 +37,8 @@ Public Class frmIngreso
             Dim res As readXML_CFDI_class = New readXML_CFDI_class
             Dim cont As Integer = 0
 
-            For Each archivo As String In Directory.GetFiles(directorio_origen, "*.xml", SearchOption.AllDirectories)
+        For Each archivo As String In Directory.GetFiles(directorio_origen, "*.xml", SearchOption.AllDirectories)
+            Try
                 archivo_02 = archivo
                 cont += 1
                 Dim resValidSAT As String = ""
@@ -251,10 +252,11 @@ Public Class frmIngreso
                 ToolStripProgressBar1.Value = cont
                 ToolStripStatusLabel1.Text = CLng((ToolStripProgressBar1.Value * 100) / ToolStripProgressBar1.Maximum) & " %"
                 Me.Update()
-            Next
-        Catch ex As Exception
-            MsgBox(ex.ToString + "---" + archivo_02)
-        End Try
+            Catch ex As Exception
+                MsgBox("El archivo****:  " & archivo_02 & " **presenta los siguiente errores***: " & ex.ToString + "---", MsgBoxStyle.Critical, "Nombre del archivo con errores: " & archivo_02)
+            End Try
+        Next
+
         MsgBox("Proceso terminado", MsgBoxStyle.Information)
         Me.Cursor = System.Windows.Forms.Cursors.Default
     End Sub
