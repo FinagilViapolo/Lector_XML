@@ -609,10 +609,10 @@ Public Class frmIngreso
             Dim result_origen As DialogResult = fbdSeparar_Origen.ShowDialog()
             Dim result_destino As DialogResult = fbdSeparar_Destino.ShowDialog()
 
-            Dim directorio_origen_sep As String
-            Dim directorio_destino_sep As String
+            Dim directorio_origen_sep As String = ""
+            Dim directorio_destino_sep As String = ""
 
-            Dim cont_file As Integer = Directory.GetFiles(directorio_origen_sep, "*.xml", SearchOption.AllDirectories).Length
+            Dim cont_file As Integer = Directory.GetFiles(fbdSeparar_Origen.SelectedPath, "*.xml", SearchOption.AllDirectories).Length
             ToolStripStatusLabel2.Text = "Archivos en directorio: " & cont_file
             ToolStripProgressBar1.Maximum = cont_file
 
@@ -629,12 +629,14 @@ Public Class frmIngreso
                 Dim fecha As String = res.LeeXML(archivo, "Fecha")
                 Dim anio As Integer = CDate(fecha).Year
                 Dim mes As Integer = CDate(fecha).Month
+                Dim dia As Integer = CDate(fecha).Day
 
-                If Directory.Exists(directorio_destino_sep & "\" & anio & "-" & mes) Then
-                    System.IO.File.Move(archivo, directorio_destino_sep & "\" & anio & "-" & mes & "\" & res.LeeXML(archivo, "UUID") & ".xml")
+
+                If Directory.Exists(directorio_destino_sep & "\" & anio & "\" & mes & "\" & dia) Then
+                    System.IO.File.Move(archivo, directorio_destino_sep & "\" & anio & "\" & mes & "\" & dia & "\" & res.LeeXML(archivo, "UUID") & ".xml")
                 Else
-                    System.IO.Directory.CreateDirectory(directorio_destino_sep & "\" & anio & "-" & mes)
-                    System.IO.File.Move(archivo, directorio_destino_sep & "\" & anio & "-" & mes & "\" & res.LeeXML(archivo, "UUID") & ".xml")
+                    System.IO.Directory.CreateDirectory(directorio_destino_sep & "\" & anio & "\" & mes & "\" & dia)
+                    System.IO.File.Move(archivo, directorio_destino_sep & "\" & anio & "\" & mes & "\" & dia & "\" & res.LeeXML(archivo, "UUID") & ".xml")
                 End If
                 cont += 1
                 ToolStripProgressBar1.Value = cont

@@ -86,6 +86,17 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="production.xsc">
+      <DependentUpon>production.xsd</DependentUpon>
+    </None>
+    <None Include="production.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>production.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="production.xss">
+      <DependentUpon>production.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -180,6 +191,11 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="production.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>production.xsd</DependentUpon>
     </Compile>
     <Compile Include="readXML_CFDI_class.vb" />
     <Compile Include="readXML_Retencion_class.vb" />
