@@ -419,4 +419,53 @@ Public Class readXML_CFDI_class
             Return ecc12cA
         End If
     End Function
+
+    Public Function Stuff(ByVal Cadena As String, ByVal Lado As String, ByVal Llenarcon As String, ByVal Longitud As Integer) As String
+
+        Dim cCadenaAuxiliar As String
+        Dim nVeces As Integer
+        Dim i As Integer
+        nVeces = Longitud - Val(Len(Cadena))
+        cCadenaAuxiliar = ""
+        For i = 1 To nVeces
+            cCadenaAuxiliar = cCadenaAuxiliar & Llenarcon
+        Next
+        If Lado = "D" Then
+            Stuff = Cadena & cCadenaAuxiliar
+        Else
+            Stuff = cCadenaAuxiliar & Cadena
+        End If
+    End Function
+
+    Public Function Eliminar_AcentosPolizas(ByVal accentedStr As String) As String
+        accentedStr = accentedStr.Replace("&#224;", "a")
+        accentedStr = accentedStr.Replace("&#225;", "a")
+        accentedStr = accentedStr.Replace("&#192;", "A")
+        accentedStr = accentedStr.Replace("&#193;", "A")
+
+        accentedStr = accentedStr.Replace("&#232;", "e")
+        accentedStr = accentedStr.Replace("&#233;", "e")
+        accentedStr = accentedStr.Replace("&#200;", "E")
+        accentedStr = accentedStr.Replace("&#201;", "E")
+
+        accentedStr = accentedStr.Replace("&#236;", "i")
+        accentedStr = accentedStr.Replace("&#237;", "i")
+        accentedStr = accentedStr.Replace("&#204;", "I")
+        accentedStr = accentedStr.Replace("&#205;", "I")
+
+        accentedStr = accentedStr.Replace("&#242;", "o")
+        accentedStr = accentedStr.Replace("&#243;", "o")
+        accentedStr = accentedStr.Replace("&#210;", "O")
+        accentedStr = accentedStr.Replace("&#211;", "O")
+
+        accentedStr = accentedStr.Replace("&#249;", "u")
+        accentedStr = accentedStr.Replace("&#250;", "u")
+        accentedStr = accentedStr.Replace("&#217;", "U")
+        accentedStr = accentedStr.Replace("&#218;", "U")
+
+
+        Dim tempBytes As Byte()
+        tempBytes = System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(accentedStr)
+        Return System.Text.Encoding.UTF8.GetString(tempBytes)
+    End Function
 End Class

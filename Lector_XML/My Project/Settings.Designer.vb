@@ -74,6 +74,17 @@ Partial Friend NotInheritable Class Settings
             Return CType(Me("ProductionConnectionString"),String)
         End Get
     End Property
+    
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=compaq01\compac;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persist Secu"& _ 
+        "rity Info=True;User ID=finagil;Password=finagil")>  _
+    Public ReadOnly Property csContpaqFinagil() As String
+        Get
+            Return CType(Me("csContpaqFinagil"),String)
+        End Get
+    End Property
 End Class
 
 Namespace My

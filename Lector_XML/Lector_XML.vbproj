@@ -82,6 +82,17 @@
     <None Include="Connected Services\WS_Consulta_SAT\Lector_XML.WS_Consulta_SAT.Acuse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="contpaq.xsc">
+      <DependentUpon>contpaq.xsd</DependentUpon>
+    </None>
+    <None Include="contpaq.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>contpaq.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="contpaq.xss">
+      <DependentUpon>contpaq.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
@@ -96,6 +107,17 @@
     </None>
     <None Include="production.xss">
       <DependentUpon>production.xsd</DependentUpon>
+    </None>
+    <None Include="XSD.xsc">
+      <DependentUpon>XSD.xsd</DependentUpon>
+    </None>
+    <None Include="XSD.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>XSD.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="XSD.xss">
+      <DependentUpon>XSD.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +160,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="contpaq.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>contpaq.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmCancelacionCFDI.Designer.vb">
       <DependentUpon>frmCancelacionCFDI.vb</DependentUpon>
     </Compile>
@@ -148,6 +175,12 @@
       <DependentUpon>frmDetalleCFDI.vb</DependentUpon>
     </Compile>
     <Compile Include="frmDetalleCFDI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEventoContable.Designer.vb">
+      <DependentUpon>frmEventoContable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEventoContable.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmIngreso.Designer.vb">
@@ -205,6 +238,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="XSD.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XSD.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmCancelacionCFDI.resx">
@@ -212,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetalleCFDI.resx">
       <DependentUpon>frmDetalleCFDI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEventoContable.resx">
+      <DependentUpon>frmEventoContable.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIngreso.resx">
       <DependentUpon>frmIngreso.vb</DependentUpon>
