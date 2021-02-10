@@ -32,6 +32,13 @@ Partial Class frmEventoContable
         Me.btnSeleccionar = New System.Windows.Forms.Button()
         Me.fbdSeleccionar = New System.Windows.Forms.FolderBrowserDialog()
         Me.dgvFacturasXml = New System.Windows.Forms.DataGridView()
+        Me.poliza = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.abono = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.referencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.concepto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.uuid = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
@@ -52,13 +59,6 @@ Partial Class frmEventoContable
         Me.CuentasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Contpaq = New Lector_XML.contpaq()
         Me.CuentasTableAdapter = New Lector_XML.contpaqTableAdapters.CuentasTableAdapter()
-        Me.poliza = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cuenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cargo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.abono = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.referencia = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.concepto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.uuid = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvFacturasXml, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.pnlCuentas.SuspendLayout()
@@ -119,6 +119,61 @@ Partial Class frmEventoContable
         Me.dgvFacturasXml.Size = New System.Drawing.Size(1005, 362)
         Me.dgvFacturasXml.TabIndex = 2
         '
+        'poliza
+        '
+        Me.poliza.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.poliza.HeaderText = "Póliza"
+        Me.poliza.Name = "poliza"
+        Me.poliza.Width = 60
+        '
+        'cuenta
+        '
+        Me.cuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.cuenta.HeaderText = "Cuenta Contable"
+        Me.cuenta.Name = "cuenta"
+        Me.cuenta.Width = 102
+        '
+        'cargo
+        '
+        Me.cargo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.cargo.DefaultCellStyle = DataGridViewCellStyle2
+        Me.cargo.HeaderText = "Cargo"
+        Me.cargo.Name = "cargo"
+        Me.cargo.Width = 60
+        '
+        'abono
+        '
+        Me.abono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle3.Format = "N2"
+        Me.abono.DefaultCellStyle = DataGridViewCellStyle3
+        Me.abono.HeaderText = "Abono"
+        Me.abono.Name = "abono"
+        Me.abono.Width = 63
+        '
+        'referencia
+        '
+        Me.referencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.referencia.HeaderText = "Referencia"
+        Me.referencia.Name = "referencia"
+        Me.referencia.Width = 84
+        '
+        'concepto
+        '
+        Me.concepto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.concepto.HeaderText = "Concepto"
+        Me.concepto.Name = "concepto"
+        Me.concepto.Width = 78
+        '
+        'uuid
+        '
+        Me.uuid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.uuid.HeaderText = "UUID"
+        Me.uuid.Name = "uuid"
+        Me.uuid.ReadOnly = True
+        Me.uuid.Width = 59
+        '
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -132,14 +187,14 @@ Partial Class frmEventoContable
         'ToolStripLabel1
         '
         Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(87, 22)
-        Me.ToolStripLabel1.Text = "ToolStripLabel1"
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(10, 22)
+        Me.ToolStripLabel1.Text = "."
         '
         'ToolStripLabel2
         '
         Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(87, 22)
-        Me.ToolStripLabel2.Text = "ToolStripLabel2"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(10, 22)
+        Me.ToolStripLabel2.Text = "."
         '
         'ToolStripProgressBar1
         '
@@ -261,61 +316,6 @@ Partial Class frmEventoContable
         '
         Me.CuentasTableAdapter.ClearBeforeFill = True
         '
-        'poliza
-        '
-        Me.poliza.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.poliza.HeaderText = "Póliza"
-        Me.poliza.Name = "poliza"
-        Me.poliza.Width = 60
-        '
-        'cuenta
-        '
-        Me.cuenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.cuenta.HeaderText = "Cuenta Contable"
-        Me.cuenta.Name = "cuenta"
-        Me.cuenta.Width = 102
-        '
-        'cargo
-        '
-        Me.cargo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.cargo.DefaultCellStyle = DataGridViewCellStyle2
-        Me.cargo.HeaderText = "Cargo"
-        Me.cargo.Name = "cargo"
-        Me.cargo.Width = 60
-        '
-        'abono
-        '
-        Me.abono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle3.Format = "N2"
-        Me.abono.DefaultCellStyle = DataGridViewCellStyle3
-        Me.abono.HeaderText = "Abono"
-        Me.abono.Name = "abono"
-        Me.abono.Width = 63
-        '
-        'referencia
-        '
-        Me.referencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.referencia.HeaderText = "Referencia"
-        Me.referencia.Name = "referencia"
-        Me.referencia.Width = 84
-        '
-        'concepto
-        '
-        Me.concepto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.concepto.HeaderText = "Concepto"
-        Me.concepto.Name = "concepto"
-        Me.concepto.Width = 78
-        '
-        'uuid
-        '
-        Me.uuid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.uuid.HeaderText = "UUID"
-        Me.uuid.Name = "uuid"
-        Me.uuid.ReadOnly = True
-        Me.uuid.Width = 59
-        '
         'frmEventoContable
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -335,7 +335,7 @@ Partial Class frmEventoContable
         Me.Controls.Add(Me.btnSeleccionar)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmEventoContable"
-        Me.Text = "Evento contabla a partir de XML"
+        Me.Text = "Evento contable a partir de XML"
         CType(Me.dgvFacturasXml, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
