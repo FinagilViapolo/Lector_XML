@@ -26,5 +26,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=compaq01\compac;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persist Security Info=True;User ID=finagil;Password=finagil</Value>
     </Setting>
+    <Setting Name="hostExe" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\server-raid2\FINAGIL_CXP\</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

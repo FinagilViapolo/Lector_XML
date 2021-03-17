@@ -9,6 +9,10 @@ Imports System.ComponentModel
 Imports System.Drawing
 Imports System.Linq
 Imports System.Configuration
+Imports System.Web.Services.Protocols.SoapDocumentServiceAttribute
+Imports Valida_SAT_WS
+Imports System.Xml.XmlText
+Imports System.Xml.Schema
 
 Public Class frmIngreso
     Dim directorio_origen As String = ""
@@ -35,7 +39,8 @@ Public Class frmIngreso
 
 
             Dim res As readXML_CFDI_class = New readXML_CFDI_class
-            Dim cont As Integer = 0
+        Dim cont As Integer = 0
+        Dim rootPath As String = My.Settings.hostExe & "XSD"
 
         For Each archivo As String In Directory.GetFiles(directorio_origen, "*.xml", SearchOption.AllDirectories)
             Try
@@ -45,6 +50,15 @@ Public Class frmIngreso
                 Dim version_valida As String = res.LeeXML(archivo, "Version")
                 If chkValidaSAT.Checked = True Then
                     resValidSAT = res.Valida_SAT(res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"))
+                    Dim resXSD As validaXSD = New validaXSD
+                    Dim var As String = "VALIDO"
+                    Try
+                        resXSD.LoadValidatedXmlDocument(archivo, rootPath + "\cfdv33.xsd", rootPath + "\TimbreFiscalDigitalv11.xsd", rootPath + "\implocal.xsd", rootPath + "\terceros11.xsd", rootPath + "\cfdiregistrofiscal.xsd")
+                        resXSD.LoadValidatedXDocument(archivo, rootPath + "\cfdv33.xsd", rootPath + "\TimbreFiscalDigitalv11.xsd", rootPath + "\implocal.xsd", rootPath + "\terceros11.xsd", rootPath + "\cfdiregistrofiscal.xsd")
+                        resXSD.LoadXml(archivo, rootPath + "\cfdv33.xsd", rootPath + "\TimbreFiscalDigitalv11.xsd", rootPath + "\implocal.xsd", rootPath + "\terceros11.xsd", rootPath + "\cfdiregistrofiscal.xsd")
+                    Catch ex As Exception
+                        var = ex.ToString
+                    End Try
                 End If
 
 

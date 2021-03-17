@@ -85,6 +85,18 @@ Partial Friend NotInheritable Class Settings
             Return CType(Me("csContpaqFinagil"),String)
         End Get
     End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid2\FINAGIL_CXP\")>  _
+    Public Property hostExe() As String
+        Get
+            Return CType(Me("hostExe"),String)
+        End Get
+        Set
+            Me("hostExe") = value
+        End Set
+    End Property
 End Class
 
 Namespace My
