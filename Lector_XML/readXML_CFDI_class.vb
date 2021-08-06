@@ -1,5 +1,13 @@
 ﻿Imports System.Xml
+Imports System.Xml.Schema
 Imports System.IO
+Imports System.Text
+Imports Valida_SAT_WS
+Imports System.Collections
+Imports System.Data
+Imports System.Xml.XmlText
+Imports System.Security.Cryptography
+
 
 Public Class readXML_CFDI_class
 
@@ -33,6 +41,55 @@ Public Class readXML_CFDI_class
             Next
         End If
 
+    End Function
+
+    Public Function Stuff(ByVal Cadena As String, ByVal Lado As String, ByVal Llenarcon As String, ByVal Longitud As Integer) As String
+
+        Dim cCadenaAuxiliar As String
+        Dim nVeces As Integer
+        Dim i As Integer
+        nVeces = Longitud - Val(Len(Cadena))
+        cCadenaAuxiliar = ""
+        For i = 1 To nVeces
+            cCadenaAuxiliar = cCadenaAuxiliar & Llenarcon
+        Next
+        If Lado = "D" Then
+            Stuff = Cadena & cCadenaAuxiliar
+        Else
+            Stuff = cCadenaAuxiliar & Cadena
+        End If
+    End Function
+
+    Public Function Eliminar_AcentosPolizas(ByVal accentedStr As String) As String
+        accentedStr = accentedStr.Replace("&#224;", "a")
+        accentedStr = accentedStr.Replace("&#225;", "a")
+        accentedStr = accentedStr.Replace("&#192;", "A")
+        accentedStr = accentedStr.Replace("&#193;", "A")
+
+        accentedStr = accentedStr.Replace("&#232;", "e")
+        accentedStr = accentedStr.Replace("&#233;", "e")
+        accentedStr = accentedStr.Replace("&#200;", "E")
+        accentedStr = accentedStr.Replace("&#201;", "E")
+
+        accentedStr = accentedStr.Replace("&#236;", "i")
+        accentedStr = accentedStr.Replace("&#237;", "i")
+        accentedStr = accentedStr.Replace("&#204;", "I")
+        accentedStr = accentedStr.Replace("&#205;", "I")
+
+        accentedStr = accentedStr.Replace("&#242;", "o")
+        accentedStr = accentedStr.Replace("&#243;", "o")
+        accentedStr = accentedStr.Replace("&#210;", "O")
+        accentedStr = accentedStr.Replace("&#211;", "O")
+
+        accentedStr = accentedStr.Replace("&#249;", "u")
+        accentedStr = accentedStr.Replace("&#250;", "u")
+        accentedStr = accentedStr.Replace("&#217;", "U")
+        accentedStr = accentedStr.Replace("&#218;", "U")
+
+
+        Dim tempBytes As Byte()
+        tempBytes = System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(accentedStr)
+        Return System.Text.Encoding.UTF8.GetString(tempBytes)
     End Function
     Public Function LeeXML_Pagos(ByVal archivo As String, ByVal nodo As String)
         Dim doc As XmlDocument
@@ -126,11 +183,14 @@ Public Class readXML_CFDI_class
 
     Public Function Valida_SAT(ByVal rfce As String, ByVal rfcr As String, ByVal importe As String, ByVal uuid As String)
         Dim resultado As String = ""
-        Dim servicio As WS_Consulta_SAT.ConsultaCFDIServiceClient
-        servicio = New WS_Consulta_SAT.ConsultaCFDIServiceClient
+        Dim servicio As mx.gob.sat.facturaelectronica.consultaqr.ConsultaCFDIService
+        servicio = New mx.gob.sat.facturaelectronica.consultaqr.ConsultaCFDIService
         resultado = servicio.Consulta("?re=" + rfce + "&rr=" + rfcr + "&tt=" + importe + "&id=" + uuid).Estado.ToString
         Return resultado
     End Function
+
+
+
     Public Function LeeXML(ByVal archivo As String, ByVal nodo As String)
         Dim doc As XmlDocument
         doc = New XmlDocument
@@ -420,52 +480,16 @@ Public Class readXML_CFDI_class
         End If
     End Function
 
-    Public Function Stuff(ByVal Cadena As String, ByVal Lado As String, ByVal Llenarcon As String, ByVal Longitud As Integer) As String
+    Public Function Encriptar(ByVal Input As String) As String
 
-        Dim cCadenaAuxiliar As String
-        Dim nVeces As Integer
-        Dim i As Integer
-        nVeces = Longitud - Val(Len(Cadena))
-        cCadenaAuxiliar = ""
-        For i = 1 To nVeces
-            cCadenaAuxiliar = cCadenaAuxiliar & Llenarcon
-        Next
-        If Lado = "D" Then
-            Stuff = Cadena & cCadenaAuxiliar
-        Else
-            Stuff = cCadenaAuxiliar & Cadena
-        End If
+        Dim IV() As Byte = ASCIIEncoding.ASCII.GetBytes("Finagil1") 'La clave debe ser de 8 caracteres
+        Dim EncryptionKey() As Byte = Convert.FromBase64String("rpaSPvIvVLlrcmtzPU9/c67Gkj7yL1S5") 'No se puede alterar la cantidad de caracteres pero si la clave
+        Dim buffer() As Byte = Encoding.UTF8.GetBytes(Input)
+        Dim des As TripleDESCryptoServiceProvider = New TripleDESCryptoServiceProvider
+        des.Key = EncryptionKey
+        des.IV = IV
+        Return StrReverse(Convert.ToBase64String(des.CreateEncryptor().TransformFinalBlock(buffer, 0, buffer.Length())))
+
     End Function
 
-    Public Function Eliminar_AcentosPolizas(ByVal accentedStr As String) As String
-        accentedStr = accentedStr.Replace("&#224;", "a")
-        accentedStr = accentedStr.Replace("&#225;", "a")
-        accentedStr = accentedStr.Replace("&#192;", "A")
-        accentedStr = accentedStr.Replace("&#193;", "A")
-
-        accentedStr = accentedStr.Replace("&#232;", "e")
-        accentedStr = accentedStr.Replace("&#233;", "e")
-        accentedStr = accentedStr.Replace("&#200;", "E")
-        accentedStr = accentedStr.Replace("&#201;", "E")
-
-        accentedStr = accentedStr.Replace("&#236;", "i")
-        accentedStr = accentedStr.Replace("&#237;", "i")
-        accentedStr = accentedStr.Replace("&#204;", "I")
-        accentedStr = accentedStr.Replace("&#205;", "I")
-
-        accentedStr = accentedStr.Replace("&#242;", "o")
-        accentedStr = accentedStr.Replace("&#243;", "o")
-        accentedStr = accentedStr.Replace("&#210;", "O")
-        accentedStr = accentedStr.Replace("&#211;", "O")
-
-        accentedStr = accentedStr.Replace("&#249;", "u")
-        accentedStr = accentedStr.Replace("&#250;", "u")
-        accentedStr = accentedStr.Replace("&#217;", "U")
-        accentedStr = accentedStr.Replace("&#218;", "U")
-
-
-        Dim tempBytes As Byte()
-        tempBytes = System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(accentedStr)
-        Return System.Text.Encoding.UTF8.GetString(tempBytes)
-    End Function
 End Class

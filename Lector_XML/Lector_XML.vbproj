@@ -86,19 +86,6 @@
     <None Include="ATEBCOFIDIDataSet.xss">
       <DependentUpon>ATEBCOFIDIDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Connected Services\WS_Consulta_SAT\ConsultaCFDIService.wsdl" />
-    <None Include="Connected Services\WS_Consulta_SAT\ConsultaCFDIService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WS_Consulta_SAT\ConsultaCFDIService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WS_Consulta_SAT\ConsultaCFDIService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WS_Consulta_SAT\Lector_XML.WS_Consulta_SAT.Acuse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="contpaq.xsc">
       <DependentUpon>contpaq.xsd</DependentUpon>
     </None>
@@ -175,11 +162,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ATEBCOFIDIDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\WS_Consulta_SAT\Reference.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="contpaq.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -314,21 +296,6 @@
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\WS_Consulta_SAT\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WS_Consulta_SAT\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WS_Consulta_SAT\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\WS_Consulta_SAT\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.vb</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

@@ -49,7 +49,8 @@ Public Class frmIngreso
                 Dim resValidSAT As String = ""
                 Dim version_valida As String = res.LeeXML(archivo, "Version")
                 If chkValidaSAT.Checked = True Then
-                    resValidSAT = res.Valida_SAT(res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"))
+                    resValidSAT = res.Valida_SAT(res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID")) 'res.Valida_SAT(res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"))
+                    'MsgBox(res.LeeXML(archivo, "RFCE") & "-" & res.LeeXML(archivo, "RFCR") & "-" & res.LeeXML(archivo, "Total") & "-" & res.LeeXML(archivo, "UUID"))
                     Dim resXSD As validaXSD = New validaXSD
                     Dim var As String = "VALIDO"
                     Try
