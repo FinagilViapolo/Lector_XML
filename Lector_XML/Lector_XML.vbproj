@@ -86,6 +86,19 @@
     <None Include="ATEBCOFIDIDataSet.xss">
       <DependentUpon>ATEBCOFIDIDataSet.xsd</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference1\ConsultaCFDIService.wsdl" />
+    <None Include="Connected Services\ServiceReference1\ConsultaCFDIService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference1\ConsultaCFDIService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference1\ConsultaCFDIService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference1\Lector_XML.ServiceReference1.Acuse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="contpaq.xsc">
       <DependentUpon>contpaq.xsd</DependentUpon>
     </None>
@@ -153,15 +166,17 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml.Serialization" />
-    <Reference Include="Web References.mx.gob.sat.facturaelectronica.consultaqr.Reference.cs">
-      <HintPath>..\..\WEB_cxp\cxP\bin\Web References.mx.gob.sat.facturaelectronica.consultaqr.Reference.cs.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ATEBCOFIDIDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ATEBCOFIDIDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ServiceReference1\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="contpaq.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -326,6 +341,21 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference1\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
