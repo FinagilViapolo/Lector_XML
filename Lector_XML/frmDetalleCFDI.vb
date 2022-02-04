@@ -15,9 +15,9 @@ Public Class frmDetalleCFDI
 
     Private Sub frmDetalleCFDI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If var_folio = "" Then
-            Me.CFDI_EncabezadoTableAdapter.Buscar_FillBy(Me.ATEBCOFIDIDataSet.CFDI_Encabezado, 0, var_serie)
+            Me.CFDI_EncabezadoTableAdapter.Buscar_FillBy(Me.ATEBCOFIDIDataSet.CFDI_Encabezado, 0, var_serie, var_uuid)
         Else
-            Me.CFDI_EncabezadoTableAdapter.Buscar_FillBy(Me.ATEBCOFIDIDataSet.CFDI_Encabezado, var_folio, var_serie)
+            Me.CFDI_EncabezadoTableAdapter.Buscar_FillBy(Me.ATEBCOFIDIDataSet.CFDI_Encabezado, var_folio, var_serie, var_uuid)
         End If
         'If GuidTextBox.Text.Trim = "" Or GuidTextBox.Text.Trim = "CANCELADA" Then
         '    btnCancelar.Enabled = False

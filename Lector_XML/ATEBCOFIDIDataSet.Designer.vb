@@ -5206,10 +5206,12 @@ Namespace ATEBCOFIDIDataSetTableAdapters
                 "[192_Monto_TotalImp_Retenidos], [193_Monto_TotalImp_Trasladados], Guid, [100_Let"& _ 
                 "ras_Monto_Total], [114_Misc02], [180_LugarExpedicion], [190_Metodo_Pago], "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
                 "                     [191_Efecto_Comprobante]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            CFDI_Encabezado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "WHERE        ([1_Folio] = @Folio) AND ([27_Serie_Comprobante] = @Serie)"
+                "WHERE        ([1_Folio] = @Folio) AND ([27_Serie_Comprobante] = @Serie) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
+                "                     (Guid LIKE '%' + @uuid + '%')"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Folio", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "1_Folio", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Serie", Global.System.Data.SqlDbType.VarChar, 55, Global.System.Data.ParameterDirection.Input, 0, 0, "27_Serie_Comprobante", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@uuid", Global.System.Data.SqlDbType.VarChar, 36, Global.System.Data.ParameterDirection.Input, 0, 0, "Guid", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "UPDATE       CFDI_Encabezado"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET                Guid = 'CANCELADA'"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE       "& _ 
@@ -5279,13 +5281,18 @@ Namespace ATEBCOFIDIDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function Buscar_FillBy(ByVal dataTable As ATEBCOFIDIDataSet.CFDI_EncabezadoDataTable, ByVal Folio As Integer, ByVal Serie As String) As Integer
+        Public Overloads Overridable Function Buscar_FillBy(ByVal dataTable As ATEBCOFIDIDataSet.CFDI_EncabezadoDataTable, ByVal Folio As Integer, ByVal Serie As String, ByVal uuid As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Folio,Integer)
             If (Serie Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Serie")
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(Serie,String)
+            End If
+            If (uuid Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(uuid,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -5298,13 +5305,18 @@ Namespace ATEBCOFIDIDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function Buscar_GetDataBy(ByVal Folio As Integer, ByVal Serie As String) As ATEBCOFIDIDataSet.CFDI_EncabezadoDataTable
+        Public Overloads Overridable Function Buscar_GetDataBy(ByVal Folio As Integer, ByVal Serie As String, ByVal uuid As String) As ATEBCOFIDIDataSet.CFDI_EncabezadoDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Folio,Integer)
             If (Serie Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Serie")
             Else
                 Me.Adapter.SelectCommand.Parameters(1).Value = CType(Serie,String)
+            End If
+            If (uuid Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(uuid,String)
             End If
             Dim dataTable As ATEBCOFIDIDataSet.CFDI_EncabezadoDataTable = New ATEBCOFIDIDataSet.CFDI_EncabezadoDataTable()
             Me.Adapter.Fill(dataTable)

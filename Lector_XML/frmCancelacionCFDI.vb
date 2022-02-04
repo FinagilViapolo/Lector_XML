@@ -7,9 +7,9 @@
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         If txtBuscarFolio.Text = "" Then
-            Me.CFDI_EncabezadoTableAdapter.Buscar_FillBy(Me.ATEBCOFIDIDataSet.CFDI_Encabezado, 0, txtBuscarSerie.Text.Trim)
+            Me.CFDI_EncabezadoTableAdapter.Buscar_FillBy(Me.ATEBCOFIDIDataSet.CFDI_Encabezado, 0, txtBuscarSerie.Text.Trim, txtBuscarUUID.Text)
         Else
-            Me.CFDI_EncabezadoTableAdapter.Buscar_FillBy(Me.ATEBCOFIDIDataSet.CFDI_Encabezado, txtBuscarFolio.Text.Trim, txtBuscarSerie.Text.Trim)
+            Me.CFDI_EncabezadoTableAdapter.Buscar_FillBy(Me.ATEBCOFIDIDataSet.CFDI_Encabezado, txtBuscarFolio.Text.Trim, txtBuscarSerie.Text.Trim, txtBuscarUUID.Text)
         End If
         'Me.CFDI_EncabezadoTableAdapter.Fill(Me.ATEBCOFIDIDataSet.CFDI_Encabezado)
         With CFDI_EncabezadoDataGridView
