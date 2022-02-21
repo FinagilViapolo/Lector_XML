@@ -9,7 +9,7 @@
         If txtBuscarFolio.Text = "" Then
             Me.CFDI_EncabezadoTableAdapter.Buscar_FillBy(Me.ATEBCOFIDIDataSet.CFDI_Encabezado, 0, txtBuscarSerie.Text.Trim, txtBuscarUUID.Text)
         Else
-            Me.CFDI_EncabezadoTableAdapter.Buscar_FillBy(Me.ATEBCOFIDIDataSet.CFDI_Encabezado, txtBuscarFolio.Text.Trim, txtBuscarSerie.Text.Trim, txtBuscarUUID.Text)
+            Me.CFDI_EncabezadoTableAdapter.Buscar_FillBy(Me.ATEBCOFIDIDataSet.CFDI_Encabezado, txtBuscarFolio.Text.Trim, txtBuscarSerie.Text.Trim, "NULL")
         End If
         'Me.CFDI_EncabezadoTableAdapter.Fill(Me.ATEBCOFIDIDataSet.CFDI_Encabezado)
         With CFDI_EncabezadoDataGridView
@@ -23,7 +23,11 @@
         Dim f As New frmDetalleCFDI
         f.var_serie = _27_Serie_ComprobanteTextBox.Text.Trim
         f.var_folio = _1_FolioTextBox.Text.Trim
-        f.var_uuid = GuidTextBox.Text.Trim
+        If GuidTextBox.Text = "" Then
+            f.var_uuid = "NULL"
+        Else
+            f.var_uuid = GuidTextBox.Text.Trim
+        End If
         f.Show()
         Cursor = System.Windows.Forms.Cursors.Default
     End Sub
