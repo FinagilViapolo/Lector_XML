@@ -14,7 +14,7 @@ Option Explicit On
 
 
 <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
- Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0"),  _
+ Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.3.0.0"),  _
  Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
 Partial Friend NotInheritable Class Settings
     Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -53,6 +53,18 @@ Partial Friend NotInheritable Class Settings
         End Get
     End Property
     
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid2\FINAGIL_CXP\")>  _
+    Public Property hostExe() As String
+        Get
+            Return CType(Me("hostExe"),String)
+        End Get
+        Set
+            Me("hostExe") = value
+        End Set
+    End Property
+    
     <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
@@ -84,18 +96,6 @@ Partial Friend NotInheritable Class Settings
         Get
             Return CType(Me("csContpaqFinagil"),String)
         End Get
-    End Property
-    
-    <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid2\FINAGIL_CXP\")>  _
-    Public Property hostExe() As String
-        Get
-            Return CType(Me("hostExe"),String)
-        End Get
-        Set
-            Me("hostExe") = value
-        End Set
     End Property
 End Class
 

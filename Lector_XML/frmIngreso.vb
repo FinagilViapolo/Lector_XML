@@ -43,8 +43,8 @@ Public Class frmIngreso
         Dim rootPath As String = My.Settings.hostExe & "XSD"
 
         For Each archivo As String In Directory.GetFiles(directorio_origen, "*.xml", SearchOption.AllDirectories)
-            Try
-                archivo_02 = archivo
+
+            archivo_02 = archivo
                 cont += 1
                 Dim resValidSAT As String = ""
                 Dim version_valida As String = res.LeeXML(archivo, "Version")
@@ -267,9 +267,9 @@ Public Class frmIngreso
                 ToolStripProgressBar1.Value = cont
                 ToolStripStatusLabel1.Text = CLng((ToolStripProgressBar1.Value * 100) / ToolStripProgressBar1.Maximum) & " %"
                 Me.Update()
-            Catch ex As Exception
-                MsgBox("El archivo****:  " & archivo_02 & " **presenta los siguiente errores***: " & ex.ToString + "---", MsgBoxStyle.Critical, "Nombre del archivo con errores: " & archivo_02)
-            End Try
+            'Catch ex As Exception
+            '    MsgBox("El archivo****:  " & archivo_02 & " **presenta los siguiente errores***: " & ex.ToString + "---", MsgBoxStyle.Critical, "Nombre del archivo con errores: " & archivo_02)
+            'End Try
         Next
 
         MsgBox("Proceso terminado", MsgBoxStyle.Information)

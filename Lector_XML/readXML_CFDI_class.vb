@@ -2,11 +2,12 @@
 Imports System.Xml.Schema
 Imports System.IO
 Imports System.Text
-Imports Valida_SAT_WS
 Imports System.Collections
 Imports System.Data
 Imports System.Xml.XmlText
 Imports System.Security.Cryptography
+Imports Valida_SAT_WS
+
 
 
 Public Class readXML_CFDI_class
@@ -183,8 +184,8 @@ Public Class readXML_CFDI_class
 
     Public Function Valida_SAT(ByVal rfce As String, ByVal rfcr As String, ByVal importe As String, ByVal uuid As String)
         Dim resultado As String = ""
-        Dim servicio As ServiceReference1.ConsultaCFDIServiceClient 'mx.gob.sat.facturaelectronica.consultaqr.ConsultaCFDIService
-        servicio = New ServiceReference1.ConsultaCFDIServiceClient 'mx.gob.sat.facturaelectronica.consultaqr.ConsultaCFDIService
+        Dim servicio As mx.gob.sat.facturaelectronica.consultaqr.ConsultaCFDIService
+        servicio = New mx.gob.sat.facturaelectronica.consultaqr.ConsultaCFDIService
         resultado = servicio.Consulta("?re=" + rfce + "&rr=" + rfcr + "&tt=" + importe + "&id=" + uuid).Estado.ToString
         Return resultado
     End Function
