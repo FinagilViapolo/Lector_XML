@@ -29,5 +29,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=CONTPAQ01\CONTABILIDAD;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persist Security Info=True;User ID=finagil;Password=finagil</Value>
     </Setting>
+    <Setting Name="hostExeNomina" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\onbase-pc\contratos$\Executables\</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -20,7 +20,7 @@ Public Class frmInicio
 
     Private Sub btnNomina_Click(sender As Object, e As EventArgs) Handles btnNomina.Click
         Dim proces As New Process
-        proces.StartInfo.FileName = "\\server-raid2\contratos$\Executables\XML_Report.exe"
+        proces.StartInfo.FileName = My.Settings.hostExeNomina & "XML_Report.exe"
         proces.Start()
     End Sub
 
