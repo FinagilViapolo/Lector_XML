@@ -183,11 +183,12 @@ Public Class readXML_CFDI_class
     End Function
 
     Public Function Valida_SAT(ByVal rfce As String, ByVal rfcr As String, ByVal importe As String, ByVal uuid As String)
-        Dim resultado As String = ""
+        Dim resultado(1) As String
         System.Net.ServicePointManager.SecurityProtocol = Net.SecurityProtocolType.Tls12
-        Dim servicio As mx.gob.sat.facturaelectronica.consultaqr.ConsultaCFDIService
-        servicio = New mx.gob.sat.facturaelectronica.consultaqr.ConsultaCFDIService
-        resultado = servicio.Consulta("?re=" + rfce + "&rr=" + rfcr + "&tt=" + importe + "&id=" + uuid).Estado.ToString
+        Dim servicio As ServiceReference2.ConsultaCFDIServiceClient 'mx.gob.sat.facturaelectronica.consultaqr.ConsultaCFDIService
+        servicio = New ServiceReference2.ConsultaCFDIServiceClient 'mx.gob.sat.facturaelectronica.consultaqr.ConsultaCFDIService
+        resultado(0) = servicio.Consulta("?re=" + rfce + "&rr=" + rfcr + "&tt=" + importe + "&id=" + uuid).Estado
+        resultado(1) = servicio.Consulta("?re=" + rfce + "&rr=" + rfcr + "&tt=" + importe + "&id=" + uuid).EsCancelable
         Return resultado
     End Function
 

@@ -46,12 +46,12 @@ Public Class frmIngreso
 
             archivo_02 = archivo
                 cont += 1
-                Dim resValidSAT As String = ""
-                Dim version_valida As String = res.LeeXML(archivo, "Version")
+            Dim resValidSAT(1) As String
+            Dim version_valida As String = res.LeeXML(archivo, "Version")
                 If chkValidaSAT.Checked = True Then
-                    resValidSAT = res.Valida_SAT(res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID")) 'res.Valida_SAT(res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"))
-                    'MsgBox(res.LeeXML(archivo, "RFCE") & "-" & res.LeeXML(archivo, "RFCR") & "-" & res.LeeXML(archivo, "Total") & "-" & res.LeeXML(archivo, "UUID"))
-                    Dim resXSD As validaXSD = New validaXSD
+                resValidSAT = res.Valida_SAT(res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID")) 'res.Valida_SAT(res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"))
+                'MsgBox(res.LeeXML(archivo, "RFCE") & "-" & res.LeeXML(archivo, "RFCR") & "-" & res.LeeXML(archivo, "Total") & "-" & res.LeeXML(archivo, "UUID"))
+                Dim resXSD As validaXSD = New validaXSD
                     Dim var As String = "VALIDO"
                     Try
                         resXSD.LoadValidatedXmlDocument(archivo, rootPath + "\cfdv33.xsd", rootPath + "\TimbreFiscalDigitalv11.xsd", rootPath + "\implocal.xsd", rootPath + "\terceros11.xsd", rootPath + "\cfdiregistrofiscal.xsd")
@@ -63,8 +63,11 @@ Public Class frmIngreso
                 End If
 
 
-                Dim complementoXml As String = res.LeeXML(archivo, "ComplementoXML")
-                Dim serie As String = res.LeeXML(archivo, "Serie")
+            Dim complementoXml As String
+            If chkDesglose.Checked = True Then
+                complementoXml = res.LeeXML(archivo, "ComplementoXML")
+            End If
+            Dim serie As String = res.LeeXML(archivo, "Serie")
                 Dim folio As String = res.LeeXML(archivo, "Folio")
                 Dim TipoRelacion As String = res.LeeXML(archivo, "TipoRelacion")
                 Dim TipoRelacionUUID As String = res.LeeXML(archivo, "TipoRelacionUUID")
@@ -100,13 +103,13 @@ Public Class frmIngreso
                     tcredito = ""
                 End If
 
+            If chkDesglose.Checked = True Then
+
                 Dim nodos_conceptos As Integer = CInt(res.LeeXML(archivo, "NoCon"))
                 Dim conceptos As XmlNode = res.LeeXML_Conceptos(archivo, "Concepto")
 
 
                 Dim contador As Integer = 0
-
-
 
                 For Each detalle_conceptos As XmlNode In conceptos.ChildNodes
                     Dim ClaveProdServ As String = ""
@@ -264,9 +267,12 @@ Public Class frmIngreso
                         End If
                     Next
                 Next
-                ToolStripProgressBar1.Value = cont
-                ToolStripStatusLabel1.Text = CLng((ToolStripProgressBar1.Value * 100) / ToolStripProgressBar1.Maximum) & " %"
-                Me.Update()
+            Else
+                Me.dgvIngresos.Rows.Add(serie, folio, res.LeeXML(archivo, "RFCE"), res.LeeXML(archivo, "NombreE"), res.LeeXML(archivo, "RegimenFiscal"), res.LeeXML(archivo, "RFCR"), res.LeeXML(archivo, "NombreR"), res.LeeXML(archivo, "UsoCFDI"), res.LeeXML(archivo, "TipoDeComprobante"), res.LeeXML(archivo, "Fecha"), res.LeeXML(archivo, "FormaPago"), res.LeeXML(archivo, "CondicionesDePago"), res.LeeXML(archivo, "Moneda"), res.LeeXML(archivo, "MetodoPago"), TipoRelacion, TipoRelacionUUID, "", "", "", "", "", "", "", "", "", "", "", "", res.LeeXML(archivo, "ImpuestosT"), "", "", "", "", "", "", res.LeeXML(archivo, "SubTotal"), res.LeeXML(archivo, "Descuento"), res.LeeXML(archivo, "Total"), res.LeeXML(archivo, "UUID"), FechaTimbrado, resValidSAT(0), res.LeeXML(archivo, "Version"), contrato, tcredito, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", complementoXml, archivo, resValidSAT(1))
+            End If
+            ToolStripProgressBar1.Value = cont
+            ToolStripStatusLabel1.Text = CLng((ToolStripProgressBar1.Value * 100) / ToolStripProgressBar1.Maximum) & " % ( Filas: " & dgvIngresos.Rows.Count.ToString & ")"
+            Me.Update()
             'Catch ex As Exception
             '    MsgBox("El archivo****:  " & archivo_02 & " **presenta los siguiente errores***: " & ex.ToString + "---", MsgBoxStyle.Critical, "Nombre del archivo con errores: " & archivo_02)
             'End Try

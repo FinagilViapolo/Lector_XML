@@ -51,6 +51,22 @@ Partial Class frmIngreso
         Me.chkValidaSAT = New System.Windows.Forms.CheckBox()
         Me.btnCofidi = New System.Windows.Forms.Button()
         Me.dgvIngresos = New System.Windows.Forms.DataGridView()
+        Me.btnXLS = New System.Windows.Forms.Button()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.btnBDEkomercio = New System.Windows.Forms.Button()
+        Me.chkContTCred = New System.Windows.Forms.CheckBox()
+        Me.btnSepArchivos = New System.Windows.Forms.Button()
+        Me.fbdSeparar_Origen = New System.Windows.Forms.FolderBrowserDialog()
+        Me.fbdSeparar_Destino = New System.Windows.Forms.FolderBrowserDialog()
+        Me.btnSalir = New System.Windows.Forms.Button()
+        Me.CFDIClientesCOFIDIBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ATEBCOFIDIDataSet = New Lector_XML.ATEBCOFIDIDataSet()
+        Me.CFDI_Clientes_COFIDITableAdapter = New Lector_XML.ATEBCOFIDIDataSetTableAdapters.CFDI_Clientes_COFIDITableAdapter()
+        Me.TableAdapterManager = New Lector_XML.ATEBCOFIDIDataSetTableAdapters.TableAdapterManager()
+        Me.chkDesglose = New System.Windows.Forms.CheckBox()
         Me.serie = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.folio = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.rfc_emisor = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -114,21 +130,7 @@ Partial Class frmIngreso
         Me.ImpSaldoInsoluto = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.complemento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.archivo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnXLS = New System.Windows.Forms.Button()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.btnBDEkomercio = New System.Windows.Forms.Button()
-        Me.chkContTCred = New System.Windows.Forms.CheckBox()
-        Me.btnSepArchivos = New System.Windows.Forms.Button()
-        Me.fbdSeparar_Origen = New System.Windows.Forms.FolderBrowserDialog()
-        Me.fbdSeparar_Destino = New System.Windows.Forms.FolderBrowserDialog()
-        Me.btnSalir = New System.Windows.Forms.Button()
-        Me.CFDIClientesCOFIDIBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ATEBCOFIDIDataSet = New Lector_XML.ATEBCOFIDIDataSet()
-        Me.CFDI_Clientes_COFIDITableAdapter = New Lector_XML.ATEBCOFIDIDataSetTableAdapters.CFDI_Clientes_COFIDITableAdapter()
-        Me.TableAdapterManager = New Lector_XML.ATEBCOFIDIDataSetTableAdapters.TableAdapterManager()
+        Me.satC = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvIngresos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.CFDIClientesCOFIDIBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -181,7 +183,7 @@ Partial Class frmIngreso
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvIngresos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvIngresos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.serie, Me.folio, Me.rfc_emisor, Me.nombre_emisor, Me.rfiscal, Me.rfc_receptor, Me.nombre_receptor, Me.ucfdi, Me.tipo, Me.fecha, Me.fpago, Me.cpago, Me.moneda, Me.mpago, Me.tiporelacion, Me.tipreluuid, Me.claveprodserv, Me.cantidad, Me.claveunidad, Me.unidad, Me.concepto, Me.pu, Me.importe, Me.tbase, Me.timpuesto, Me.ttipofactor, Me.ttasaocuota, Me.timporte, Me.totaltraslados, Me.rbase, Me.rimpuesto, Me.rtipofactor, Me.rtasaocuota, Me.rimporte, Me.totalretenciones, Me.subtotal, Me.descuento, Me.total, Me.uuid, Me.fechatimbrado, Me.sat, Me.version, Me.contrato, Me.tipocredito, Me.VersionCP, Me.FechaPago, Me.FormaDePagoP, Me.MonedaP, Me.Monto, Me.NumOperacion, Me.RfcEmisorCtaBen, Me.CtaBeneficiario, Me.IdDocumento, Me.SerieCP, Me.FolioCP, Me.MonedaDR, Me.MetodoDePagoDR, Me.NumParcialidad, Me.ImpSaldoAnt, Me.ImpPagado, Me.ImpSaldoInsoluto, Me.complemento, Me.archivo})
+        Me.dgvIngresos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.serie, Me.folio, Me.rfc_emisor, Me.nombre_emisor, Me.rfiscal, Me.rfc_receptor, Me.nombre_receptor, Me.ucfdi, Me.tipo, Me.fecha, Me.fpago, Me.cpago, Me.moneda, Me.mpago, Me.tiporelacion, Me.tipreluuid, Me.claveprodserv, Me.cantidad, Me.claveunidad, Me.unidad, Me.concepto, Me.pu, Me.importe, Me.tbase, Me.timpuesto, Me.ttipofactor, Me.ttasaocuota, Me.timporte, Me.totaltraslados, Me.rbase, Me.rimpuesto, Me.rtipofactor, Me.rtasaocuota, Me.rimporte, Me.totalretenciones, Me.subtotal, Me.descuento, Me.total, Me.uuid, Me.fechatimbrado, Me.sat, Me.version, Me.contrato, Me.tipocredito, Me.VersionCP, Me.FechaPago, Me.FormaDePagoP, Me.MonedaP, Me.Monto, Me.NumOperacion, Me.RfcEmisorCtaBen, Me.CtaBeneficiario, Me.IdDocumento, Me.SerieCP, Me.FolioCP, Me.MonedaDR, Me.MetodoDePagoDR, Me.NumParcialidad, Me.ImpSaldoAnt, Me.ImpPagado, Me.ImpSaldoInsoluto, Me.complemento, Me.archivo, Me.satC})
         DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle25.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -204,6 +206,109 @@ Partial Class frmIngreso
         Me.dgvIngresos.RowHeadersDefaultCellStyle = DataGridViewCellStyle26
         Me.dgvIngresos.Size = New System.Drawing.Size(1370, 618)
         Me.dgvIngresos.TabIndex = 0
+        '
+        'btnXLS
+        '
+        Me.btnXLS.Location = New System.Drawing.Point(523, 647)
+        Me.btnXLS.Name = "btnXLS"
+        Me.btnXLS.Size = New System.Drawing.Size(134, 23)
+        Me.btnXLS.TabIndex = 4
+        Me.btnXLS.Text = "XLS"
+        Me.btnXLS.UseVisualStyleBackColor = True
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripProgressBar1, Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 673)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(1370, 22)
+        Me.StatusStrip1.TabIndex = 5
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripProgressBar1
+        '
+        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
+        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(100, 16)
+        Me.ToolStripProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(0, 17)
+        '
+        'ToolStripStatusLabel2
+        '
+        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(0, 17)
+        '
+        'btnBDEkomercio
+        '
+        Me.btnBDEkomercio.Location = New System.Drawing.Point(697, 647)
+        Me.btnBDEkomercio.Name = "btnBDEkomercio"
+        Me.btnBDEkomercio.Size = New System.Drawing.Size(134, 23)
+        Me.btnBDEkomercio.TabIndex = 6
+        Me.btnBDEkomercio.Text = "BD Ekomercio"
+        Me.btnBDEkomercio.UseVisualStyleBackColor = True
+        '
+        'chkContTCred
+        '
+        Me.chkContTCred.AutoSize = True
+        Me.chkContTCred.Location = New System.Drawing.Point(222, 651)
+        Me.chkContTCred.Name = "chkContTCred"
+        Me.chkContTCred.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkContTCred.Size = New System.Drawing.Size(122, 17)
+        Me.chkContTCred.TabIndex = 7
+        Me.chkContTCred.Text = "?Obtine Cont/TCred"
+        Me.chkContTCred.UseVisualStyleBackColor = True
+        '
+        'btnSepArchivos
+        '
+        Me.btnSepArchivos.Location = New System.Drawing.Point(1005, 647)
+        Me.btnSepArchivos.Name = "btnSepArchivos"
+        Me.btnSepArchivos.Size = New System.Drawing.Size(134, 23)
+        Me.btnSepArchivos.TabIndex = 8
+        Me.btnSepArchivos.Text = "Separar Archivos (A/M)"
+        Me.btnSepArchivos.UseVisualStyleBackColor = True
+        '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(1173, 647)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 9
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
+        'CFDIClientesCOFIDIBindingSource
+        '
+        Me.CFDIClientesCOFIDIBindingSource.DataMember = "CFDI_Clientes_COFIDI"
+        Me.CFDIClientesCOFIDIBindingSource.DataSource = Me.ATEBCOFIDIDataSet
+        '
+        'ATEBCOFIDIDataSet
+        '
+        Me.ATEBCOFIDIDataSet.DataSetName = "ATEBCOFIDIDataSet"
+        Me.ATEBCOFIDIDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'CFDI_Clientes_COFIDITableAdapter
+        '
+        Me.CFDI_Clientes_COFIDITableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.CFDI_EncabezadoTableAdapter = Nothing
+        Me.TableAdapterManager.Connection = Nothing
+        Me.TableAdapterManager.UpdateOrder = Lector_XML.ATEBCOFIDIDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'chkDesglose
+        '
+        Me.chkDesglose.AutoSize = True
+        Me.chkDesglose.Location = New System.Drawing.Point(220, 624)
+        Me.chkDesglose.Name = "chkDesglose"
+        Me.chkDesglose.Size = New System.Drawing.Size(124, 17)
+        Me.chkDesglose.TabIndex = 10
+        Me.chkDesglose.Text = "Desglose Conceptos"
+        Me.chkDesglose.UseVisualStyleBackColor = True
         '
         'serie
         '
@@ -229,7 +334,7 @@ Partial Class frmIngreso
         Me.rfc_emisor.HeaderText = "RFC Emisor"
         Me.rfc_emisor.Name = "rfc_emisor"
         Me.rfc_emisor.ReadOnly = True
-        Me.rfc_emisor.Width = 80
+        Me.rfc_emisor.Width = 87
         '
         'nombre_emisor
         '
@@ -245,7 +350,7 @@ Partial Class frmIngreso
         Me.rfiscal.HeaderText = "R Fiscal"
         Me.rfiscal.Name = "rfiscal"
         Me.rfiscal.ReadOnly = True
-        Me.rfiscal.Width = 65
+        Me.rfiscal.Width = 70
         '
         'rfc_receptor
         '
@@ -253,7 +358,6 @@ Partial Class frmIngreso
         Me.rfc_receptor.HeaderText = "RFC Receptor"
         Me.rfc_receptor.Name = "rfc_receptor"
         Me.rfc_receptor.ReadOnly = True
-        Me.rfc_receptor.Width = 92
         '
         'nombre_receptor
         '
@@ -261,7 +365,7 @@ Partial Class frmIngreso
         Me.nombre_receptor.HeaderText = "N Receptor"
         Me.nombre_receptor.Name = "nombre_receptor"
         Me.nombre_receptor.ReadOnly = True
-        Me.nombre_receptor.Width = 80
+        Me.nombre_receptor.Width = 87
         '
         'ucfdi
         '
@@ -271,7 +375,7 @@ Partial Class frmIngreso
         Me.ucfdi.HeaderText = "U CFDI"
         Me.ucfdi.Name = "ucfdi"
         Me.ucfdi.ReadOnly = True
-        Me.ucfdi.Width = 62
+        Me.ucfdi.Width = 67
         '
         'tipo
         '
@@ -300,7 +404,7 @@ Partial Class frmIngreso
         Me.fpago.HeaderText = "F de Pago"
         Me.fpago.Name = "fpago"
         Me.fpago.ReadOnly = True
-        Me.fpago.Width = 75
+        Me.fpago.Width = 81
         '
         'cpago
         '
@@ -308,7 +412,7 @@ Partial Class frmIngreso
         Me.cpago.HeaderText = "C de Pago"
         Me.cpago.Name = "cpago"
         Me.cpago.ReadOnly = True
-        Me.cpago.Width = 76
+        Me.cpago.Width = 82
         '
         'moneda
         '
@@ -324,7 +428,7 @@ Partial Class frmIngreso
         Me.mpago.HeaderText = "M de Pago"
         Me.mpago.Name = "mpago"
         Me.mpago.ReadOnly = True
-        Me.mpago.Width = 78
+        Me.mpago.Width = 84
         '
         'tiporelacion
         '
@@ -366,7 +470,7 @@ Partial Class frmIngreso
         Me.claveunidad.HeaderText = "Clave U"
         Me.claveunidad.Name = "claveunidad"
         Me.claveunidad.ReadOnly = True
-        Me.claveunidad.Width = 65
+        Me.claveunidad.Width = 70
         '
         'unidad
         '
@@ -412,7 +516,7 @@ Partial Class frmIngreso
         Me.tbase.HeaderText = "T Base"
         Me.tbase.Name = "tbase"
         Me.tbase.ReadOnly = True
-        Me.tbase.Width = 61
+        Me.tbase.Width = 66
         '
         'timpuesto
         '
@@ -420,7 +524,7 @@ Partial Class frmIngreso
         Me.timpuesto.HeaderText = "T Impuesto"
         Me.timpuesto.Name = "timpuesto"
         Me.timpuesto.ReadOnly = True
-        Me.timpuesto.Width = 78
+        Me.timpuesto.Width = 85
         '
         'ttipofactor
         '
@@ -428,7 +532,7 @@ Partial Class frmIngreso
         Me.ttipofactor.HeaderText = "T TipoFactor"
         Me.ttipofactor.Name = "ttipofactor"
         Me.ttipofactor.ReadOnly = True
-        Me.ttipofactor.Width = 86
+        Me.ttipofactor.Width = 93
         '
         'ttasaocuota
         '
@@ -436,7 +540,7 @@ Partial Class frmIngreso
         Me.ttasaocuota.HeaderText = "T TasaOCuota"
         Me.ttasaocuota.Name = "ttasaocuota"
         Me.ttasaocuota.ReadOnly = True
-        Me.ttasaocuota.Width = 94
+        Me.ttasaocuota.Width = 102
         '
         'timporte
         '
@@ -446,7 +550,7 @@ Partial Class frmIngreso
         Me.timporte.HeaderText = "T Importe"
         Me.timporte.Name = "timporte"
         Me.timporte.ReadOnly = True
-        Me.timporte.Width = 71
+        Me.timporte.Width = 77
         '
         'totaltraslados
         '
@@ -753,104 +857,18 @@ Partial Class frmIngreso
         Me.archivo.Name = "archivo"
         Me.archivo.ReadOnly = True
         '
-        'btnXLS
+        'satC
         '
-        Me.btnXLS.Location = New System.Drawing.Point(523, 647)
-        Me.btnXLS.Name = "btnXLS"
-        Me.btnXLS.Size = New System.Drawing.Size(134, 23)
-        Me.btnXLS.TabIndex = 4
-        Me.btnXLS.Text = "XLS"
-        Me.btnXLS.UseVisualStyleBackColor = True
-        '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripProgressBar1, Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 673)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1370, 22)
-        Me.StatusStrip1.TabIndex = 5
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'ToolStripProgressBar1
-        '
-        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
-        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(100, 16)
-        Me.ToolStripProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
-        '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(0, 17)
-        '
-        'ToolStripStatusLabel2
-        '
-        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(0, 17)
-        '
-        'btnBDEkomercio
-        '
-        Me.btnBDEkomercio.Location = New System.Drawing.Point(697, 647)
-        Me.btnBDEkomercio.Name = "btnBDEkomercio"
-        Me.btnBDEkomercio.Size = New System.Drawing.Size(134, 23)
-        Me.btnBDEkomercio.TabIndex = 6
-        Me.btnBDEkomercio.Text = "BD Ekomercio"
-        Me.btnBDEkomercio.UseVisualStyleBackColor = True
-        '
-        'chkContTCred
-        '
-        Me.chkContTCred.AutoSize = True
-        Me.chkContTCred.Location = New System.Drawing.Point(222, 651)
-        Me.chkContTCred.Name = "chkContTCred"
-        Me.chkContTCred.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chkContTCred.Size = New System.Drawing.Size(122, 17)
-        Me.chkContTCred.TabIndex = 7
-        Me.chkContTCred.Text = "?Obtine Cont/TCred"
-        Me.chkContTCred.UseVisualStyleBackColor = True
-        '
-        'btnSepArchivos
-        '
-        Me.btnSepArchivos.Location = New System.Drawing.Point(1005, 647)
-        Me.btnSepArchivos.Name = "btnSepArchivos"
-        Me.btnSepArchivos.Size = New System.Drawing.Size(134, 23)
-        Me.btnSepArchivos.TabIndex = 8
-        Me.btnSepArchivos.Text = "Separar Archivos (A/M)"
-        Me.btnSepArchivos.UseVisualStyleBackColor = True
-        '
-        'btnSalir
-        '
-        Me.btnSalir.Location = New System.Drawing.Point(1173, 647)
-        Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
-        Me.btnSalir.TabIndex = 9
-        Me.btnSalir.Text = "Salir"
-        Me.btnSalir.UseVisualStyleBackColor = True
-        '
-        'CFDIClientesCOFIDIBindingSource
-        '
-        Me.CFDIClientesCOFIDIBindingSource.DataMember = "CFDI_Clientes_COFIDI"
-        Me.CFDIClientesCOFIDIBindingSource.DataSource = Me.ATEBCOFIDIDataSet
-        '
-        'ATEBCOFIDIDataSet
-        '
-        Me.ATEBCOFIDIDataSet.DataSetName = "ATEBCOFIDIDataSet"
-        Me.ATEBCOFIDIDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CFDI_Clientes_COFIDITableAdapter
-        '
-        Me.CFDI_Clientes_COFIDITableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.CFDI_EncabezadoTableAdapter = Nothing
-        Me.TableAdapterManager.Connection = Nothing
-        Me.TableAdapterManager.UpdateOrder = Lector_XML.ATEBCOFIDIDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.satC.HeaderText = "Estatus SAT Can"
+        Me.satC.Name = "satC"
+        Me.satC.ReadOnly = True
         '
         'frmIngreso
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1370, 695)
+        Me.Controls.Add(Me.chkDesglose)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnSepArchivos)
         Me.Controls.Add(Me.chkContTCred)
@@ -895,6 +913,7 @@ Partial Class frmIngreso
     Friend WithEvents fbdSeparar_Origen As Windows.Forms.FolderBrowserDialog
     Friend WithEvents fbdSeparar_Destino As Windows.Forms.FolderBrowserDialog
     Friend WithEvents btnSalir As Windows.Forms.Button
+    Friend WithEvents chkDesglose As Windows.Forms.CheckBox
     Friend WithEvents serie As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents folio As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents rfc_emisor As Windows.Forms.DataGridViewTextBoxColumn
@@ -958,4 +977,5 @@ Partial Class frmIngreso
     Friend WithEvents ImpSaldoInsoluto As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents complemento As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents archivo As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents satC As Windows.Forms.DataGridViewTextBoxColumn
 End Class
