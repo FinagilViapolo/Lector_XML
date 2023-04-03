@@ -79,8 +79,8 @@ Partial Friend NotInheritable Class Settings
     <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=server-raid2;Initial Catalog=Production;Persist Security Info=True;Us"& _ 
-        "er ID=User_PRO;Password=User_PRO2015")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=server-raid7;Initial Catalog=Production;Persist Security Info=True;Us"& _ 
+        "er ID=User_PRO;Password=User_PRO2023")>  _
     Public ReadOnly Property ProductionConnectionString() As String
         Get
             Return CType(Me("ProductionConnectionString"),String)
@@ -108,6 +108,16 @@ Partial Friend NotInheritable Class Settings
         Set
             Me("hostExeNomina") = value
         End Set
+    End Property
+    
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc")>  _
+    Public ReadOnly Property Lector_XML_mx_gob_sat_facturaelectronica_consultaqr_ConsultaCFDIService() As String
+        Get
+            Return CType(Me("Lector_XML_mx_gob_sat_facturaelectronica_consultaqr_ConsultaCFDIService"),String)
+        End Get
     End Property
 End Class
 
