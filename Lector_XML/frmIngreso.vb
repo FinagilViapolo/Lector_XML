@@ -40,7 +40,7 @@ Public Class frmIngreso
 
             Dim res As readXML_CFDI_class = New readXML_CFDI_class
         Dim cont As Integer = 0
-        Dim rootPath As String = My.Settings.hostExe & "XSD"
+        Dim rootPath As String = My.Settings.Default.hostExe & "XSD"
 
         For Each archivo As String In Directory.GetFiles(directorio_origen, "*.xml", SearchOption.AllDirectories)
 

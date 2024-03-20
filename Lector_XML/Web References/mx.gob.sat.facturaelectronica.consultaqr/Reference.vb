@@ -22,24 +22,24 @@ Imports System.Xml.Serialization
 'Microsoft.VSDesigner generó automáticamente este código fuente, versión=4.0.30319.42000.
 '
 Namespace mx.gob.sat.facturaelectronica.consultaqr
-    
+
     'CODEGEN: No se controló el elemento de extensión WSDL opcional 'PolicyReference' del espacio de nombres 'http://schemas.xmlsoap.org/ws/2004/09/policy'.
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0"),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Web.Services.WebServiceBindingAttribute(Name:="BasicHttpBinding_IConsultaCFDIService", [Namespace]:="http://tempuri.org/")>  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0"),
+     System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.ComponentModel.DesignerCategoryAttribute("code"),
+     System.Web.Services.WebServiceBindingAttribute(Name:="BasicHttpBinding_IConsultaCFDIService", [Namespace]:="http://tempuri.org/")>
     Partial Public Class ConsultaCFDIService
         Inherits System.Web.Services.Protocols.SoapHttpClientProtocol
-        
+
         Private ConsultaOperationCompleted As System.Threading.SendOrPostCallback
-        
+
         Private useDefaultCredentialsSetExplicitly As Boolean
-        
+
         '''<remarks/>
         Public Sub New()
             MyBase.New
-            Me.Url = Global.Lector_XML.Settings.Default.Lector_XML_mx_gob_sat_facturaelectronica_consultaqr_ConsultaCFDIService
+            Me.Url = My.Settings.Default.Lector_XML_mx_gob_sat_facturaelectronica_consultaqr_ConsultaCFDIService
             If (Me.IsLocalFileSystemWebService(Me.Url) = true) Then
                 Me.UseDefaultCredentials = true
                 Me.useDefaultCredentialsSetExplicitly = false

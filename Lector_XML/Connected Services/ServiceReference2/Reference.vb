@@ -15,110 +15,110 @@ Imports System
 Imports System.Runtime.Serialization
 
 Namespace ServiceReference2
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),
-     System.Runtime.Serialization.DataContractAttribute(Name:="Acuse", [Namespace]:="http://schemas.datacontract.org/2004/07/Sat.Cfdi.Negocio.ConsultaCfdi.Servicio"),
-     System.SerializableAttribute()>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="Acuse", [Namespace]:="http://schemas.datacontract.org/2004/07/Sat.Cfdi.Negocio.ConsultaCfdi.Servicio"),  _
+     System.SerializableAttribute()>  _
     Partial Public Class Acuse
         Inherits Object
         Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
-
-        <System.NonSerializedAttribute()>
+        
+        <System.NonSerializedAttribute()>  _
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private CodigoEstatusField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private EsCancelableField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private EstadoField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private EstatusCancelacionField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ValidacionEFOSField As String
-
-        <Global.System.ComponentModel.BrowsableAttribute(False)>
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
                 Return Me.extensionDataField
             End Get
             Set
-                Me.extensionDataField = Value
+                Me.extensionDataField = value
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property CodigoEstatus() As String
             Get
                 Return Me.CodigoEstatusField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.CodigoEstatusField, Value) <> True) Then
-                    Me.CodigoEstatusField = Value
+                If (Object.ReferenceEquals(Me.CodigoEstatusField, value) <> true) Then
+                    Me.CodigoEstatusField = value
                     Me.RaisePropertyChanged("CodigoEstatus")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property EsCancelable() As String
             Get
                 Return Me.EsCancelableField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.EsCancelableField, Value) <> True) Then
-                    Me.EsCancelableField = Value
+                If (Object.ReferenceEquals(Me.EsCancelableField, value) <> true) Then
+                    Me.EsCancelableField = value
                     Me.RaisePropertyChanged("EsCancelable")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property Estado() As String
             Get
                 Return Me.EstadoField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.EstadoField, Value) <> True) Then
-                    Me.EstadoField = Value
+                If (Object.ReferenceEquals(Me.EstadoField, value) <> true) Then
+                    Me.EstadoField = value
                     Me.RaisePropertyChanged("Estado")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property EstatusCancelacion() As String
             Get
                 Return Me.EstatusCancelacionField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.EstatusCancelacionField, Value) <> True) Then
-                    Me.EstatusCancelacionField = Value
+                If (Object.ReferenceEquals(Me.EstatusCancelacionField, value) <> true) Then
+                    Me.EstatusCancelacionField = value
                     Me.RaisePropertyChanged("EstatusCancelacion")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property ValidacionEFOS() As String
             Get
                 Return Me.ValidacionEFOSField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.ValidacionEFOSField, Value) <> True) Then
-                    Me.ValidacionEFOSField = Value
+                If (Object.ReferenceEquals(Me.ValidacionEFOSField, value) <> true) Then
+                    Me.ValidacionEFOSField = value
                     Me.RaisePropertyChanged("ValidacionEFOS")
                 End If
             End Set
         End Property
-
+        
         Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
-
+        
         Protected Sub RaisePropertyChanged(ByVal propertyName As String)
             Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
             If (Not (propertyChanged) Is Nothing) Then
@@ -126,54 +126,54 @@ Namespace ServiceReference2
             End If
         End Sub
     End Class
-
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.ServiceContractAttribute(ConfigurationName:="ServiceReference1.IConsultaCFDIService")>
+    
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.ServiceContractAttribute(ConfigurationName:="ServiceReference2.IConsultaCFDIService")>  _
     Public Interface IConsultaCFDIService
-
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConsultaCFDIService/Consulta", ReplyAction:="http://tempuri.org/IConsultaCFDIService/ConsultaResponse")>
-        Function Consulta(ByVal expresionImpresa As String) As ServiceReference1.Acuse
-
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConsultaCFDIService/Consulta", ReplyAction:="http://tempuri.org/IConsultaCFDIService/ConsultaResponse")>
-        Function ConsultaAsync(ByVal expresionImpresa As String) As System.Threading.Tasks.Task(Of ServiceReference1.Acuse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConsultaCFDIService/Consulta", ReplyAction:="http://tempuri.org/IConsultaCFDIService/ConsultaResponse")>  _
+        Function Consulta(ByVal expresionImpresa As String) As ServiceReference2.Acuse
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IConsultaCFDIService/Consulta", ReplyAction:="http://tempuri.org/IConsultaCFDIService/ConsultaResponse")>  _
+        Function ConsultaAsync(ByVal expresionImpresa As String) As System.Threading.Tasks.Task(Of ServiceReference2.Acuse)
     End Interface
-
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>
+    
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
     Public Interface IConsultaCFDIServiceChannel
-        Inherits ServiceReference1.IConsultaCFDIService, System.ServiceModel.IClientChannel
+        Inherits ServiceReference2.IConsultaCFDIService, System.ServiceModel.IClientChannel
     End Interface
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
     Partial Public Class ConsultaCFDIServiceClient
-        Inherits System.ServiceModel.ClientBase(Of ServiceReference1.IConsultaCFDIService)
-        Implements ServiceReference1.IConsultaCFDIService
-
+        Inherits System.ServiceModel.ClientBase(Of ServiceReference2.IConsultaCFDIService)
+        Implements ServiceReference2.IConsultaCFDIService
+        
         Public Sub New()
             MyBase.New
         End Sub
-
+        
         Public Sub New(ByVal endpointConfigurationName As String)
             MyBase.New(endpointConfigurationName)
         End Sub
-
+        
         Public Sub New(ByVal endpointConfigurationName As String, ByVal remoteAddress As String)
             MyBase.New(endpointConfigurationName, remoteAddress)
         End Sub
-
+        
         Public Sub New(ByVal endpointConfigurationName As String, ByVal remoteAddress As System.ServiceModel.EndpointAddress)
             MyBase.New(endpointConfigurationName, remoteAddress)
         End Sub
-
+        
         Public Sub New(ByVal binding As System.ServiceModel.Channels.Binding, ByVal remoteAddress As System.ServiceModel.EndpointAddress)
             MyBase.New(binding, remoteAddress)
         End Sub
-
-        Public Function Consulta(ByVal expresionImpresa As String) As ServiceReference1.Acuse Implements ServiceReference1.IConsultaCFDIService.Consulta
+        
+        Public Function Consulta(ByVal expresionImpresa As String) As ServiceReference2.Acuse Implements ServiceReference2.IConsultaCFDIService.Consulta
             Return MyBase.Channel.Consulta(expresionImpresa)
         End Function
-
-        Public Function ConsultaAsync(ByVal expresionImpresa As String) As System.Threading.Tasks.Task(Of ServiceReference1.Acuse) Implements ServiceReference1.IConsultaCFDIService.ConsultaAsync
+        
+        Public Function ConsultaAsync(ByVal expresionImpresa As String) As System.Threading.Tasks.Task(Of ServiceReference2.Acuse) Implements ServiceReference2.IConsultaCFDIService.ConsultaAsync
             Return MyBase.Channel.ConsultaAsync(expresionImpresa)
         End Function
     End Class

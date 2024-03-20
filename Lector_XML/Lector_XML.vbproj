@@ -10,7 +10,7 @@
     <AssemblyName>Lector_XML</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Empty</MyType>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -76,7 +76,7 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>4C23E737ABCB0B8CC7AD9C7C3A129F46B52423F2</ManifestCertificateThumbprint>
@@ -85,7 +85,7 @@
     <ManifestKeyFile>Lector_XML_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -141,7 +141,6 @@
     <None Include="contpaq.xss">
       <DependentUpon>contpaq.xsd</DependentUpon>
     </None>
-    <None Include="Lector_XML_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

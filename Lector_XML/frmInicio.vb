@@ -1,4 +1,5 @@
 ﻿Imports System.Diagnostics
+Imports Lector_XML.My
 Public Class frmInicio
     Private Sub frmInicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -20,7 +21,7 @@ Public Class frmInicio
 
     Private Sub btnNomina_Click(sender As Object, e As EventArgs) Handles btnNomina.Click
         Dim proces As New Process
-        proces.StartInfo.FileName = My.Settings.hostExeNomina & "XML_Report.exe"
+        proces.StartInfo.FileName = My.Settings.Default.hostExeNomina & "XML_Report.exe"
         proces.Start()
     End Sub
 
