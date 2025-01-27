@@ -609,8 +609,12 @@ Public Class frmIngreso
     End Sub
 
     Private Sub btnBDEkomercio_Click(sender As Object, e As EventArgs) Handles btnBDEkomercio.Click
-        Dim f As frmIngresoEk
-        f = New frmIngresoEk
+        'Dim f As frmIngresoEk
+        'f = New frmIngresoEk
+        'f.Show()
+
+        Dim f As frmCfdiDesglose
+        f = New frmCfdiDesglose
         f.Show()
     End Sub
 

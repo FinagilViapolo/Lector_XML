@@ -12,16 +12,15 @@ Option Strict On
 Option Explicit On
 
 
-Namespace My
+
+<Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
+ Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0"),  _
+ Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
+Partial Friend NotInheritable Class Settings
+    Inherits Global.System.Configuration.ApplicationSettingsBase
     
-    <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.9.0.0"),  _
-     Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
-    Partial Friend NotInheritable Class Settings
-        Inherits Global.System.Configuration.ApplicationSettingsBase
-        
-        Private Shared defaultInstance As Settings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New Settings()),Settings)
-        
+    Private Shared defaultInstance As Settings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New Settings()),Settings)
+    
 #Region "Funcionalidad para autoguardar My.Settings"
 #If _MyType = "WindowsForms" Then
     Private Shared addedHandler As Boolean
@@ -36,10 +35,10 @@ Namespace My
     End Sub
 #End If
 #End Region
-        
-        Public Shared ReadOnly Property [Default]() As Settings
-            Get
-                
+    
+    Public Shared ReadOnly Property [Default]() As Settings
+        Get
+            
 #If _MyType = "WindowsForms" Then
                If Not addedHandler Then
                     SyncLock addedHandlerLockObject
@@ -50,78 +49,77 @@ Namespace My
                     End SyncLock
                 End If
 #End If
-                Return defaultInstance
-            End Get
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid2\FINAGIL_CXP\")>  _
-        Public Property hostExe() As String
-            Get
-                Return CType(Me("hostExe"),String)
-            End Get
-            Set
-                Me("hostExe") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid1\contratos2$\Executables\")>  _
-        Public Property hostExeNomina() As String
-            Get
-                Return CType(Me("hostExeNomina"),String)
-            End Get
-            Set
-                Me("hostExeNomina") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc")>  _
-        Public ReadOnly Property Lector_XML_mx_gob_sat_facturaelectronica_consultaqr_ConsultaCFDIService() As String
-            Get
-                Return CType(Me("Lector_XML_mx_gob_sat_facturaelectronica_consultaqr_ConsultaCFDIService"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=srv37-cfdi;Initial Catalog=ATEBCOFIDI;Persist Security Info=True;User"& _ 
-            " ID=finagil;Password=finagil")>  _
-        Public ReadOnly Property ATEBCOFIDIConnectionStringClientes() As String
-            Get
-                Return CType(Me("ATEBCOFIDIConnectionStringClientes"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=server-raid7;Initial Catalog=Production;Persist Security Info=True;Us"& _ 
-            "er ID=User_PRO;Password=User_PRO2023")>  _
-        Public ReadOnly Property ProductionConnectionString() As String
-            Get
-                Return CType(Me("ProductionConnectionString"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=CONTPAQ01\CONTABILIDAD;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persi"& _ 
-            "st Security Info=True;User ID=finagil;Password=finagil")>  _
-        Public ReadOnly Property csContpaqFinagil() As String
-            Get
-                Return CType(Me("csContpaqFinagil"),String)
-            End Get
-        End Property
-    End Class
-End Namespace
+            Return defaultInstance
+        End Get
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid2\FINAGIL_CXP\")>  _
+    Public Property hostExe() As String
+        Get
+            Return CType(Me("hostExe"),String)
+        End Get
+        Set
+            Me("hostExe") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid1\contratos2$\Executables\")>  _
+    Public Property hostExeNomina() As String
+        Get
+            Return CType(Me("hostExeNomina"),String)
+        End Get
+        Set
+            Me("hostExeNomina") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.WebServiceUrl),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc")>  _
+    Public ReadOnly Property Lector_XML_mx_gob_sat_facturaelectronica_consultaqr_ConsultaCFDIService() As String
+        Get
+            Return CType(Me("Lector_XML_mx_gob_sat_facturaelectronica_consultaqr_ConsultaCFDIService"),String)
+        End Get
+    End Property
+    
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=server-raid7;Initial Catalog=Production;Persist Security Info=True;Us"& _ 
+        "er ID=User_PRO;Password=User_PRO2023;Encrypt=False;TrustServerCertificate=True")>  _
+    Public ReadOnly Property ATEBCOFIDIConnectionStringClientes() As String
+        Get
+            Return CType(Me("ATEBCOFIDIConnectionStringClientes"),String)
+        End Get
+    End Property
+    
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=server-raid7;Initial Catalog=Production;Persist Security Info=True;Us"& _ 
+        "er ID=User_PRO;Password=User_PRO2023;Encrypt=False;TrustServerCertificate=True")>  _
+    Public ReadOnly Property ProductionConnectionString() As String
+        Get
+            Return CType(Me("ProductionConnectionString"),String)
+        End Get
+    End Property
+    
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Data Source=CONTPAQ01\CONTABILIDAD;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persi"& _ 
+        "st Security Info=True;User ID=finagil;Password=finagil")>  _
+    Public ReadOnly Property csContpaqFinagil() As String
+        Get
+            Return CType(Me("csContpaqFinagil"),String)
+        End Get
+    End Property
+End Class
 
 Namespace My
     
@@ -131,9 +129,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.Lector_XML.My.Settings
+        Friend ReadOnly Property Settings() As Global.Lector_XML.Settings
             Get
-                Return Global.Lector_XML.My.Settings.Default
+                Return Global.Lector_XML.Settings.Default
             End Get
         End Property
     End Module

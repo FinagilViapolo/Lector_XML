@@ -186,7 +186,7 @@ Public Class readXML_CFDI_class
         Dim servicio As mx.gob.sat.facturaelectronica.consultaqr.ConsultaCFDIService
         servicio = New mx.gob.sat.facturaelectronica.consultaqr.ConsultaCFDIService
         resultado(0) = servicio.Consulta("?re=" + rfce + "&rr=" + rfcr + "&tt=" + importe + "&id=" + uuid).Estado
-        resultado(1) = servicio.Consulta("?re=" + rfce + "&rr=" + rfcr + "&tt=" + importe + "&id=" + uuid).EsCancelable
+        resultado(1) = servicio.Consulta("?re=" + rfce + "&rr=" + rfcr + "&tt=" + importe + "&id=" + uuid).ValidacionEFOS
         Return resultado
     End Function
 

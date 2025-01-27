@@ -245,6 +245,12 @@
     <Compile Include="frmCancelacionCFDI.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmCfdiDesglose.Designer.vb">
+      <DependentUpon>frmCfdiDesglose.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCfdiDesglose.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDetalleCFDI.Designer.vb">
       <DependentUpon>frmDetalleCFDI.vb</DependentUpon>
     </Compile>
@@ -293,6 +299,7 @@
     <Compile Include="frmRetenciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Funciones.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -317,6 +324,12 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="rptCfdiDesglose.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptCfdiDesglose.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="validaXSD.vb" />
     <Compile Include="Web References\mx.gob.sat.facturaelectronica.consultaqr\Reference.vb">
       <AutoGen>True</AutoGen>
@@ -332,6 +345,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmCancelacionCFDI.resx">
       <DependentUpon>frmCancelacionCFDI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCfdiDesglose.resx">
+      <DependentUpon>frmCfdiDesglose.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetalleCFDI.resx">
       <DependentUpon>frmDetalleCFDI.vb</DependentUpon>
@@ -365,6 +381,10 @@
     <EmbeddedResource Include="rptAcuseCancelacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptAcuseCancelacion.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptCfdiDesglose.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptCfdiDesglose.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

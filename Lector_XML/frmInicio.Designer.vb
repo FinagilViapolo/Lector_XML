@@ -28,6 +28,7 @@ Partial Class frmInicio
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btnCancelaciones = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnReporteDesglose = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnIngreso
@@ -50,7 +51,7 @@ Partial Class frmInicio
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(165, 208)
+        Me.btnSalir.Location = New System.Drawing.Point(165, 249)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(75, 23)
         Me.btnSalir.TabIndex = 3
@@ -84,11 +85,21 @@ Partial Class frmInicio
         Me.Button2.Text = "Evento contable a partir de XML"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'btnReporteDesglose
+        '
+        Me.btnReporteDesglose.Location = New System.Drawing.Point(34, 209)
+        Me.btnReporteDesglose.Name = "btnReporteDesglose"
+        Me.btnReporteDesglose.Size = New System.Drawing.Size(206, 34)
+        Me.btnReporteDesglose.TabIndex = 7
+        Me.btnReporteDesglose.Text = "Reporte desglose CFDI"
+        Me.btnReporteDesglose.UseVisualStyleBackColor = True
+        '
         'frmInicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(274, 240)
+        Me.ClientSize = New System.Drawing.Size(274, 284)
+        Me.Controls.Add(Me.btnReporteDesglose)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.btnCancelaciones)
         Me.Controls.Add(Me.Button1)
@@ -109,4 +120,5 @@ Partial Class frmInicio
     Friend WithEvents Button1 As Windows.Forms.Button
     Friend WithEvents btnCancelaciones As Windows.Forms.Button
     Friend WithEvents Button2 As Windows.Forms.Button
+    Friend WithEvents btnReporteDesglose As Windows.Forms.Button
 End Class

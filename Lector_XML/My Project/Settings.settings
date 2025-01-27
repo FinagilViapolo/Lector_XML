@@ -13,23 +13,23 @@
     </Setting>
     <Setting Name="ATEBCOFIDIConnectionStringClientes" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;Data Source=srv37-cfdi;Initial Catalog=ATEBCOFIDI;Persist Security Info=True;User ID=finagil;Password=finagil&lt;/ConnectionString&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=server-raid7;Initial Catalog=Production;Persist Security Info=True;User ID=User_PRO;Password=User_PRO2023;Encrypt=False;TrustServerCertificate=True&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=srv37-cfdi;Initial Catalog=ATEBCOFIDI;Persist Security Info=True;User ID=finagil;Password=finagil</Value>
+      <Value Profile="(Default)">Data Source=server-raid7;Initial Catalog=Production;Persist Security Info=True;User ID=User_PRO;Password=User_PRO2023;Encrypt=False;TrustServerCertificate=True</Value>
     </Setting>
     <Setting Name="ProductionConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;Data Source=server-raid7;Initial Catalog=Production;Persist Security Info=True;User ID=User_PRO;Password=User_PRO2023&lt;/ConnectionString&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=server-raid7;Initial Catalog=Production;Persist Security Info=True;User ID=User_PRO;Password=User_PRO2023;Encrypt=False;TrustServerCertificate=True&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=server-raid7;Initial Catalog=Production;Persist Security Info=True;User ID=User_PRO;Password=User_PRO2023</Value>
+      <Value Profile="(Default)">Data Source=server-raid7;Initial Catalog=Production;Persist Security Info=True;User ID=User_PRO;Password=User_PRO2023;Encrypt=False;TrustServerCertificate=True</Value>
     </Setting>
     <Setting Name="csContpaqFinagil" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;ConnectionString&gt;Data Source=CONTPAQ01\CONTABILIDAD;Initial Catalog=ctFINAGILCONEFINAGIL2015;Persist Security Info=True;User ID=finagil;Password=finagil&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>

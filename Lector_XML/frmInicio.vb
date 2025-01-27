@@ -34,4 +34,9 @@ Public Class frmInicio
         Dim f As New frmEventoContable
         f.Show()
     End Sub
+
+    Private Sub btnReporteDesglose_Click(sender As Object, e As EventArgs) Handles btnReporteDesglose.Click
+        Dim f As New frmCfdiDesglose
+        f.Show()
+    End Sub
 End Class
