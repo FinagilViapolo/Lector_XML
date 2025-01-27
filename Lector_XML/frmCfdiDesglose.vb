@@ -333,7 +333,7 @@ Public Class frmCfdiDesglose
             Next
             no += 1
         Next
-        taAdapter.WriteXml("C:\Files\rptCfdi.xml", XmlWriteMode.WriteSchema)
+        'taAdapter.WriteXml("C:\Files\rptCfdi.xml", XmlWriteMode.WriteSchema)
         Dim rpt As New rptCfdiDesglose
 
         rpt.SetDataSource(taAdapter)
