@@ -5,6 +5,8 @@ Imports System.IO
 Imports System.Windows.Forms
 
 Public Class frmCfdiDesglose
+
+    Dim res As readXML_CFDI_class = New readXML_CFDI_class
     Private Sub frmCfdiDesglose_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         For i As Integer = 0 To 5
             cmbYear.Items.Add(Date.Now.AddYears(-i).Year)
@@ -68,13 +70,14 @@ Public Class frmCfdiDesglose
         taAdapter.Columns.Add("retencion_tipoFactor")
         taAdapter.Columns.Add("retencion_tasaOCuota")
         taAdapter.Columns.Add("retencion_importe", Type.GetType("System.Decimal"))
-
+        taAdapter.Columns.Add("estatusSAT")
 
 
         For Each drCfdi In dtCfdi.Rows
             ProgressBar1.Value = no
             ProgressBar1.Increment(no)
             Application.DoEvents()
+            Dim estatusSat As String = ""
             Me.Update()
             Me.Refresh()
 
@@ -89,6 +92,12 @@ Public Class frmCfdiDesglose
             Dim efectoComprobante As String = Funciones.LeeXMLUuid(drCfdi.xml, "TipoDeComprobante")
             Dim usoCfdi As String = Funciones.LeeXMLUuid(drCfdi.xml, "UsoCFDI")
             Dim regimenFiscal As String = Funciones.LeeXMLUuid(drCfdi.xml, "RegimenFiscalReceptor")
+
+            If chkVigenciaSat.Checked = True Then
+                estatusSat = res.Valida_SAT(Funciones.LeeXMLUuid(drCfdi.xml, "RFCE"), Funciones.LeeXMLUuid(drCfdi.xml, "RFCR"), Funciones.LeeXMLUuid(drCfdi.xml, "Total"), Funciones.LeeXMLUuid(drCfdi.xml, "UUID"))(0)
+            Else
+                estatusSat = ""
+            End If
 
             For Each detalle_conceptos As XmlNode In conceptos.ChildNodes
 
@@ -166,6 +175,8 @@ Public Class frmCfdiDesglose
                     'taFila("impuesto_tipoImpuesto") = usoCfdi
                     taFila("traslado_base") = Importe
 
+                    taFila("estatusSAT") = estatusSat
+
                     taAdapter.Rows.Add(taFila)
                 End If
 
@@ -242,6 +253,7 @@ Public Class frmCfdiDesglose
                                         taFila("retencion_tasaOCuota") = TasaOCuota
                                         taFila("retencion_importe") = (ImporteImpuesto)
 
+                                        taFila("estatusSAT") = estatusSat
 
                                         taAdapter.Rows.Add(taFila)
 
@@ -278,7 +290,7 @@ Public Class frmCfdiDesglose
                                         taFila("uuid") = drCfdi.uuid
                                         taFila("fechaFac") = drCfdi.fecha_fac
                                         taFila("mes") = drCfdi.Mes
-                                        taFila("rfcEmisor") = drCfdi.fecha_tim
+                                        taFila("rfcEmisor") = drCfdi.rfc_emisor
                                         taFila("rfcReceptor") = drCfdi.rfc_receptor
                                         taFila("formaPago") = formaPago
                                         taFila("subtotal") = subtotal
@@ -318,10 +330,11 @@ Public Class frmCfdiDesglose
                                             End If
                                         End If
 
+                                        taFila("estatusSAT") = estatusSat
 
-                                            taAdapter.Rows.Add(taFila)
+                                        taAdapter.Rows.Add(taFila)
 
-                                    End If
+                                        End If
 
                                 Next
                             End If

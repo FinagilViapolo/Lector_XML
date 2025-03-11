@@ -30,6 +30,7 @@ Partial Class frmCfdiDesglose
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.chkVigenciaSat = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'btnEnviar
@@ -94,11 +95,22 @@ Partial Class frmCfdiDesglose
         Me.ProgressBar1.Size = New System.Drawing.Size(677, 23)
         Me.ProgressBar1.TabIndex = 7
         '
+        'chkVigenciaSat
+        '
+        Me.chkVigenciaSat.AutoSize = True
+        Me.chkVigenciaSat.Location = New System.Drawing.Point(519, 16)
+        Me.chkVigenciaSat.Name = "chkVigenciaSat"
+        Me.chkVigenciaSat.Size = New System.Drawing.Size(103, 17)
+        Me.chkVigenciaSat.TabIndex = 8
+        Me.chkVigenciaSat.Text = "¿Vigencia SAT?"
+        Me.chkVigenciaSat.UseVisualStyleBackColor = True
+        '
         'frmCfdiDesglose
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1192, 594)
+        Me.Controls.Add(Me.chkVigenciaSat)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -120,4 +132,5 @@ Partial Class frmCfdiDesglose
     Friend WithEvents Label1 As Windows.Forms.Label
     Friend WithEvents Label2 As Windows.Forms.Label
     Friend WithEvents ProgressBar1 As Windows.Forms.ProgressBar
+    Friend WithEvents chkVigenciaSat As Windows.Forms.CheckBox
 End Class
