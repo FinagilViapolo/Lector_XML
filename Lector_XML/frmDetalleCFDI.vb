@@ -33,7 +33,7 @@ Public Class frmDetalleCFDI
         Dim ask As MsgBoxResult = MsgBox("Está por cancelar el CFDI con folio fiscal: " + GuidTextBox.Text.Trim + vbNewLine + " , Serie: " + _27_Serie_ComprobanteTextBox.Text.Trim + " , Folio: " + _1_FolioTextBox.Text.Trim + vbNewLine + " del Receptor: " + _42_Nombre_ReceptorTextBox.Text.Trim, MsgBoxStyle.YesNo)
         If ask = MsgBoxResult.Yes Then
             Try
-                taCancela.CancelaCFDI_UpdateQuery(CInt(_1_FolioTextBox.Text.Trim), _27_Serie_ComprobanteTextBox.Text.Trim, GuidTextBox.Text.Trim)
+                taCancela.CancelaCFDI_UpdateQuery(CInt(_1_FolioTextBox.Text.Trim), _27_Serie_ComprobanteTextBox.Text.Trim)
                 MsgBox("Proceso de cancelación ejectutado correctamente...", MsgBoxStyle.Information)
 
                 newRPT.SetParameterValue("var_cliente", _42_Nombre_ReceptorTextBox.Text)

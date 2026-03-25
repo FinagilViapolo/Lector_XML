@@ -67,7 +67,7 @@ Partial Friend NotInheritable Class Settings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid1\contratos2$\Executables\")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("\\server-raid5\contratos$\Executables\")>  _
     Public Property hostExeNomina() As String
         Get
             Return CType(Me("hostExeNomina"),String)

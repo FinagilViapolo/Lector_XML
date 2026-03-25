@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:CFDI_Clientes_COFIDI" ZOrder="3" X="157" Y="2" Height="324" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:TimbresEkomercio" ZOrder="2" X="480" Y="-1" Height="305" Width="297" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
-    <Shape ID="DesignTable:CFDI_Encabezado" ZOrder="1" X="940" Y="68" Height="263" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="173" />
+    <Shape ID="DesignTable:CFDI_Encabezado" ZOrder="1" X="940" Y="68" Height="324" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="173" />
   </Shapes>
   <Connectors />
 </DiagramLayout>
