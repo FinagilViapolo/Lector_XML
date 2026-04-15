@@ -1331,6 +1331,8 @@ Partial Public Class production
         
         Private columnxml As Global.System.Data.DataColumn
         
+        Private columnid_timbre As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -1551,6 +1553,14 @@ Partial Public Class production
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property id_timbreColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid_timbre
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1612,10 +1622,16 @@ Partial Public Class production
                     ByVal _167_RegimentFiscal As String,  _
                     ByVal xml As String) As CFDI_ReporteDesgloseRow
             Dim rowCFDI_ReporteDesgloseRow As CFDI_ReporteDesgloseRow = CType(Me.NewRow,CFDI_ReporteDesgloseRow)
-            Dim columnValuesArray() As Object = New Object() {serie, folio, uuid, fecha_fac, Mes, fecha_tim, rfc_emisor, rfc_receptor, _42_Nombre_Receptor, _29_FormaPago, _54_Monto_SubTotal, _55_Monto_IVA, _56_Monto_Total, _190_Metodo_Pago, _191_Efecto_Comprobante, Contrato, _115_Misc03, UsoCfdi, Addenda, Producto, Aviso, _167_RegimentFiscal, xml}
+            Dim columnValuesArray() As Object = New Object() {serie, folio, uuid, fecha_fac, Mes, fecha_tim, rfc_emisor, rfc_receptor, _42_Nombre_Receptor, _29_FormaPago, _54_Monto_SubTotal, _55_Monto_IVA, _56_Monto_Total, _190_Metodo_Pago, _191_Efecto_Comprobante, Contrato, _115_Misc03, UsoCfdi, Addenda, Producto, Aviso, _167_RegimentFiscal, xml, Nothing}
             rowCFDI_ReporteDesgloseRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCFDI_ReporteDesgloseRow)
             Return rowCFDI_ReporteDesgloseRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function FindByuuid(ByVal uuid As String) As CFDI_ReporteDesgloseRow
+            Return CType(Me.Rows.Find(New Object() {uuid}),CFDI_ReporteDesgloseRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1658,6 +1674,7 @@ Partial Public Class production
             Me.columnAviso = MyBase.Columns("Aviso")
             Me.column167_RegimentFiscal = MyBase.Columns("167_RegimentFiscal")
             Me.columnxml = MyBase.Columns("xml")
+            Me.columnid_timbre = MyBase.Columns("id_timbre")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1727,8 +1744,14 @@ Partial Public Class production
             MyBase.Columns.Add(Me.column167_RegimentFiscal)
             Me.columnxml = New Global.System.Data.DataColumn("xml", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnxml)
+            Me.columnid_timbre = New Global.System.Data.DataColumn("id_timbre", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid_timbre)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnuuid}, true))
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint2", New Global.System.Data.DataColumn() {Me.columnid_timbre}, false))
             Me.columnserie.MaxLength = 6
             Me.columnfolio.MaxLength = 10
+            Me.columnuuid.AllowDBNull = false
+            Me.columnuuid.Unique = true
             Me.columnuuid.MaxLength = 36
             Me.columnfecha_fac.ReadOnly = true
             Me.columnfecha_fac.MaxLength = 30
@@ -1743,11 +1766,17 @@ Partial Public Class production
             Me.columnContrato.MaxLength = 150
             Me.column115_Misc03.MaxLength = 150
             Me.columnUsoCfdi.MaxLength = 150
-            Me.columnAddenda.MaxLength = 150
+            Me.columnAddenda.MaxLength = 500
             Me.columnProducto.MaxLength = 150
             Me.columnAviso.MaxLength = 150
             Me.column167_RegimentFiscal.MaxLength = 22
             Me.columnxml.MaxLength = 2147483647
+            Me.columnid_timbre.AutoIncrement = true
+            Me.columnid_timbre.AutoIncrementSeed = -1
+            Me.columnid_timbre.AutoIncrementStep = -1
+            Me.columnid_timbre.AllowDBNull = false
+            Me.columnid_timbre.ReadOnly = true
+            Me.columnid_timbre.Unique = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2758,11 +2787,7 @@ Partial Public Class production
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property uuid() As String
             Get
-                Try 
-                    Return CType(Me(Me.tableCFDI_ReporteDesglose.uuidColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'uuid' de la tabla 'CFDI_ReporteDesglose' es DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableCFDI_ReporteDesglose.uuidColumn),String)
             End Get
             Set
                 Me(Me.tableCFDI_ReporteDesglose.uuidColumn) = value
@@ -2773,11 +2798,11 @@ Partial Public Class production
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property fecha_fac() As String
             Get
-                Try 
+                If Me.Isfecha_facNull Then
+                    Return Nothing
+                Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose.fecha_facColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fecha_fac' de la tabla 'CFDI_ReporteDesglose' es DBNull.", e)
-                End Try
+                End If
             End Get
             Set
                 Me(Me.tableCFDI_ReporteDesglose.fecha_facColumn) = value
@@ -2803,11 +2828,11 @@ Partial Public Class production
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property fecha_tim() As String
             Get
-                Try 
+                If Me.Isfecha_timNull Then
+                    Return Nothing
+                Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose.fecha_timColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fecha_tim' de la tabla 'CFDI_ReporteDesglose' es DBNull.", e)
-                End Try
+                End If
             End Get
             Set
                 Me(Me.tableCFDI_ReporteDesglose.fecha_timColumn) = value
@@ -2818,12 +2843,11 @@ Partial Public Class production
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property rfc_emisor() As String
             Get
-                Try 
+                If Me.Isrfc_emisorNull Then
+                    Return Nothing
+                Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose.rfc_emisorColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'rfc_emisor' de la tabla 'CFDI_ReporteDesglose' es DBNull."& _ 
-                            "", e)
-                End Try
+                End If
             End Get
             Set
                 Me(Me.tableCFDI_ReporteDesglose.rfc_emisorColumn) = value
@@ -2834,12 +2858,11 @@ Partial Public Class production
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property rfc_receptor() As String
             Get
-                Try 
+                If Me.Isrfc_receptorNull Then
+                    Return Nothing
+                Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose.rfc_receptorColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'rfc_receptor' de la tabla 'CFDI_ReporteDesglose' es DBNul"& _ 
-                            "l.", e)
-                End Try
+                End If
             End Get
             Set
                 Me(Me.tableCFDI_ReporteDesglose.rfc_receptorColumn) = value
@@ -2850,12 +2873,11 @@ Partial Public Class production
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property _42_Nombre_Receptor() As String
             Get
-                Try 
+                If Me.Is_42_Nombre_ReceptorNull Then
+                    Return Nothing
+                Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose._42_Nombre_ReceptorColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '42_Nombre_Receptor' de la tabla 'CFDI_ReporteDesglose' es"& _ 
-                            " DBNull.", e)
-                End Try
+                End If
             End Get
             Set
                 Me(Me.tableCFDI_ReporteDesglose._42_Nombre_ReceptorColumn) = value
@@ -2866,12 +2888,11 @@ Partial Public Class production
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property _29_FormaPago() As String
             Get
-                Try 
+                If Me.Is_29_FormaPagoNull Then
+                    Return Nothing
+                Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose._29_FormaPagoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '29_FormaPago' de la tabla 'CFDI_ReporteDesglose' es DBNul"& _ 
-                            "l.", e)
-                End Try
+                End If
             End Get
             Set
                 Me(Me.tableCFDI_ReporteDesglose._29_FormaPagoColumn) = value
@@ -2930,12 +2951,11 @@ Partial Public Class production
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property _190_Metodo_Pago() As String
             Get
-                Try 
+                If Me.Is_190_Metodo_PagoNull Then
+                    Return Nothing
+                Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose._190_Metodo_PagoColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '190_Metodo_Pago' de la tabla 'CFDI_ReporteDesglose' es DB"& _ 
-                            "Null.", e)
-                End Try
+                End If
             End Get
             Set
                 Me(Me.tableCFDI_ReporteDesglose._190_Metodo_PagoColumn) = value
@@ -2946,12 +2966,11 @@ Partial Public Class production
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property _191_Efecto_Comprobante() As String
             Get
-                Try 
+                If Me.Is_191_Efecto_ComprobanteNull Then
+                    Return Nothing
+                Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose._191_Efecto_ComprobanteColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna '191_Efecto_Comprobante' de la tabla 'CFDI_ReporteDesglose"& _ 
-                            "' es DBNull.", e)
-                End Try
+                End If
             End Get
             Set
                 Me(Me.tableCFDI_ReporteDesglose._191_Efecto_ComprobanteColumn) = value
@@ -2963,7 +2982,7 @@ Partial Public Class production
         Public Property Contrato() As String
             Get
                 If Me.IsContratoNull Then
-                    Return String.Empty
+                    Return Nothing
                 Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose.ContratoColumn),String)
                 End If
@@ -2978,7 +2997,7 @@ Partial Public Class production
         Public Property _115_Misc03() As String
             Get
                 If Me.Is_115_Misc03Null Then
-                    Return String.Empty
+                    Return Nothing
                 Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose._115_Misc03Column),String)
                 End If
@@ -2993,7 +3012,7 @@ Partial Public Class production
         Public Property UsoCfdi() As String
             Get
                 If Me.IsUsoCfdiNull Then
-                    Return String.Empty
+                    Return Nothing
                 Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose.UsoCfdiColumn),String)
                 End If
@@ -3008,7 +3027,7 @@ Partial Public Class production
         Public Property Addenda() As String
             Get
                 If Me.IsAddendaNull Then
-                    Return String.Empty
+                    Return Nothing
                 Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose.AddendaColumn),String)
                 End If
@@ -3023,7 +3042,7 @@ Partial Public Class production
         Public Property Producto() As String
             Get
                 If Me.IsProductoNull Then
-                    Return String.Empty
+                    Return Nothing
                 Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose.ProductoColumn),String)
                 End If
@@ -3038,7 +3057,7 @@ Partial Public Class production
         Public Property Aviso() As String
             Get
                 If Me.IsAvisoNull Then
-                    Return String.Empty
+                    Return Nothing
                 Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose.AvisoColumn),String)
                 End If
@@ -3053,7 +3072,7 @@ Partial Public Class production
         Public Property _167_RegimentFiscal() As String
             Get
                 If Me.Is_167_RegimentFiscalNull Then
-                    Return String.Empty
+                    Return Nothing
                 Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose._167_RegimentFiscalColumn),String)
                 End If
@@ -3067,14 +3086,25 @@ Partial Public Class production
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property xml() As String
             Get
-                Try 
+                If Me.IsxmlNull Then
+                    Return Nothing
+                Else
                     Return CType(Me(Me.tableCFDI_ReporteDesglose.xmlColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'xml' de la tabla 'CFDI_ReporteDesglose' es DBNull.", e)
-                End Try
+                End If
             End Get
             Set
                 Me(Me.tableCFDI_ReporteDesglose.xmlColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property id_timbre() As Decimal
+            Get
+                Return CType(Me(Me.tableCFDI_ReporteDesglose.id_timbreColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableCFDI_ReporteDesglose.id_timbreColumn) = value
             End Set
         End Property
         
@@ -3100,18 +3130,6 @@ Partial Public Class production
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetfolioNull()
             Me(Me.tableCFDI_ReporteDesglose.folioColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsuuidNull() As Boolean
-            Return Me.IsNull(Me.tableCFDI_ReporteDesglose.uuidColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetuuidNull()
-            Me(Me.tableCFDI_ReporteDesglose.uuidColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4492,6 +4510,7 @@ Namespace productionTableAdapters
             tableMapping.ColumnMappings.Add("Aviso", "Aviso")
             tableMapping.ColumnMappings.Add("167_RegimentFiscal", "167_RegimentFiscal")
             tableMapping.ColumnMappings.Add("xml", "xml")
+            tableMapping.ColumnMappings.Add("id_timbre", "id_timbre")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
